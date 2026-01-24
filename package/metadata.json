@@ -1,0 +1,20 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "me@chrisdupuy.com",
+                "Name": "Chris Dupuy"
+            }
+        ],
+        "Category": "Date and Time",
+        "Description": "A KDE Plasma clock widget tailored towards style and effects.",
+        "Icon": "battery",
+        "Id": "com.chrisdupuy.yetanotherclockwidget",
+        "Name": "Yet Another Clock Widget",
+        "Version": "1",
+        "Website": "https://github.com/chrisdupuy-dev/yet-another-clock-widget",
+        "BugReportUrl": "https://github.com/chrisdupuy-dev/yet-another-clock-widget/issues"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0",
+    "KPackageStructure": "Plasma/Applet"
+}
