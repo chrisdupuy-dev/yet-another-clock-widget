@@ -1,0 +1,41 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Clean",
+      "type": "shell",
+      "command": "rm",
+      "args": [
+        "-rf",
+        "~/.local/share/plasma/plasmoids/com.chrisdupuy.yetanotherclockwidget"
+      ]
+    },
+    {
+      "label": "Build",
+      "type": "shell",
+      "command": "kpackagetool6",
+      "args": [
+        "--type",
+        "Plasma/Applet",
+        "--install",
+        "./package"
+      ],
+      "dependsOn": "Clean"
+    },
+    {
+      "label": "Launch Plasmoidviewer",
+      "type": "shell",
+      "command": "plasmoidviewer",
+      "args": [
+        "-a",
+        "./package"
+      ],
+      "dependsOn": "Build",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
