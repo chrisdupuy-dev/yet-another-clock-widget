@@ -21,6 +21,8 @@ PlasmoidItem {
     readonly property string currentDate: Qt.locale().toString(dataSource.data["Local"]["DateTime"], Qt.locale().dateFormat(Locale.ShortFormat))
 
     property bool showDate: Plasmoid.configuration.showDate
+    property string timeTextColor: Plasmoid.configuration.timeTextColorText
+
     property int tzOffset
     property bool isHovered
 
@@ -72,6 +74,7 @@ PlasmoidItem {
 
         PlasmaComponents.Label {
             text: qsTr(root.currentTime)
+            color: root.timeTextColor
             font.pixelSize: 22
         }
 
