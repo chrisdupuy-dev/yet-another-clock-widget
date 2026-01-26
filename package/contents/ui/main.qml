@@ -8,8 +8,9 @@ import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.components as PlasmaComponents
 import org.kde.plasma.plasma5support as P5Support
 import org.kde.kirigami as Kirigami
-
 import org.kde.plasma.workspace.calendar 2.0 as PlasmaCalendar
+
+import "shared" as Shared
 
 PlasmoidItem {
     id: root
@@ -17,7 +18,18 @@ PlasmoidItem {
     width: Kirigami.Units.gridUnit * 15
     height: Kirigami.Units.gridUnit * 15
 
-    readonly property string currentTime: Qt.locale().toString(dataSource.data["Local"]["DateTime"], Qt.locale().timeFormat(Locale.ShortFormat))
+    readonly property string currentTime: {
+        switch (timeFormat) {
+            case Shared.Enums.TimeFormat.TwelveHour:
+                return Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h:mm AP")
+            case Shared.Enums.TimeFormat.TwentyFourHour:
+                return Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "HH:mm")
+            case Shared.Enums.TimeFormat.SystemDefault:
+            default:
+                return Qt.locale().toString(dataSource.data["Local"]["DateTime"], Qt.locale().timeFormat(Locale.ShortFormat))
+        }
+    }
+
     readonly property string currentDate: Qt.locale().toString(dataSource.data["Local"]["DateTime"], Qt.locale().dateFormat(Locale.ShortFormat))
 
     property bool showDate: Plasmoid.configuration.showDate
@@ -28,6 +40,8 @@ PlasmoidItem {
     property string timeTextFontStyleName: Plasmoid.configuration.timeTextFontStyleName
     property bool timeTextFontStrikeout: Plasmoid.configuration.timeTextFontStrikeout
     property bool timeTextFontUnderline: Plasmoid.configuration.timeTextFontUnderline
+
+    property int timeFormat: Plasmoid.configuration.timeFormat
 
     property int tzOffset
     property bool isHovered
@@ -79,7 +93,7 @@ PlasmoidItem {
         onExited: root.isHovered = false
 
         PlasmaComponents.Label {
-            text: qsTr(root.currentTime)
+            text: root.currentTime
             color: root.timeTextColor
             font.family: root.timeTextFontFamily
             font.pointSize: root.timeTextFontPointSize

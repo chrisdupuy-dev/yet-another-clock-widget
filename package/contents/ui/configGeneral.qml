@@ -5,8 +5,11 @@ import QtQuick.Dialogs
 import org.kde.kirigami 2.5 as Kirigami
 import org.kde.kcmutils as KCM
 import org.kde.kquickcontrols as KQControls
+import "shared" as Shared
 
 KCM.SimpleKCM {
+    id: appearance
+
     property alias cfg_showDate: showDateCheckBox.checked
     
     property alias cfg_timeTextColorText: timeTextColorTextField.text
@@ -17,7 +20,17 @@ KCM.SimpleKCM {
     property alias cfg_timeTextFontStyleName: timeTextFontDialog.selectedFont.styleName
     property alias cfg_timeTextFontStrikeout: timeTextFontDialog.selectedFont.strikeout
     property alias cfg_timeTextFontUnderline: timeTextFontDialog.selectedFont.underline
+
+    property alias cfg_timeFormat: timeFormatComboBox.currentIndex
     
+    ListModel {
+        id: timeFormatModel
+
+        ListElement { text: "System default"; value: Shared.Enums.TimeFormat.SystemDefault }
+        ListElement { text: "12-hour"; value: Shared.Enums.TimeFormat.TwelveHour }
+        ListElement { text: "24-hour"; value: Shared.Enums.TimeFormat.TwentyFourHour }
+    }
+
     Kirigami.FormLayout {
         Kirigami.FormData.label: "Font settings"
         anchors.fill: parent
@@ -69,13 +82,29 @@ KCM.SimpleKCM {
             FontDialog {
                 id: timeTextFontDialog
             }
-        }
 
-        GridLayout {
-            Layout.fillWidth: true
+            Item {}
 
-            columns: 2
+            Label {
+                text: "Time format:"
+            }
 
+            ComboBox {
+                id: timeFormatComboBox
+                model: timeFormatModel
+                textRole: "text"
+                valueRole: "value"
+
+                // Load from config
+                onActivated: {
+                    currentIndex = appearance.cfg_timeFormat
+                }
+
+                // Save to config
+                onAccepted: {
+                    appearance.cfg_timeFormat = currentIndex;
+                }
+            }
         }
 
         CheckBox {
