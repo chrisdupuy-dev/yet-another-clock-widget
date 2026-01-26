@@ -23,6 +23,12 @@ PlasmoidItem {
     property bool showDate: Plasmoid.configuration.showDate
     property string timeTextColor: Plasmoid.configuration.timeTextColorText
 
+    property string timeTextFontFamily: Plasmoid.configuration.timeTextFontFamily
+    property double timeTextFontPointSize: Plasmoid.configuration.timeTextFontPointSize
+    property string timeTextFontStyleName: Plasmoid.configuration.timeTextFontStyleName
+    property bool timeTextFontStrikeout: Plasmoid.configuration.timeTextFontStrikeout
+    property bool timeTextFontUnderline: Plasmoid.configuration.timeTextFontUnderline
+
     property int tzOffset
     property bool isHovered
 
@@ -75,7 +81,11 @@ PlasmoidItem {
         PlasmaComponents.Label {
             text: qsTr(root.currentTime)
             color: root.timeTextColor
-            font.pixelSize: 22
+            font.family: root.timeTextFontFamily
+            font.pointSize: root.timeTextFontPointSize
+            font.styleName: root.timeTextFontStyleName
+            font.strikeout: root.timeTextFontStrikeout
+            font.underline: root.timeTextFontUnderline
         }
 
         PlasmaComponents.Label {

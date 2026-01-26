@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
+import QtQuick.Dialogs
 import org.kde.kirigami 2.5 as Kirigami
 import org.kde.kcmutils as KCM
 import org.kde.kquickcontrols as KQControls
@@ -10,6 +11,12 @@ KCM.SimpleKCM {
     property alias cfg_timeTextColorText: timeTextColorTextField.text
     property alias cfg_timeTextColorButton: timeTextColorButton.color
 
+    property alias cfg_timeTextFontFamily: timeTextFontDialog.selectedFont.family
+    property alias cfg_timeTextFontPointSize: timeTextFontDialog.selectedFont.pointSize
+    property alias cfg_timeTextFontStyleName: timeTextFontDialog.selectedFont.styleName
+    property alias cfg_timeTextFontStrikeout: timeTextFontDialog.selectedFont.strikeout
+    property alias cfg_timeTextFontUnderline: timeTextFontDialog.selectedFont.underline
+    
     Kirigami.FormLayout {
         CheckBox {
             id: showDateCheckBox
@@ -29,6 +36,15 @@ KCM.SimpleKCM {
             onTextEdited: {
                 timeTextColorButton.color = timeTextColorTextField.text
             }
+        }
+
+        Button {
+            text: "Choose Font"
+            onClicked: timeTextFontDialog.open()
+        }
+
+        FontDialog {
+            id: timeTextFontDialog
         }
     }
 }
