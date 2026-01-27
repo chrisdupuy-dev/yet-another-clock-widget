@@ -2,6 +2,7 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 import QtQuick.Layouts
+import QtQuick.Effects
 
 import org.kde.plasma.plasmoid
 import org.kde.plasma.core as PlasmaCore
@@ -10,7 +11,8 @@ import org.kde.plasma.plasma5support as P5Support
 import org.kde.kirigami as Kirigami
 import org.kde.plasma.workspace.calendar 2.0 as PlasmaCalendar
 
-import "shared" as Shared
+import "components"
+import "shared"
 
 PlasmoidItem {
     id: root
@@ -20,36 +22,29 @@ PlasmoidItem {
 
     readonly property string currentTime: {
         switch (timeFormat) {
-            case Shared.Enums.TimeFormat.TwelveHour:
-                return Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h:mm AP")
-            case Shared.Enums.TimeFormat.TwentyFourHour:
-                return Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "HH:mm")
-            case Shared.Enums.TimeFormat.SystemDefault:
-            default:
-                return Qt.locale().toString(dataSource.data["Local"]["DateTime"], Qt.locale().timeFormat(Locale.ShortFormat))
+          case Enums.TimeFormat.TwelveHour:
+              return Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h:mm AP");
+          case Enums.TimeFormat.TwentyFourHour:
+              return Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "HH:mm");
+          case Enums.TimeFormat.SystemDefault:
+          default:
+              return Qt.locale().toString(dataSource.data["Local"]["DateTime"], Qt.locale().timeFormat(Locale.ShortFormat));
         }
     }
 
     readonly property string currentDate: Qt.locale().toString(dataSource.data["Local"]["DateTime"], Qt.locale().dateFormat(Locale.ShortFormat))
 
     property bool showDate: Plasmoid.configuration.showDate
-    property string timeTextColor: Plasmoid.configuration.timeTextColorText
-
-    property string timeTextFontFamily: Plasmoid.configuration.timeTextFontFamily
-    property double timeTextFontPointSize: Plasmoid.configuration.timeTextFontPointSize
-    property string timeTextFontStyleName: Plasmoid.configuration.timeTextFontStyleName
-    property bool timeTextFontStrikeout: Plasmoid.configuration.timeTextFontStrikeout
-    property bool timeTextFontUnderline: Plasmoid.configuration.timeTextFontUnderline
 
     property int timeFormat: Plasmoid.configuration.timeFormat
 
     property int tzOffset
     property bool isHovered
 
-    Plasmoid.backgroundHints: PlasmaCore.Types.NoBackground;
+    Plasmoid.backgroundHints: PlasmaCore.Types.NoBackground
     preferredRepresentation: compactRepresentation
 
-    toolTipMainText: Qt.locale().toString(dataSource.data["Local"]["DateTime"],"dddd")
+    toolTipMainText: Qt.locale().toString(dataSource.data["Local"]["DateTime"], "dddd")
     toolTipSubText: `${currentTime}\n${currentDate}`
 
     function dateTimeChanged() {
@@ -92,14 +87,15 @@ PlasmoidItem {
         onEntered: root.isHovered = true
         onExited: root.isHovered = false
 
-        PlasmaComponents.Label {
+        StyledLabel {
+            id: timeLabel
             text: root.currentTime
-            color: root.timeTextColor
-            font.family: root.timeTextFontFamily
-            font.pointSize: root.timeTextFontPointSize
-            font.styleName: root.timeTextFontStyleName
-            font.strikeout: root.timeTextFontStrikeout
-            font.underline: root.timeTextFontUnderline
+            color: Plasmoid.configuration.timeTextColorText
+            fontFamily: Plasmoid.configuration.timeTextFontFamily
+            fontPointSize: Plasmoid.configuration.timeTextFontPointSize
+            fontStyleName: Plasmoid.configuration.timeTextFontStyleName
+            fontStrikeout: Plasmoid.configuration.timeTextFontStrikeout
+            fontUnderline: Plasmoid.configuration.timeTextFontUnderline
         }
 
         PlasmaComponents.Label {

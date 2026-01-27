@@ -5,7 +5,7 @@ import QtQuick.Dialogs
 import org.kde.kirigami 2.5 as Kirigami
 import org.kde.kcmutils as KCM
 import org.kde.kquickcontrols as KQControls
-import "shared" as Shared
+import "shared"
 
 KCM.SimpleKCM {
     id: appearance
@@ -26,9 +26,9 @@ KCM.SimpleKCM {
     ListModel {
         id: timeFormatModel
 
-        ListElement { text: "System default"; value: Shared.Enums.TimeFormat.SystemDefault }
-        ListElement { text: "12-hour"; value: Shared.Enums.TimeFormat.TwelveHour }
-        ListElement { text: "24-hour"; value: Shared.Enums.TimeFormat.TwentyFourHour }
+        ListElement { text: "System default"; value: Enums.TimeFormat.SystemDefault }
+        ListElement { text: "12-hour"; value: Enums.TimeFormat.TwelveHour }
+        ListElement { text: "24-hour"; value: Enums.TimeFormat.TwentyFourHour }
     }
 
     Kirigami.FormLayout {
