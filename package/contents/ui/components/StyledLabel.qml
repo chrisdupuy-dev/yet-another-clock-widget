@@ -20,17 +20,25 @@ Item {
   property alias fontStrikeout: label.font.strikeout
   property alias fontUnderline: label.font.underline
 
+  property bool strokeEnabled: false
+  property int strokeSize: 1
+  property string strokeColor: '#000000'
+
+  property bool dropShadowEnabled: false
+  property string dropShadowColor: '#000000'
+
   Repeater {
     id: repeater
+
     model: [
-        { x: -2, y: 0 },
-        { x:  2, y: 0 },
-        { x: 0, y: -2 },
-        { x: 0, y: 2 },
-        { x: -2, y: -2 },
-        { x: 2, y: -2 },
-        { x: -2, y: 2 },
-        { x: 2, y: 2 }
+        { x: -root.strokeSize, y: 0 },
+        { x:  root.strokeSize, y: 0 },
+        { x: 0, y: -root.strokeSize },
+        { x: 0, y: root.strokeSize },
+        { x: -root.strokeSize, y: -root.strokeSize },
+        { x: root.strokeSize, y: -root.strokeSize },
+        { x: -root.strokeSize, y: root.strokeSize },
+        { x: root.strokeSize, y: root.strokeSize }
     ]
 
     PlasmaComponents.Label {
@@ -38,7 +46,7 @@ Item {
 
         text: label.text
         font: label.font
-        color: "black"
+        color: root.strokeColor
 
         x: modelData.x
         y: modelData.y
@@ -50,8 +58,8 @@ Item {
 
       layer.enabled: true
       layer.effect: MultiEffect {
-          shadowEnabled: true
-          shadowColor: '#000000'
+          shadowEnabled: root.dropShadowEnabled
+          shadowColor: root.dropShadowColor
           shadowBlur: 1
           shadowVerticalOffset: 6
           shadowHorizontalOffset: 6

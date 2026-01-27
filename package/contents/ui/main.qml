@@ -96,6 +96,11 @@ PlasmoidItem {
             fontStyleName: Plasmoid.configuration.timeTextFontStyleName
             fontStrikeout: Plasmoid.configuration.timeTextFontStrikeout
             fontUnderline: Plasmoid.configuration.timeTextFontUnderline
+            strokeEnabled: true
+            strokeColor: '#000000'
+            strokeSize: 2
+            dropShadowEnabled: true
+            dropShadowColor: "black"
         }
 
         PlasmaComponents.Label {
