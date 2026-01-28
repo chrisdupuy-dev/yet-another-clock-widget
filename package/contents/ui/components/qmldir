@@ -1,2 +1,3 @@
 module StyledComponents
 StyledLabel 1.0 StyledLabel.qml
+StyledLabelConfig 1.0 StyledLabelConfig.qml

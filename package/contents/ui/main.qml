@@ -2,7 +2,6 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Effects
 
 import org.kde.plasma.plasmoid
 import org.kde.plasma.core as PlasmaCore
@@ -90,12 +89,12 @@ PlasmoidItem {
         StyledLabel {
             id: timeLabel
             text: root.currentTime
-            color: Plasmoid.configuration.timeTextColorText
-            fontFamily: Plasmoid.configuration.timeTextFontFamily
-            fontPointSize: Plasmoid.configuration.timeTextFontPointSize
-            fontStyleName: Plasmoid.configuration.timeTextFontStyleName
-            fontStrikeout: Plasmoid.configuration.timeTextFontStrikeout
-            fontUnderline: Plasmoid.configuration.timeTextFontUnderline
+            color: Plasmoid.configuration.globalTextColor
+            fontFamily: Plasmoid.configuration.globalFontFamily
+            fontPointSize: Plasmoid.configuration.globalFontPointSize
+            fontStyleName: Plasmoid.configuration.globalFontStyleName
+            fontStrikeout: Plasmoid.configuration.globalFontStrikeout
+            fontUnderline: Plasmoid.configuration.globalFontUnderline
             strokeEnabled: true
             strokeColor: '#000000'
             strokeSize: 2
