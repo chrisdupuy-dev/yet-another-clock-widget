@@ -22,13 +22,14 @@ Item {
 
   property bool strokeEnabled: false
   property int strokeSize: 1
-  property string strokeColor: '#000000'
+  property color strokeColor: '#000000'
 
   property bool dropShadowEnabled: false
-  property string dropShadowColor: '#000000'
+  property color dropShadowColor: '#000000'
 
   Repeater {
     id: repeater
+
 
     model: [
         { x: -root.strokeSize, y: 0 },
@@ -44,6 +45,7 @@ Item {
     PlasmaComponents.Label {
         required property var modelData
 
+        visible: root.strokeEnabled
         text: label.text
         font: label.font
         color: root.strokeColor
@@ -60,6 +62,7 @@ Item {
       layer.effect: MultiEffect {
           shadowEnabled: root.dropShadowEnabled
           shadowColor: root.dropShadowColor
+          shadowOpacity: 0.6
           shadowBlur: 1
           shadowVerticalOffset: 6
           shadowHorizontalOffset: 6

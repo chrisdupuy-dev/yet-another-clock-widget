@@ -95,11 +95,11 @@ PlasmoidItem {
             fontStyleName: Plasmoid.configuration.globalFontStyleName
             fontStrikeout: Plasmoid.configuration.globalFontStrikeout
             fontUnderline: Plasmoid.configuration.globalFontUnderline
-            strokeEnabled: true
-            strokeColor: '#000000'
-            strokeSize: 2
-            dropShadowEnabled: true
-            dropShadowColor: "black"
+            strokeEnabled: Plasmoid.configuration.globalStrokeEnabled
+            strokeColor: Plasmoid.configuration.globalStrokeColorText
+            strokeSize: Plasmoid.configuration.globalStrokeSize
+            dropShadowEnabled: Plasmoid.configuration.globalDropShadowEnabled
+            dropShadowColor: Plasmoid.configuration.globalDropShadowColorText
         }
 
         PlasmaComponents.Label {

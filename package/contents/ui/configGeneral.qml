@@ -17,6 +17,13 @@ KCM.SimpleKCM {
     property alias cfg_globalFontStyleName: globalStyledLabelConfig.fontStyleName
     property alias cfg_globalFontStrikeout: globalStyledLabelConfig.fontStrikeout
     property alias cfg_globalFontUnderline: globalStyledLabelConfig.fontUnderline
+    property alias cfg_globalStrokeEnabled: globalStyledLabelConfig.strokeEnabled
+    property alias cfg_globalStrokeSize: globalStyledLabelConfig.strokeSize
+    property alias cfg_globalStrokeColorText: globalStyledLabelConfig.strokeColorText
+    property alias cfg_globalStrokeColorButton: globalStyledLabelConfig.strokeColorButton
+    property alias cfg_globalDropShadowEnabled: globalStyledLabelConfig.dropShadowEnabled
+    property alias cfg_globalDropShadowColorText: globalStyledLabelConfig.dropShadowColorText
+    property alias cfg_globalDropShadowColorButton: globalStyledLabelConfig.dropShadowColorButton
 
     property alias cfg_timeFormat: timeFormatComboBox.currentIndex
     property alias cfg_showDate: showDateCheckBox.checked

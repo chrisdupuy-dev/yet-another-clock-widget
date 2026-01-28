@@ -20,6 +20,16 @@ GridLayout {
   property alias fontStrikeout: fontDialog.selectedFont.strikeout
   property alias fontUnderline: fontDialog.selectedFont.underline
 
+  property alias strokeEnabled: strokeEnabledCheckBox.checked
+  property alias strokeSize: strokeSizeTextField.text
+  property alias strokeColorText: strokeColorTextField.text
+  property alias strokeColorButton: strokeColorButton.color
+
+  property alias dropShadowEnabled: dropShadowEnabledCheckBox.checked
+  property alias dropShadowColorText: dropShadowColorTextField.text
+  property alias dropShadowColorButton: dropShadowColorButton.color
+
+  // Text color
   Label {
       text: "Text color:"
       Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
@@ -48,6 +58,7 @@ GridLayout {
 
   Item {}
 
+  // Font style
   Label {
       text: "Text display:"
       Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
@@ -62,6 +73,97 @@ GridLayout {
 
   FontDialog {
       id: fontDialog
+  }
+
+  Item {}
+
+  // Stroke
+  Label {
+      text: "Stroke:"
+      Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+  }
+
+  CheckBox {
+    id: strokeEnabledCheckBox
+  }
+  
+  Item{}
+
+  Label {
+      text: "Stroke size:"
+      Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+  }
+
+  TextField {
+    id: strokeSizeTextField
+  }
+
+  Item{}
+
+  Label {
+      text: "Stroke color:"
+      Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+  }
+
+  TextField {
+      id: strokeColorTextField
+      Layout.fillWidth: true
+      onTextEdited: {
+          strokeColorButton.color = strokeColorTextField.text
+      }
+  }
+
+  Item {}
+
+  Item {}
+
+  KQControls.ColorButton {
+      id: strokeColorButton
+      Layout.fillWidth: true
+      showAlphaChannel: true
+      onAccepted: {
+          strokeColorTextField.text = strokeColorButton.color
+      }
+  }
+
+  Item {}
+
+  // Dropshadow
+  Label {
+      text: "Drop shadow:"
+      Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+  }
+
+  CheckBox {
+    id: dropShadowEnabledCheckBox
+  }
+
+  Item {}
+
+  Label {
+      text: "Drop shadow color:"
+      Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+  }
+
+  TextField {
+      id: dropShadowColorTextField
+      Layout.fillWidth: true
+      onTextEdited: {
+          dropShadowColorButton.color = dropShadowColorTextField.text
+      }
+  }
+
+  Item {}
+
+  Item {}
+
+  KQControls.ColorButton {
+      id:dropShadowColorButton
+      Layout.fillWidth: true
+      showAlphaChannel: true
+      onAccepted: {
+          dropShadowColorTextField.text = dropShadowColorButton.color
+      }
   }
 
   Item {}
