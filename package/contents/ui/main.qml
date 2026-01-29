@@ -19,32 +19,75 @@ PlasmoidItem {
     width: Kirigami.Units.gridUnit * 15
     height: Kirigami.Units.gridUnit * 15
 
+    Plasmoid.backgroundHints: PlasmaCore.Types.NoBackground
+    preferredRepresentation: compactRepresentation
+
+    toolTipMainText: Qt.locale().toString(dataSource.data["Local"]["DateTime"], "dddd")
+    toolTipSubText: `${currentTime}\n${currentDate}`
+    readonly property var d: ({
+            textColor: '#FFFFFF',
+            fontFamily: '',
+            fontPointSize: '12',
+            fontStyleName: 'Regular',
+            fontStrikeout: false,
+            fontUnderline: false,
+            strokeEnabled: false,
+            strokeColor: '#000000',
+            strokeSize: 1,
+            dropShadowEnabled: false,
+            dropShadowColor: '#000000'
+        })
     readonly property string currentTime: {
         switch (timeFormat) {
-          case Enums.TimeFormat.TwelveHour:
-              return Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h:mm AP");
-          case Enums.TimeFormat.TwentyFourHour:
-              return Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "HH:mm");
-          case Enums.TimeFormat.SystemDefault:
-          default:
-              return Qt.locale().toString(dataSource.data["Local"]["DateTime"], Qt.locale().timeFormat(Locale.ShortFormat));
+        case Enums.TimeFormat.TwelveHour:
+            return Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h:mm AP");
+        case Enums.TimeFormat.TwentyFourHour:
+            return Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "HH:mm");
+        case Enums.TimeFormat.SystemDefault:
+        default:
+            return Qt.locale().toString(dataSource.data["Local"]["DateTime"], Qt.locale().timeFormat(Locale.ShortFormat));
         }
     }
 
     readonly property string currentDate: Qt.locale().toString(dataSource.data["Local"]["DateTime"], Qt.locale().dateFormat(Locale.ShortFormat))
 
     property bool showDate: Plasmoid.configuration.showDate
-
-    property int timeFormat: Plasmoid.configuration.timeFormat
-
     property int tzOffset
     property bool isHovered
 
-    Plasmoid.backgroundHints: PlasmaCore.Types.NoBackground
-    preferredRepresentation: compactRepresentation
+    property int timeFormat: Plasmoid.configuration.timeFormat
 
-    toolTipMainText: Qt.locale().toString(dataSource.data["Local"]["DateTime"], "dddd")
-    toolTipSubText: `${currentTime}\n${currentDate}`
+    property bool timeIsGlobalStyled: Plasmoid.configuration.timeIsGlobalStyled
+    readonly property string timeStyleKey: root.timeIsGlobalStyled ? "global" : "time"
+
+    readonly property var textStyles: ({
+            global: {
+                textColor: Plasmoid.configuration.globalTextColor,
+                fontFamily: Plasmoid.configuration.globalFontFamily,
+                fontPointSize: Plasmoid.configuration.globalFontPointSize,
+                fontStyleName: Plasmoid.configuration.globalFontStyleName,
+                fontStrikeout: Plasmoid.configuration.globalFontStrikeout,
+                fontUnderline: Plasmoid.configuration.globalFontUnderline,
+                strokeEnabled: Plasmoid.configuration.globalStrokeEnabled,
+                strokeColor: Plasmoid.configuration.globalStrokeColorText,
+                strokeSize: Plasmoid.configuration.globalStrokeSize,
+                dropShadowEnabled: Plasmoid.configuration.globalDropShadowEnabled,
+                dropShadowColor: Plasmoid.configuration.globalDropShadowColorText
+            },
+            time: {
+                textColor: Plasmoid.configuration.timeTextColor,
+                fontFamily: Plasmoid.configuration.timeFontFamily,
+                fontPointSize: Plasmoid.configuration.timeFontPointSize,
+                fontStyleName: Plasmoid.configuration.timeFontStyleName,
+                fontStrikeout: Plasmoid.configuration.timeFontStrikeout,
+                fontUnderline: Plasmoid.configuration.timeFontUnderline,
+                strokeEnabled: Plasmoid.configuration.timeStrokeEnabled,
+                strokeColor: Plasmoid.configuration.timeStrokeColorText,
+                strokeSize: Plasmoid.configuration.timeStrokeSize,
+                dropShadowEnabled: Plasmoid.configuration.timeDropShadowEnabled,
+                dropShadowColor: Plasmoid.configuration.timeDropShadowColorText
+            }
+        })
 
     function dateTimeChanged() {
         var currentTZOffset = dataSource.data["Local"]["Offset"] / 60;
@@ -88,18 +131,21 @@ PlasmoidItem {
 
         StyledLabel {
             id: timeLabel
+
+            readonly property var style: root.textStyles[root.timeStyleKey] || root.textStyles.global
+
             text: root.currentTime
-            color: Plasmoid.configuration.globalTextColor
-            fontFamily: Plasmoid.configuration.globalFontFamily
-            fontPointSize: Plasmoid.configuration.globalFontPointSize
-            fontStyleName: Plasmoid.configuration.globalFontStyleName
-            fontStrikeout: Plasmoid.configuration.globalFontStrikeout
-            fontUnderline: Plasmoid.configuration.globalFontUnderline
-            strokeEnabled: Plasmoid.configuration.globalStrokeEnabled
-            strokeColor: Plasmoid.configuration.globalStrokeColorText
-            strokeSize: Plasmoid.configuration.globalStrokeSize
-            dropShadowEnabled: Plasmoid.configuration.globalDropShadowEnabled
-            dropShadowColor: Plasmoid.configuration.globalDropShadowColorText
+            color: style.textColor
+            fontFamily: style.fontFamily
+            fontPointSize: style.fontPointSize
+            fontStyleName: style.fontStyleName
+            fontStrikeout: style.fontStrikeout
+            fontUnderline: style.fontUnderline
+            strokeEnabled: style.strokeEnabled
+            strokeColor: style.strokeColorText
+            strokeSize: style.strokeSize
+            dropShadowEnabled: style.dropShadowEnabled
+            dropShadowColor: style.dropShadowColorText
         }
 
         PlasmaComponents.Label {

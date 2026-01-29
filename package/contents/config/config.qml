@@ -4,8 +4,14 @@ import org.kde.plasma.configuration 2.0
 
 ConfigModel {
     ConfigCategory {
-         name: i18n("Appearance")
-         icon: "preferences-desktop-color"
-         source: "configGeneral.qml"
+        name: i18n("Global Appearance")
+        icon: "preferences-desktop-color"
+        source: "configGlobal.qml"
+    }
+
+    ConfigCategory {
+        name: i18n("Time Appearance")
+        icon: "preferences-desktop-color"
+        source: "configTime.qml"
     }
 }
