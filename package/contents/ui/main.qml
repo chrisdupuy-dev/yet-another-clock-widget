@@ -5,7 +5,6 @@ import QtQuick.Layouts
 
 import org.kde.plasma.plasmoid
 import org.kde.plasma.core as PlasmaCore
-import org.kde.plasma.components as PlasmaComponents
 import org.kde.plasma.plasma5support as P5Support
 import org.kde.kirigami as Kirigami
 import org.kde.plasma.workspace.calendar 2.0 as PlasmaCalendar
@@ -24,19 +23,7 @@ PlasmoidItem {
 
     toolTipMainText: Qt.locale().toString(dataSource.data["Local"]["DateTime"], "dddd")
     toolTipSubText: `${currentTime}\n${currentDate}`
-    readonly property var d: ({
-            textColor: '#FFFFFF',
-            fontFamily: '',
-            fontPointSize: '12',
-            fontStyleName: 'Regular',
-            fontStrikeout: false,
-            fontUnderline: false,
-            strokeEnabled: false,
-            strokeColor: '#000000',
-            strokeSize: 1,
-            dropShadowEnabled: false,
-            dropShadowColor: '#000000'
-        })
+
     readonly property string currentTime: {
         switch (timeFormat) {
         case Enums.TimeFormat.TwelveHour:
@@ -51,14 +38,13 @@ PlasmoidItem {
 
     readonly property string currentDate: Qt.locale().toString(dataSource.data["Local"]["DateTime"], Qt.locale().dateFormat(Locale.ShortFormat))
 
-    property bool showDate: Plasmoid.configuration.showDate
     property int tzOffset
     property bool isHovered
 
     property int timeFormat: Plasmoid.configuration.timeFormat
 
-    property bool timeIsGlobalStyled: Plasmoid.configuration.timeIsGlobalStyled
-    readonly property string timeStyleKey: root.timeIsGlobalStyled ? "global" : "time"
+    readonly property string timeStyleKey: Plasmoid.configuration.timeIsGlobalStyled ? "global" : "time"
+    readonly property string dateStyleKey: Plasmoid.configuration.dateIsGlobalStyled ? "global" : "date"
 
     readonly property var textStyles: ({
             global: {
@@ -86,16 +72,21 @@ PlasmoidItem {
                 strokeSize: Plasmoid.configuration.timeStrokeSize,
                 dropShadowEnabled: Plasmoid.configuration.timeDropShadowEnabled,
                 dropShadowColor: Plasmoid.configuration.timeDropShadowColorText
+            },
+            date: {
+                textColor: Plasmoid.configuration.dateTextColor,
+                fontFamily: Plasmoid.configuration.dateFontFamily,
+                fontPointSize: Plasmoid.configuration.dateFontPointSize,
+                fontStyleName: Plasmoid.configuration.dateFontStyleName,
+                fontStrikeout: Plasmoid.configuration.dateFontStrikeout,
+                fontUnderline: Plasmoid.configuration.dateFontUnderline,
+                strokeEnabled: Plasmoid.configuration.dateStrokeEnabled,
+                strokeColor: Plasmoid.configuration.dateStrokeColorText,
+                strokeSize: Plasmoid.configuration.dateStrokeSize,
+                dropShadowEnabled: Plasmoid.configuration.dateDropShadowEnabled,
+                dropShadowColor: Plasmoid.configuration.dateDropShadowColorText
             }
         })
-
-    function dateTimeChanged() {
-        var currentTZOffset = dataSource.data["Local"]["Offset"] / 60;
-        if (currentTZOffset !== tzOffset) {
-            tzOffset = currentTZOffset;
-            Date.timeZoneUpdated(); // inform the QML JS engine about TZ change
-        }
-    }
 
     P5Support.DataSource {
         id: dataSource
@@ -103,6 +94,11 @@ PlasmoidItem {
         connectedSources: ["Local"]
         interval: root.isHovered ? 1000 : 30000
         function onDataChanged() {
+            var currentTZOffset = dataSource.data["Local"]["Offset"] / 60;
+            if (currentTZOffset !== root.tzOffset) {
+                root.tzOffset = currentTZOffset;
+                Date.timeZoneUpdated(); // inform the QML JS engine about TZ change
+            }
         }
         Component.onCompleted: {
             dataChanged();
@@ -121,7 +117,7 @@ PlasmoidItem {
         hoverEnabled: true
 
         Accessible.name: Plasmoid.title
-        Accessible.description: Qt.locale("@info:tooltip", "Current time is %1; Current date is %2", root.currentTime, root.currentDate)
+        Accessible.description: i18nc("@info:tooltip", "Current time is %1; Current date is %2", root.currentTime, root.currentDate)
         Accessible.role: Accessible.Button
 
         onPressed: wasExpanded = root.expanded
@@ -131,26 +127,42 @@ PlasmoidItem {
 
         StyledLabel {
             id: timeLabel
+            visible: Plasmoid.configuration.showTime
 
             readonly property var style: root.textStyles[root.timeStyleKey] || root.textStyles.global
 
             text: root.currentTime
-            color: style.textColor
+            color: style.textColor ?? '#FFFFFF'
             fontFamily: style.fontFamily
             fontPointSize: style.fontPointSize
             fontStyleName: style.fontStyleName
             fontStrikeout: style.fontStrikeout
             fontUnderline: style.fontUnderline
             strokeEnabled: style.strokeEnabled
-            strokeColor: style.strokeColorText
+            strokeColor: style.strokeColorText ?? '#000000'
             strokeSize: style.strokeSize
             dropShadowEnabled: style.dropShadowEnabled
-            dropShadowColor: style.dropShadowColorText
+            dropShadowColor: style.dropShadowColorText ?? '#000000'
         }
 
-        PlasmaComponents.Label {
-            text: qsTr(root.currentDate)
-            visible: root.showDate
+        StyledLabel {
+            id: dateLabel
+            visible: Plasmoid.configuration.showDate
+
+            readonly property var style: root.textStyles[root.dateStyleKey] || root.textStyles.global
+
+            text: root.currentDate
+            color: style.textColor ?? '#FFFFFF'
+            fontFamily: style.fontFamily
+            fontPointSize: style.fontPointSize
+            fontStyleName: style.fontStyleName
+            fontStrikeout: style.fontStrikeout
+            fontUnderline: style.fontUnderline
+            strokeEnabled: style.strokeEnabled
+            strokeColor: style.strokeColorText ?? '#000000'
+            strokeSize: style.strokeSize
+            dropShadowEnabled: style.dropShadowEnabled
+            dropShadowColor: style.dropShadowColorText  ?? '#000000'
 
             anchors {
                 horizontalCenter: parent.horizontalCenter
@@ -173,6 +185,6 @@ PlasmoidItem {
 
     Component.onCompleted: {
         tzOffset = new Date().getTimezoneOffset();
-        dataSource.onDataChanged.connect(dateTimeChanged);
+        dataSource.dataChanged();
     }
 }

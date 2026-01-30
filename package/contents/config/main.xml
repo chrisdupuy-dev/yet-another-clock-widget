@@ -50,6 +50,9 @@
       <default>#000000</default>
     </entry>
     <!-- Time config-->
+    <entry name="showTime" type="Bool">
+      <default>true</default>
+    </entry>
     <entry name="timeFormat" type="Enum">
       <default>0</default>
     </entry>
@@ -101,6 +104,51 @@
     <!-- Date config-->
     <entry name="showDate" type="Bool">
       <default>false</default>
+    </entry>
+    <entry name="dateIsGlobalStyled" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="dateTextColorButton" type="Color">
+      <default>#FFFFFF</default>
+    </entry>
+    <entry name="dateTextColor" type="String">
+      <default>#FFFFFF</default>
+    </entry>
+    <entry name="dateFontFamily" type="String">
+      <default></default>
+    </entry>
+    <entry name="dateFontPointSize" type="Double">
+      <default>12</default>
+    </entry>
+    <entry name="dateFontStyleName" type="String">
+      <default>Regular</default>
+    </entry>
+    <entry name="dateFontStrikeout" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="dateFontUnderline" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="dateStrokeEnabled" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="dateStrokeColorButton" type="Color">
+      <default>#000000</default>
+    </entry>
+    <entry name="dateStrokeColorText" type="String">
+      <default>#000000</default>
+    </entry>
+    <entry name="dateStrokeSize" type="Double">
+      <default>1</default>
+    </entry>
+    <entry name="dateDropShadowEnabled" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="dateDropShadowColorButton" type="Color">
+      <default>#000000</default>
+    </entry>
+    <entry name="dateDropShadowColorText" type="String">
+      <default>#000000</default>
     </entry>
   </group>
 </kcfg>

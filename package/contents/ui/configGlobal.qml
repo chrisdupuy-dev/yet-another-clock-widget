@@ -1,7 +1,5 @@
 import QtQuick 2.0
 import QtQuick.Layouts
-import QtQuick.Controls 2.0
-import org.kde.kirigami 2.5 as Kirigami
 import org.kde.kcmutils as KCM
 
 import "components"
@@ -24,19 +22,7 @@ KCM.SimpleKCM {
     property alias cfg_globalDropShadowColorText: styledLabelConfig.dropShadowColorText
     property alias cfg_globalDropShadowColorButton: styledLabelConfig.dropShadowColorButton
 
-    property alias cfg_showDate: showDateCheckBox.checked
-
     ColumnLayout {
-        Kirigami.FormLayout {
-            Kirigami.FormData.label: "Text appearance settings"
-            twinFormLayouts: [styledLabelConfig]
-
-            CheckBox {
-                id: showDateCheckBox
-                Kirigami.FormData.label: "Show date:"
-            }
-        }
-
         StyledLabelConfig {
             id: styledLabelConfig
         }

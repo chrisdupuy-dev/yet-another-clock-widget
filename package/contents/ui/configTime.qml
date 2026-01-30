@@ -10,6 +10,7 @@ import "shared"
 KCM.SimpleKCM {
     id: appearance
 
+    property alias cfg_showTime: showTimeCheckBox.checked
     property alias cfg_timeFormat: timeFormatComboBox.currentIndex
     property alias cfg_timeIsGlobalStyled: timeIsGlobalStyled.checked
 
@@ -50,6 +51,11 @@ KCM.SimpleKCM {
             id: timeFormatLayout
             twinFormLayouts: [styledLabelConfig]
 
+            CheckBox {
+                id: showTimeCheckBox
+                Kirigami.FormData.label: "Show time:"
+            }
+
             ComboBox {
                 id: timeFormatComboBox
                 Kirigami.FormData.label: "Time format:"
@@ -76,6 +82,7 @@ KCM.SimpleKCM {
 
         StyledLabelConfig {
             id: styledLabelConfig
+            enabled: !timeIsGlobalStyled.checked
             twinFormLayouts: [timeFormatLayout]
         }
     }
