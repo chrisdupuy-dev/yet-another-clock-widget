@@ -27,6 +27,11 @@ Kirigami.FormLayout {
     property alias dropShadowEnabled: dropShadowEnabledCheckBox.checked
     property alias dropShadowColorText: dropShadowColorTextField.text
     property alias dropShadowColorButton: dropShadowColorButton.color
+    property alias dropShadowOpacity: dropShadowOpacitySlider.value
+    property alias dropShadowBlur: dropShadowBlurSlider.value
+    property alias dropShadowScale: dropShadowScaleSlider.value
+    property alias dropShadowHorizontalOffset: dropShadowHorizontalOffsetSpinBox.value
+    property alias dropShadowVerticalOffset: dropShadowVerticalOffsetSpinBox.value
 
     TextField {
         id: colorTextField
@@ -90,6 +95,62 @@ Kirigami.FormLayout {
     CheckBox {
         id: dropShadowEnabledCheckBox
         Kirigami.FormData.label: "Drop shadow:"
+    }
+
+    Slider {
+        id: dropShadowOpacitySlider
+        Kirigami.FormData.label: "Drop shadow opacity"
+        Layout.fillWidth: true
+
+        from: 0.0
+        to: 1.0
+        value: 1.0
+        stepSize: 0.05
+    }
+
+    Slider {
+        id: dropShadowBlurSlider
+
+        Kirigami.FormData.label: "Drop shadow blur"
+        Layout.fillWidth: true
+
+        from: 0.0
+        to: 1.0
+        value: 0.6
+        stepSize: 0.05
+    }
+
+    Slider {
+        id: dropShadowScaleSlider    
+        Kirigami.FormData.label: "Drop shadow scale:"
+        Layout.fillWidth: true
+        
+        from: 0
+        value: 1.0
+        to: 2.0
+        stepSize: 0.1
+    }
+
+    RealSpinBox {
+        id: dropShadowHorizontalOffsetSpinBox
+        Kirigami.FormData.label: "Drop shadow horizontal offset:"
+
+        from: -99999
+        value: 5.0
+        to: 99999
+        stepSize: 1.0
+        editable: true
+    }
+
+    RealSpinBox {
+        id: dropShadowVerticalOffsetSpinBox
+        Kirigami.FormData.label: "Drop shadow vertical offset:"
+        
+        from: -99999
+        value: 5.0
+        to: 99999
+        stepSize: 1.0
+        editable: true
     }
 
     TextField {

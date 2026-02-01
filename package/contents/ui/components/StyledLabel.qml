@@ -26,6 +26,11 @@ Item {
 
   property bool dropShadowEnabled: false
   property color dropShadowColor: '#000000'
+  property real dropShadowOpacity: 0.6 // 0.0 - 1.0
+  property real dropShadowScale: 1 // 0.0 to inf
+  property real dropShadowBlur: 1 // 0.0 - 1.0
+  property real dropShadowVerticalOffset: 6 // -inf - inf
+  property real dropShadowHorizontalOffset: 6 // -inf - inf
 
   Repeater {
     id: repeater
@@ -62,10 +67,11 @@ Item {
       layer.effect: MultiEffect {
           shadowEnabled: root.dropShadowEnabled
           shadowColor: root.dropShadowColor
-          shadowOpacity: 0.6
-          shadowBlur: 1
-          shadowVerticalOffset: 6
-          shadowHorizontalOffset: 6
+          shadowOpacity: root.dropShadowOpacity
+          shadowScale: root.dropShadowScale
+          shadowBlur: root.dropShadowBlur
+          shadowVerticalOffset: root.dropShadowVerticalOffset
+          shadowHorizontalOffset: root.dropShadowHorizontalOffset
       }
   }
 }        

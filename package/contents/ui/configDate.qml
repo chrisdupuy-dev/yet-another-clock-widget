@@ -29,6 +29,11 @@ KCM.SimpleKCM {
     property alias cfg_dateDropShadowEnabled: styledLabelConfig.dropShadowEnabled
     property alias cfg_dateDropShadowColorText: styledLabelConfig.dropShadowColorText
     property alias cfg_dateDropShadowColorButton: styledLabelConfig.dropShadowColorButton
+    property alias cfg_dateDropShadowOpacity: styledLabelConfig.dropShadowOpacity
+    property alias cfg_dateDropShadowBlur: styledLabelConfig.dropShadowBlur
+    property alias cfg_dateDropShadowScale: styledLabelConfig.dropShadowScale
+    property alias cfg_dateDropShadowHorizontalOffset: styledLabelConfig.dropShadowHorizontalOffset
+    property alias cfg_dateDropShadowVerticalOffset: styledLabelConfig.dropShadowVerticalOffset
 
     readonly property string dateFormatDocumentationUrl: "https://doc.qt.io/qt-6/qml-qtqml-qt.html#formatDateTime-method"
 

@@ -18,7 +18,6 @@ A KDE Plasma clock widget tailored towards style and effects.
     - Either scale the number of label redraws with the font or find another way
   - Drop shadow
     - Expose all the vars (offsets, blur, etc.)
-  - Offsets (x,y)
   - Blur
   - Masking
   - Previewable
@@ -32,6 +31,7 @@ A KDE Plasma clock widget tailored towards style and effects.
     - Above
     - Below
     - Sides
+  - Position Offsets (x,y)
 
 - Timezone
   - Show Timezone

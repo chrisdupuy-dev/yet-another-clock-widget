@@ -56,7 +56,12 @@ PlasmoidItem {
                 strokeColor: Plasmoid.configuration.globalStrokeColorText,
                 strokeSize: Plasmoid.configuration.globalStrokeSize,
                 dropShadowEnabled: Plasmoid.configuration.globalDropShadowEnabled,
-                dropShadowColor: Plasmoid.configuration.globalDropShadowColorText
+                dropShadowColor: Plasmoid.configuration.globalDropShadowColorText,
+                dropShadowOpacity: Plasmoid.configuration.globalDropShadowOpacity,
+                dropShadowBlur: Plasmoid.configuration.globalDropShadowBlur,
+                dropShadowScale: Plasmoid.configuration.globalDropShadowScale,
+                dropShadowHorizontalOffset: Plasmoid.configuration.globalDropShadowHorizontalOffset,
+                dropShadowVerticalOffset: Plasmoid.configuration.globalDropShadowVerticalOffset
             },
             time: {
                 textColor: Plasmoid.configuration.timeTextColor,
@@ -69,7 +74,12 @@ PlasmoidItem {
                 strokeColor: Plasmoid.configuration.timeStrokeColorText,
                 strokeSize: Plasmoid.configuration.timeStrokeSize,
                 dropShadowEnabled: Plasmoid.configuration.timeDropShadowEnabled,
-                dropShadowColor: Plasmoid.configuration.timeDropShadowColorText
+                dropShadowColor: Plasmoid.configuration.timeDropShadowColorText,
+                dropShadowOpacity: Plasmoid.configuration.timeDropShadowOpacity,
+                dropShadowBlur: Plasmoid.configuration.timeDropShadowBlur,
+                dropShadowScale: Plasmoid.configuration.timeDropShadowScale,
+                dropShadowHorizontalOffset: Plasmoid.configuration.timeDropShadowHorizontalOffset,
+                dropShadowVerticalOffset: Plasmoid.configuration.timeDropShadowVerticalOffset
             },
             date: {
                 textColor: Plasmoid.configuration.dateTextColor,
@@ -82,7 +92,12 @@ PlasmoidItem {
                 strokeColor: Plasmoid.configuration.dateStrokeColorText,
                 strokeSize: Plasmoid.configuration.dateStrokeSize,
                 dropShadowEnabled: Plasmoid.configuration.dateDropShadowEnabled,
-                dropShadowColor: Plasmoid.configuration.dateDropShadowColorText
+                dropShadowColor: Plasmoid.configuration.dateDropShadowColorText,
+                dropShadowOpacity: Plasmoid.configuration.dateDropShadowOpacity,
+                dropShadowBlur: Plasmoid.configuration.dateDropShadowBlur,
+                dropShadowScale: Plasmoid.configuration.dateDropShadowScale,
+                dropShadowHorizontalOffset: Plasmoid.configuration.dateDropShadowHorizontalOffset,
+                dropShadowVerticalOffset: Plasmoid.configuration.dateDropShadowVerticalOffset
             }
         })
 
@@ -147,6 +162,11 @@ PlasmoidItem {
             strokeSize: style.strokeSize
             dropShadowEnabled: style.dropShadowEnabled
             dropShadowColor: style.dropShadowColorText ?? '#000000'
+            dropShadowOpacity: style.dropShadowOpacity
+            dropShadowBlur: style.dropShadowBlur
+            dropShadowScale: style.dropShadowScale
+            dropShadowHorizontalOffset: style.dropShadowHorizontalOffset
+            dropShadowVerticalOffset: style.dropShadowVerticalOffset
         }
 
         StyledLabel {
@@ -167,6 +187,11 @@ PlasmoidItem {
             strokeSize: style.strokeSize
             dropShadowEnabled: style.dropShadowEnabled
             dropShadowColor: style.dropShadowColorText  ?? '#000000'
+            dropShadowOpacity: style.dropShadowOpacity
+            dropShadowBlur: style.dropShadowBlur
+            dropShadowScale: style.dropShadowScale
+            dropShadowHorizontalOffset: style.dropShadowHorizontalOffset
+            dropShadowVerticalOffset: style.dropShadowVerticalOffset
 
             anchors {
                 horizontalCenter: parent.horizontalCenter
