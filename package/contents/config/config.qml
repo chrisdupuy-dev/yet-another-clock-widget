@@ -20,4 +20,10 @@ ConfigModel {
         icon: "date"
         source: "configDate.qml"
     }
+
+    ConfigCategory {
+        name: i18n("Misc.")
+        icon: "applications-system"
+        source: "configMisc.qml"
+    }
 }

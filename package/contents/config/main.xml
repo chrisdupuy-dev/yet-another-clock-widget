@@ -204,5 +204,9 @@
     <entry name="dateDropShadowColorText" type="String">
       <default>#000000</default>
     </entry>
+    <!-- Misc config-->
+    <entry name="intervalRate" type="UInt">
+      <default>1000</default>
+    </entry>
   </group>
 </kcfg>

@@ -33,7 +33,6 @@ PlasmoidItem {
     readonly property string currentDate: DateTimeFormatter.formatDate(dataSource.data["Local"]["DateTime"], root.dateFormat, root.dateCustomFormat)
 
     property int tzOffset
-    property bool isHovered
 
     property int timeFormat: Plasmoid.configuration.timeFormat
     property int showSeconds: Plasmoid.configuration.showSeconds
@@ -105,7 +104,7 @@ PlasmoidItem {
         id: dataSource
         engine: "time"
         connectedSources: ["Local"]
-        interval: root.isHovered ? 1000 : 30000 // make configurable?
+        interval: Plasmoid.configuration.intervalRate
         function onDataChanged() {
             var currentTZOffset = dataSource.data["Local"]["Offset"] / 60;
             if (currentTZOffset !== root.tzOffset) {
@@ -127,7 +126,6 @@ PlasmoidItem {
         property bool wasExpanded
 
         activeFocusOnTab: true
-        hoverEnabled: true
 
         Accessible.name: Plasmoid.title
         Accessible.description: i18nc("@info:tooltip", 
@@ -141,8 +139,6 @@ PlasmoidItem {
 
         onPressed: wasExpanded = root.expanded
         onClicked: root.expanded = !wasExpanded
-        onEntered: root.isHovered = true
-        onExited: root.isHovered = false
 
         StyledLabel {
             id: timeLabel

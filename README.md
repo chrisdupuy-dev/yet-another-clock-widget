@@ -16,15 +16,11 @@ A KDE Plasma clock widget tailored towards style and effects.
 - Styling
   - Make strokes less jank
     - Either scale the number of label redraws with the font or find another way
-  - Drop shadow
-    - Expose all the vars (offsets, blur, etc.)
   - Blur
   - Masking
   - Previewable
 
 - Time
-  - Show seconds option
-    - Also fix refresh rate if seconds showing
 
 - Date
   - Ability to adjust position
