@@ -12,6 +12,7 @@ KCM.SimpleKCM {
 
     property alias cfg_showTime: showTimeCheckBox.checked
     property alias cfg_timeFormat: timeFormatComboBox.currentIndex
+    property alias cfg_showSeconds: showSecondsComboBox.currentIndex
     property alias cfg_timeIsGlobalStyled: timeIsGlobalStyled.checked
 
     property alias cfg_timeTextColor: styledLabelConfig.colorText
@@ -46,6 +47,23 @@ KCM.SimpleKCM {
         }
     }
 
+    ListModel {
+        id: showSecondsModel
+
+        ListElement {
+            text: "Tooltip only"
+            value: Enums.ShowSeconds.TooltipOnly
+        }
+        ListElement {
+            text: "Always"
+            value: Enums.ShowSeconds.Always
+        }
+        ListElement {
+            text: "Never"
+            value: Enums.ShowSeconds.Never
+        }
+    }
+
     ColumnLayout {
         Kirigami.FormLayout {
             id: timeFormatLayout
@@ -71,6 +89,24 @@ KCM.SimpleKCM {
                 // Save to config
                 onAccepted: {
                     appearance.cfg_timeFormat = currentIndex;
+                }
+            }
+
+            ComboBox {
+                id: showSecondsComboBox
+                Kirigami.FormData.label: "Show seconds:"
+                model: showSecondsModel
+                textRole: "text"
+                valueRole: "value"
+
+                // Load from config
+                onActivated: {
+                    currentIndex = appearance.cfg_showSeconds;
+                }
+
+                // Save to config
+                onAccepted: {
+                    appearance.cfg_showSeconds = currentIndex;
                 }
             }
 

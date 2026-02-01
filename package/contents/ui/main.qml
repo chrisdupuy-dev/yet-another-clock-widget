@@ -22,19 +22,13 @@ PlasmoidItem {
     preferredRepresentation: compactRepresentation
 
     toolTipMainText: Qt.locale().toString(dataSource.data["Local"]["DateTime"], "dddd")
-    toolTipSubText: `${currentTime}\n${currentDate}`
-
-    readonly property string currentTime: {
-        switch (timeFormat) {
-        case Enums.TimeFormat.TwelveHour:
-            return Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h:mm AP");
-        case Enums.TimeFormat.TwentyFourHour:
-            return Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "HH:mm");
-        case Enums.TimeFormat.SystemDefault:
-        default:
-            return Qt.locale().toString(dataSource.data["Local"]["DateTime"], Qt.locale().timeFormat(Locale.ShortFormat));
-        }
-    }
+    toolTipSubText: `${
+        TimeFormatter.formatTime(
+            dataSource.data["Local"]["DateTime"], 
+            root.timeFormat, 
+            root.showSeconds === Enums.ShowSeconds.Always || root.showSeconds === Enums.ShowSeconds.TooltipOnly
+        )
+        }\n${currentDate}`
 
     readonly property string currentDate: Qt.locale().toString(dataSource.data["Local"]["DateTime"], Qt.locale().dateFormat(Locale.ShortFormat))
 
@@ -42,6 +36,7 @@ PlasmoidItem {
     property bool isHovered
 
     property int timeFormat: Plasmoid.configuration.timeFormat
+    property int showSeconds: Plasmoid.configuration.showSeconds
 
     readonly property string timeStyleKey: Plasmoid.configuration.timeIsGlobalStyled ? "global" : "time"
     readonly property string dateStyleKey: Plasmoid.configuration.dateIsGlobalStyled ? "global" : "date"
@@ -92,7 +87,7 @@ PlasmoidItem {
         id: dataSource
         engine: "time"
         connectedSources: ["Local"]
-        interval: root.isHovered ? 1000 : 30000
+        interval: root.isHovered ? 1000 : 30000 // make configurable?
         function onDataChanged() {
             var currentTZOffset = dataSource.data["Local"]["Offset"] / 60;
             if (currentTZOffset !== root.tzOffset) {
@@ -117,7 +112,13 @@ PlasmoidItem {
         hoverEnabled: true
 
         Accessible.name: Plasmoid.title
-        Accessible.description: i18nc("@info:tooltip", "Current time is %1; Current date is %2", root.currentTime, root.currentDate)
+        Accessible.description: i18nc("@info:tooltip", 
+            "Current time is %1; Current date is %2", 
+            TimeFormatter.formatTime(dataSource.data["Local"]["DateTime"], 
+                root.timeFormat, (root.showSeconds === Enums.ShowSeconds.Always)
+            ), 
+            root.currentDate
+        )
         Accessible.role: Accessible.Button
 
         onPressed: wasExpanded = root.expanded
@@ -131,7 +132,7 @@ PlasmoidItem {
 
             readonly property var style: root.textStyles[root.timeStyleKey] || root.textStyles.global
 
-            text: root.currentTime
+            text: TimeFormatter.formatTime(dataSource.data["Local"]["DateTime"], root.timeFormat, root.showSeconds === Enums.ShowSeconds.Always)
             color: style.textColor ?? '#FFFFFF'
             fontFamily: style.fontFamily
             fontPointSize: style.fontPointSize

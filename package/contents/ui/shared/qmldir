@@ -1,1 +1,4 @@
+module shared
+
 singleton Enums 1.0 enums.qml
+singleton TimeFormatter 1.0 timeFormatter.qml

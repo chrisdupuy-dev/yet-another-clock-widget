@@ -11,13 +11,13 @@ ConfigModel {
 
     ConfigCategory {
         name: i18n("Time Appearance")
-        icon: "preferences-desktop-color"
+        icon: "clock"
         source: "configTime.qml"
     }
 
     ConfigCategory {
         name: i18n("Date Appearance")
-        icon: "preferences-desktop-color"
+        icon: "date"
         source: "configDate.qml"
     }
 }
