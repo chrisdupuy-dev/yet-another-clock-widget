@@ -22,7 +22,7 @@ ConfigModel {
     }
 
     ConfigCategory {
-        name: i18n("Misc.")
+        name: i18n("Miscellaneous")
         icon: "applications-system"
         source: "configMisc.qml"
     }

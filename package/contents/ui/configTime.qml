@@ -86,12 +86,10 @@ KCM.SimpleKCM {
                 textRole: "text"
                 valueRole: "value"
 
-                // Load from config
                 onActivated: {
                     currentIndex = appearance.cfg_timeFormat;
                 }
 
-                // Save to config
                 onAccepted: {
                     appearance.cfg_timeFormat = currentIndex;
                 }
@@ -104,12 +102,10 @@ KCM.SimpleKCM {
                 textRole: "text"
                 valueRole: "value"
 
-                // Load from config
                 onActivated: {
                     currentIndex = appearance.cfg_showSeconds;
                 }
 
-                // Save to config
                 onAccepted: {
                     appearance.cfg_showSeconds = currentIndex;
                 }

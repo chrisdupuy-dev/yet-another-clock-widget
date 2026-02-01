@@ -11,6 +11,9 @@ Item {
   implicitWidth: label.implicitWidth
   implicitHeight: label.implicitHeight
 
+  readonly property real centerX: { return x + (width / 2) }
+  readonly property real centerY: { return y + (height / 2) }
+
   property alias text: label.text
   property alias color: label.color
 

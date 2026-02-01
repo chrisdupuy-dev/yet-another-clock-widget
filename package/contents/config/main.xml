@@ -144,6 +144,18 @@
     <entry name="dateCustomFormat" type="String">
       <default>ddd dd MMM</default>
     </entry>
+    <entry name="dateAlignment" type="Enum">
+      <default>2</default>
+    </entry>
+    <entry name="dateMargin" type="UInt">
+      <default>5</default>
+    </entry>
+    <entry name="dateOffsetX" type="Double">
+      <default>0</default>
+    </entry>
+    <entry name="dateOffsetY" type="Double">
+      <default>25</default>
+    </entry>
     <entry name="dateIsGlobalStyled" type="Bool">
       <default>true</default>
     </entry>

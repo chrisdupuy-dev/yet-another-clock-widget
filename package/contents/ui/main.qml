@@ -39,6 +39,10 @@ PlasmoidItem {
 
     property int dateFormat: Plasmoid.configuration.dateFormat
     property string dateCustomFormat: Plasmoid.configuration.dateCustomFormat
+    property int dateAlignment: Plasmoid.configuration.dateAlignment
+    property int dateMargin: Plasmoid.configuration.dateMargin
+    property int dateOffsetX: Plasmoid.configuration.dateOffsetX
+    property int dateOffsetY: Plasmoid.configuration.dateOffsetY
 
     readonly property string timeStyleKey: Plasmoid.configuration.timeIsGlobalStyled ? "global" : "time"
     readonly property string dateStyleKey: Plasmoid.configuration.dateIsGlobalStyled ? "global" : "date"
@@ -189,10 +193,133 @@ PlasmoidItem {
             dropShadowHorizontalOffset: style.dropShadowHorizontalOffset
             dropShadowVerticalOffset: style.dropShadowVerticalOffset
 
-            anchors {
-                horizontalCenter: parent.horizontalCenter
-                bottom: parent.bottom
-                bottomMargin: 10
+            states: [
+                State {
+                    name: "anchoredTop"
+                    AnchorChanges {
+                        target: dateLabel
+                        anchors {
+                            horizontalCenter: timeLabel.horizontalCenter
+                            verticalCenter: undefined
+                            top: undefined
+                            bottom: timeLabel.top
+                            left: undefined
+                            right: undefined
+                        }
+                    }
+                    PropertyChanges {
+                        dateLabel.anchors.topMargin: 0
+                        dateLabel.anchors.rightMargin: 0
+                        dateLabel.anchors.bottomMargin: root.dateMargin
+                        dateLabel.anchors.leftMargin: 0
+
+                        dateLabel.anchors.horizontalCenterOffset: 0
+                        dateLabel.anchors.verticalCenterOffset: 0
+                    }
+                },
+                State {
+                    name: "anchoredRight"
+                    AnchorChanges {
+                        target: dateLabel
+                        anchors {
+                            horizontalCenter: undefined
+                            verticalCenter: timeLabel.verticalCenter
+                            top: undefined
+                            bottom: undefined
+                            left: timeLabel.right
+                            right: undefined
+                        }
+                    }
+                    PropertyChanges {
+                        dateLabel.anchors.topMargin: 0
+                        dateLabel.anchors.rightMargin: 0
+                        dateLabel.anchors.bottomMargin: 0
+                        dateLabel.anchors.leftMargin: root.dateMargin
+
+                        dateLabel.anchors.horizontalCenterOffset: 0
+                        dateLabel.anchors.verticalCenterOffset: 0
+                    }
+                },
+                State {
+                    name: "anchoredBottom"
+                    AnchorChanges {
+                        target: dateLabel
+                        anchors {
+                            horizontalCenter: timeLabel.horizontalCenter
+                            verticalCenter: undefined
+                            top: timeLabel.bottom
+                            bottom: undefined
+                            left: undefined
+                            right: undefined
+                        }
+                    }
+                    PropertyChanges {
+                        dateLabel.anchors.topMargin: root.dateMargin
+                        dateLabel.anchors.rightMargin: 0
+                        dateLabel.anchors.bottomMargin: 0
+                        dateLabel.anchors.leftMargin: 0
+
+                        dateLabel.anchors.horizontalCenterOffset: 0
+                        dateLabel.anchors.verticalCenterOffset: 0
+                    }
+                },
+                State {
+                    name: "anchoredLeft"
+                    AnchorChanges {
+                        target: dateLabel
+                        anchors {
+                            horizontalCenter: undefined
+                            verticalCenter: timeLabel.verticalCenter
+                            top: undefined
+                            bottom: undefined
+                            left: undefined
+                            right: timeLabel.left
+                        }
+                    }
+                    PropertyChanges {
+                        dateLabel.anchors.topMargin: 0
+                        dateLabel.anchors.rightMargin: root.dateMargin
+                        dateLabel.anchors.bottomMargin: 0
+                        dateLabel.anchors.leftMargin: 0
+
+                        dateLabel.anchors.horizontalCenterOffset: 0
+                        dateLabel.anchors.verticalCenterOffset: 0
+                    }
+                },
+                State {
+                    name: "offset"
+                    AnchorChanges {
+                        target: dateLabel
+                        anchors {
+                            horizontalCenter: timeLabel.horizontalCenter
+                            verticalCenter: timeLabel.verticalCenter
+                            top: undefined
+                            bottom: undefined
+                            left: undefined
+                            right: undefined
+                        }
+                    }
+                    PropertyChanges {
+                        dateLabel.anchors.horizontalCenterOffset: dateOffsetX
+                        dateLabel.anchors.verticalCenterOffset: dateOffsetY
+                    }
+                }
+            ]
+
+            state: { 
+                switch(root.dateAlignment) {
+                    case Enums.DateAlignment.Top:
+                        return "anchoredTop"
+                    case Enums.DateAlignment.Right:
+                        return "anchoredRight"
+                    case Enums.DateAlignment.Bottom:
+                        return "anchoredBottom"
+                    case Enums.DateAlignment.Left:
+                        return "anchoredLeft"
+                    case Enums.DateAlignment.Offset:
+                    default:
+                        return "offset"
+                }
             }
         }
     }

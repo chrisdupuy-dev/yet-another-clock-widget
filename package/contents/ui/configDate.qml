@@ -13,6 +13,10 @@ KCM.SimpleKCM {
     property alias cfg_showDate: showDateCheckBox.checked
     property alias cfg_dateIsGlobalStyled: dateIsGlobalStyled.checked
     property alias cfg_dateFormat: dateFormatComboBox.currentIndex
+    property alias cfg_dateAlignment: dateAlignmentComboBox.currentIndex
+    property alias cfg_dateMargin: dateMarginSpinBox.value
+    property alias cfg_dateOffsetX: dateOffsetXSpinBox.value
+    property alias cfg_dateOffsetY: dateOffsetYSpinBox.value
     property alias cfg_dateCustomFormat: dateFormatCustomTextField.text
 
     property alias cfg_dateTextColor: styledLabelConfig.colorText
@@ -36,6 +40,31 @@ KCM.SimpleKCM {
     property alias cfg_dateDropShadowVerticalOffset: styledLabelConfig.dropShadowVerticalOffset
 
     readonly property string dateFormatDocumentationUrl: "https://doc.qt.io/qt-6/qml-qtqml-qt.html#formatDateTime-method"
+
+   ListModel {
+        id: dateAlignmentModel
+
+        ListElement {
+            text: "Top"
+            value: Enums.DateAlignment.Top
+        }
+        ListElement {
+            text: "Right"
+            value: Enums.DateAlignment.Right
+        }
+        ListElement {
+            text: "Bottom"
+            value: Enums.DateAlignment.Bottom
+        }
+        ListElement {
+            text: "Left"
+            value: Enums.DateAlignment.Left
+        }
+        ListElement {
+            text: "Offset"
+            value: Enums.DateAlignment.Offset
+        }
+    }
 
    ListModel {
         id: dateFormatModel
@@ -79,7 +108,6 @@ KCM.SimpleKCM {
                 textRole: "text"
                 valueRole: "value"
 
-                // Load from config
                 onActivated: {
                     currentIndex = appearance.cfg_dateFormat;
                 }
@@ -88,7 +116,6 @@ KCM.SimpleKCM {
                     dateFormatCustomTextField.enabled = currentIndex === Enums.DateFormat.Custom
                 }
 
-                // Save to config
                 onAccepted: {
                     appearance.cfg_dateFormat = currentIndex;
                 }
@@ -113,6 +140,65 @@ KCM.SimpleKCM {
                         Qt.openUrlExternally(appearance.dateFormatDocumentationUrl);
                     }
                 }
+            }
+
+            ComboBox {
+                id: dateAlignmentComboBox
+                Kirigami.FormData.label: "Date alignment:"
+                model: dateAlignmentModel
+                textRole: "text"
+                valueRole: "value"
+
+                onActivated: {
+                    currentIndex = appearance.cfg_dateAlignment;
+                }
+
+                onCurrentIndexChanged: {
+                    dateMarginSpinBox.enabled = currentIndex !== Enums.DateAlignment.Offset
+                    dateMarginSpinBox.visible = currentIndex !== Enums.DateAlignment.Offset
+
+                    dateOffsetXSpinBox.enabled = currentIndex === Enums.DateAlignment.Offset
+                    dateOffsetXSpinBox.visible = currentIndex === Enums.DateAlignment.Offset
+                    
+                    dateOffsetYSpinBox.enabled = currentIndex === Enums.DateAlignment.Offset
+                    dateOffsetYSpinBox.visible = currentIndex === Enums.DateAlignment.Offset
+                }
+
+                onAccepted: {
+                    appearance.cfg_dateAlignment = currentIndex;
+                }
+            }
+
+            SpinBox {
+                id: dateMarginSpinBox
+                Kirigami.FormData.label: "Date alignment margin:"
+
+                from: 0
+                value: 5
+                stepSize: 1
+                editable: true
+            }
+
+            RealSpinBox {
+                id: dateOffsetXSpinBox
+                Kirigami.FormData.label: "Date alignment X offset:"
+
+                from: -99999
+                to: 99999
+                value: 0
+                stepSize: 1.0
+                editable: true
+            }
+
+            RealSpinBox {
+                id: dateOffsetYSpinBox
+                Kirigami.FormData.label: "Date alignment Y offset:"
+
+                from: -99999
+                to: 99999
+                value: 25
+                stepSize: 1.0
+                editable: true
             }
 
             CheckBox {

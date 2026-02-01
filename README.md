@@ -10,24 +10,12 @@ A KDE Plasma clock widget tailored towards style and effects.
 
 
 # TODO
-- Other
-  - Fix widget width/height
-
 - Styling
   - Make strokes less jank
     - Either scale the number of label redraws with the font or find another way
   - Blur
   - Masking
   - Previewable
-
-- Time
-
-- Date
-  - Ability to adjust position
-    - Above
-    - Below
-    - Sides
-  - Position Offsets (x,y)
 
 - Timezone
   - Show Timezone
@@ -37,3 +25,9 @@ A KDE Plasma clock widget tailored towards style and effects.
     - Code
     - City
     - UTC offset
+
+- Polish
+  - Sensible defaults
+  - Locale stuff
+    - including metadata
+  - Fix widget width/height cutting off other labels/shadows
