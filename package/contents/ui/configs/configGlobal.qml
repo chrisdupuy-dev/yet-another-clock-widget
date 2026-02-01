@@ -2,10 +2,10 @@ import QtQuick 2.0
 import QtQuick.Layouts
 import org.kde.kcmutils as KCM
 
-import "components"
+import "../components"
 
 KCM.SimpleKCM {
-    id: appearance
+    id: globalAppearance
 
     property alias cfg_globalTextColor: styledLabelConfig.colorText
     property alias cfg_globalTextColorButton: styledLabelConfig.colorButton

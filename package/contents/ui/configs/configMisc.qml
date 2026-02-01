@@ -3,7 +3,7 @@ import QtQuick.Controls 2.0
 import org.kde.kcmutils as KCM
 import org.kde.kirigami 2.5 as Kirigami
 
-import "components"
+import "../components"
 
 KCM.SimpleKCM {
     id: misc

@@ -4,11 +4,11 @@ import QtQuick.Controls 2.0
 import org.kde.kirigami 2.5 as Kirigami
 import org.kde.kcmutils as KCM
 
-import "shared"
-import "components"
+import "../shared"
+import "../components"
 
 KCM.SimpleKCM {
-    id: appearance
+    id: dateAppearance
 
     property alias cfg_showDate: showDateCheckBox.checked
     property alias cfg_dateIsGlobalStyled: dateIsGlobalStyled.checked
@@ -109,7 +109,7 @@ KCM.SimpleKCM {
                 valueRole: "value"
 
                 onActivated: {
-                    currentIndex = appearance.cfg_dateFormat;
+                    currentIndex = dateAppearance.cfg_dateFormat;
                 }
 
                 onCurrentIndexChanged: {
@@ -117,7 +117,7 @@ KCM.SimpleKCM {
                 }
 
                 onAccepted: {
-                    appearance.cfg_dateFormat = currentIndex;
+                    dateAppearance.cfg_dateFormat = currentIndex;
                 }
             }
 
@@ -128,7 +128,7 @@ KCM.SimpleKCM {
 
             Text {
                 id: dateFormatDocumentation
-                text: `<a href='${appearance.dateFormatDocumentationUrl}'>Click to view date formatting options</a>`
+                text: `<a href='${dateAppearance.dateFormatDocumentationUrl}'>Click to view date formatting options</a>`
                 textFormat: Text.RichText
                 color: "blue"
                 linkColor: "blue"
@@ -137,7 +137,7 @@ KCM.SimpleKCM {
                     anchors.fill: parent
                     cursorShape: Qt.PointingHandCursor
                     onClicked: {
-                        Qt.openUrlExternally(appearance.dateFormatDocumentationUrl);
+                        Qt.openUrlExternally(dateAppearance.dateFormatDocumentationUrl);
                     }
                 }
             }
@@ -150,7 +150,7 @@ KCM.SimpleKCM {
                 valueRole: "value"
 
                 onActivated: {
-                    currentIndex = appearance.cfg_dateAlignment;
+                    currentIndex = dateAppearance.cfg_dateAlignment;
                 }
 
                 onCurrentIndexChanged: {
@@ -165,7 +165,7 @@ KCM.SimpleKCM {
                 }
 
                 onAccepted: {
-                    appearance.cfg_dateAlignment = currentIndex;
+                    dateAppearance.cfg_dateAlignment = currentIndex;
                 }
             }
 

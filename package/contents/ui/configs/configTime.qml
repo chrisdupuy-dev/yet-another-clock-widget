@@ -4,11 +4,11 @@ import QtQuick.Controls 2.0
 import org.kde.kirigami 2.5 as Kirigami
 import org.kde.kcmutils as KCM
 
-import "components"
-import "shared"
+import "../components"
+import "../shared"
 
 KCM.SimpleKCM {
-    id: appearance
+    id: timeAppearance
 
     property alias cfg_showTime: showTimeCheckBox.checked
     property alias cfg_timeFormat: timeFormatComboBox.currentIndex
@@ -87,11 +87,11 @@ KCM.SimpleKCM {
                 valueRole: "value"
 
                 onActivated: {
-                    currentIndex = appearance.cfg_timeFormat;
+                    currentIndex = timeAppearance.cfg_timeFormat;
                 }
 
                 onAccepted: {
-                    appearance.cfg_timeFormat = currentIndex;
+                    timeAppearance.cfg_timeFormat = currentIndex;
                 }
             }
 
@@ -103,11 +103,11 @@ KCM.SimpleKCM {
                 valueRole: "value"
 
                 onActivated: {
-                    currentIndex = appearance.cfg_showSeconds;
+                    currentIndex = timeAppearance.cfg_showSeconds;
                 }
 
                 onAccepted: {
-                    appearance.cfg_showSeconds = currentIndex;
+                    timeAppearance.cfg_showSeconds = currentIndex;
                 }
             }
 
