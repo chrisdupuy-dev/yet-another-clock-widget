@@ -4,6 +4,7 @@ import QtQuick.Controls 2.0
 import org.kde.kirigami 2.5 as Kirigami
 import org.kde.kcmutils as KCM
 
+import "shared"
 import "components"
 
 KCM.SimpleKCM {
@@ -11,6 +12,8 @@ KCM.SimpleKCM {
 
     property alias cfg_showDate: showDateCheckBox.checked
     property alias cfg_dateIsGlobalStyled: dateIsGlobalStyled.checked
+    property alias cfg_dateFormat: dateFormatComboBox.currentIndex
+    property alias cfg_dateCustomFormat: dateFormatCustomTextField.text
 
     property alias cfg_dateTextColor: styledLabelConfig.colorText
     property alias cfg_dateTextColorButton: styledLabelConfig.colorButton
@@ -27,6 +30,33 @@ KCM.SimpleKCM {
     property alias cfg_dateDropShadowColorText: styledLabelConfig.dropShadowColorText
     property alias cfg_dateDropShadowColorButton: styledLabelConfig.dropShadowColorButton
 
+    readonly property string dateFormatDocumentationUrl: "https://doc.qt.io/qt-6/qml-qtqml-qt.html#formatDateTime-method"
+
+   ListModel {
+        id: dateFormatModel
+
+        ListElement {
+            text: "System default"
+            value: Enums.DateFormat.SystemDefault
+        }
+        ListElement {
+            text: "Short"
+            value: Enums.DateFormat.Short
+        }
+        ListElement {
+            text: "Long"
+            value: Enums.DateFormat.Long
+        }
+        ListElement {
+            text: "ISO"
+            value: Enums.DateFormat.Iso
+        }
+        ListElement {
+            text: "Custom"
+            value: Enums.DateFormat.Custom
+        }
+    }
+
     ColumnLayout {
         Kirigami.FormLayout {
             id: dateFormatLayout
@@ -36,7 +66,50 @@ KCM.SimpleKCM {
                 id: showDateCheckBox
                 Kirigami.FormData.label: "Show date:"
             }
-            
+
+            ComboBox {
+                id: dateFormatComboBox
+                Kirigami.FormData.label: "Date format:"
+                model: dateFormatModel
+                textRole: "text"
+                valueRole: "value"
+
+                // Load from config
+                onActivated: {
+                    currentIndex = appearance.cfg_dateFormat;
+                }
+
+                onCurrentIndexChanged: {
+                    dateFormatCustomTextField.enabled = currentIndex === Enums.DateFormat.Custom
+                }
+
+                // Save to config
+                onAccepted: {
+                    appearance.cfg_dateFormat = currentIndex;
+                }
+            }
+
+            TextField {
+                id: dateFormatCustomTextField
+                Kirigami.FormData.label: "Custom format:"
+            }
+
+            Text {
+                id: dateFormatDocumentation
+                text: `<a href='${appearance.dateFormatDocumentationUrl}'>Click to view date formatting options</a>`
+                textFormat: Text.RichText
+                color: "blue"
+                linkColor: "blue"
+
+                MouseArea {
+                    anchors.fill: parent
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: {
+                        Qt.openUrlExternally(appearance.dateFormatDocumentationUrl);
+                    }
+                }
+            }
+
             CheckBox {
                 id: dateIsGlobalStyled
                 Kirigami.FormData.label: "Use global style:"

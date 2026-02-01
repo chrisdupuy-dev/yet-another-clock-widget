@@ -1,4 +1,4 @@
-module shared
+module com.chrisdupuy.yetanotherclockwidget.shared
 
 singleton Enums 1.0 enums.qml
-singleton TimeFormatter 1.0 timeFormatter.qml
+singleton DateTimeFormatter 1.0 dateTimeFormatter.qml

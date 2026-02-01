@@ -23,20 +23,23 @@ PlasmoidItem {
 
     toolTipMainText: Qt.locale().toString(dataSource.data["Local"]["DateTime"], "dddd")
     toolTipSubText: `${
-        TimeFormatter.formatTime(
+        DateTimeFormatter.formatTime( 
             dataSource.data["Local"]["DateTime"], 
             root.timeFormat, 
             root.showSeconds === Enums.ShowSeconds.Always || root.showSeconds === Enums.ShowSeconds.TooltipOnly
         )
         }\n${currentDate}`
 
-    readonly property string currentDate: Qt.locale().toString(dataSource.data["Local"]["DateTime"], Qt.locale().dateFormat(Locale.ShortFormat))
+    readonly property string currentDate: DateTimeFormatter.formatDate(dataSource.data["Local"]["DateTime"], root.dateFormat, root.dateCustomFormat)
 
     property int tzOffset
     property bool isHovered
 
     property int timeFormat: Plasmoid.configuration.timeFormat
     property int showSeconds: Plasmoid.configuration.showSeconds
+
+    property int dateFormat: Plasmoid.configuration.dateFormat
+    property string dateCustomFormat: Plasmoid.configuration.dateCustomFormat
 
     readonly property string timeStyleKey: Plasmoid.configuration.timeIsGlobalStyled ? "global" : "time"
     readonly property string dateStyleKey: Plasmoid.configuration.dateIsGlobalStyled ? "global" : "date"
@@ -114,7 +117,7 @@ PlasmoidItem {
         Accessible.name: Plasmoid.title
         Accessible.description: i18nc("@info:tooltip", 
             "Current time is %1; Current date is %2", 
-            TimeFormatter.formatTime(dataSource.data["Local"]["DateTime"], 
+            DateTimeFormatter.formatTime(dataSource.data["Local"]["DateTime"], 
                 root.timeFormat, (root.showSeconds === Enums.ShowSeconds.Always)
             ), 
             root.currentDate
@@ -132,7 +135,7 @@ PlasmoidItem {
 
             readonly property var style: root.textStyles[root.timeStyleKey] || root.textStyles.global
 
-            text: TimeFormatter.formatTime(dataSource.data["Local"]["DateTime"], root.timeFormat, root.showSeconds === Enums.ShowSeconds.Always)
+            text: DateTimeFormatter.formatTime(dataSource.data["Local"]["DateTime"], root.timeFormat, root.showSeconds === Enums.ShowSeconds.Always)
             color: style.textColor ?? '#FFFFFF'
             fontFamily: style.fontFamily
             fontPointSize: style.fontPointSize

@@ -32,12 +32,6 @@ A KDE Plasma clock widget tailored towards style and effects.
     - Above
     - Below
     - Sides
-  - Date format
-    - Long
-    - Short
-    - ISO
-    - Custom
-    - Link to formatting docs
 
 - Timezone
   - Show Timezone

@@ -30,4 +30,20 @@ QtObject {
 
         return Qt.formatTime(date, format);
     }
+
+    function formatDate(date: date, dateFormat: int, customFormat: string): string {
+        switch (dateFormat) {
+            case Enums.DateFormat.Short:
+                return Qt.formatDate(date, Locale.ShortFormat)
+            case Enums.DateFormat.Long:
+                return Qt.formatDate(date, Locale.LongFormat)
+            case Enums.DateFormat.Iso:
+                return date.toISOString();
+            case Enums.DateFormat.Custom:
+                return Qt.formatDate(date, customFormat)
+            case Enums.DateFormat.SystemDefault:
+            default:
+                return Qt.formatDate(date);
+        }
+    }
 }
