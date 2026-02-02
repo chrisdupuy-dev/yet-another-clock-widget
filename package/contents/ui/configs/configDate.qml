@@ -1,11 +1,10 @@
-import QtQuick 2.0
-import QtQuick.Layouts
-import QtQuick.Controls 2.0
-import org.kde.kirigami 2.5 as Kirigami
-import org.kde.kcmutils as KCM
-
-import "../utilities"
 import "../components"
+import "../utilities"
+import QtQuick 2.0
+import QtQuick.Controls 2.0
+import QtQuick.Layouts
+import org.kde.kcmutils as KCM
+import org.kde.kirigami 2.5 as Kirigami
 
 KCM.SimpleKCM {
     id: dateAppearance
@@ -18,7 +17,6 @@ KCM.SimpleKCM {
     property alias cfg_dateOffsetX: dateOffsetXSpinBox.value
     property alias cfg_dateOffsetY: dateOffsetYSpinBox.value
     property alias cfg_dateCustomFormat: dateFormatCustomTextField.text
-
     property alias cfg_dateTextColor: styledLabelConfig.colorText
     property alias cfg_dateTextColorButton: styledLabelConfig.colorButton
     property alias cfg_dateFontFamily: styledLabelConfig.fontFamily
@@ -38,84 +36,93 @@ KCM.SimpleKCM {
     property alias cfg_dateDropShadowScale: styledLabelConfig.dropShadowScale
     property alias cfg_dateDropShadowHorizontalOffset: styledLabelConfig.dropShadowHorizontalOffset
     property alias cfg_dateDropShadowVerticalOffset: styledLabelConfig.dropShadowVerticalOffset
-
     readonly property string dateFormatDocumentationUrl: "https://doc.qt.io/qt-6/qml-qtqml-qt.html#formatDateTime-method"
 
-   ListModel {
+    ListModel {
         id: dateAlignmentModel
 
         ListElement {
             text: "Top"
             value: Enums.Alignment.Top
         }
+
         ListElement {
             text: "Right"
             value: Enums.Alignment.Right
         }
+
         ListElement {
             text: "Bottom"
             value: Enums.Alignment.Bottom
         }
+
         ListElement {
             text: "Left"
             value: Enums.Alignment.Left
         }
+
         ListElement {
             text: "Offset"
             value: Enums.Alignment.Offset
         }
+
     }
 
-   ListModel {
+    ListModel {
         id: dateFormatModel
 
         ListElement {
             text: "System default"
             value: Enums.DateFormat.SystemDefault
         }
+
         ListElement {
             text: "Short"
             value: Enums.DateFormat.Short
         }
+
         ListElement {
             text: "Long"
             value: Enums.DateFormat.Long
         }
+
         ListElement {
             text: "ISO"
             value: Enums.DateFormat.Iso
         }
+
         ListElement {
             text: "Custom"
             value: Enums.DateFormat.Custom
         }
+
     }
 
     ColumnLayout {
         Kirigami.FormLayout {
             id: dateFormatLayout
+
             twinFormLayouts: [styledLabelConfig]
 
             CheckBox {
                 id: showDateCheckBox
+
                 Kirigami.FormData.label: "Show date:"
             }
 
             ComboBox {
                 id: dateFormatComboBox
+
                 Kirigami.FormData.label: "Date format:"
                 model: dateFormatModel
                 textRole: "text"
                 valueRole: "value"
-
                 onActivated: {
                     currentIndex = dateAppearance.cfg_dateFormat;
                 }
-
                 onCurrentIndexChanged: {
-                    dateFormatCustomTextField.enabled = currentIndex === Enums.DateFormat.Custom
+                    dateFormatCustomTextField.enabled = currentIndex === Enums.DateFormat.Custom;
                 }
-
                 onAccepted: {
                     dateAppearance.cfg_dateFormat = currentIndex;
                 }
@@ -123,11 +130,13 @@ KCM.SimpleKCM {
 
             TextField {
                 id: dateFormatCustomTextField
+
                 Kirigami.FormData.label: "Custom format:"
             }
 
             Text {
                 id: dateFormatDocumentation
+
                 text: `<a href='${dateAppearance.dateFormatDocumentationUrl}'>Click to view date formatting options</a>`
                 textFormat: Text.RichText
                 color: "blue"
@@ -140,30 +149,27 @@ KCM.SimpleKCM {
                         Qt.openUrlExternally(dateAppearance.dateFormatDocumentationUrl);
                     }
                 }
+
             }
 
             ComboBox {
                 id: dateAlignmentComboBox
+
                 Kirigami.FormData.label: "Date alignment:"
                 model: dateAlignmentModel
                 textRole: "text"
                 valueRole: "value"
-
                 onActivated: {
                     currentIndex = dateAppearance.cfg_dateAlignment;
                 }
-
                 onCurrentIndexChanged: {
-                    dateMarginSpinBox.enabled = currentIndex !== Enums.Alignment.Offset
-                    dateMarginSpinBox.visible = currentIndex !== Enums.Alignment.Offset
-
-                    dateOffsetXSpinBox.enabled = currentIndex === Enums.Alignment.Offset
-                    dateOffsetXSpinBox.visible = currentIndex === Enums.Alignment.Offset
-                    
-                    dateOffsetYSpinBox.enabled = currentIndex === Enums.Alignment.Offset
-                    dateOffsetYSpinBox.visible = currentIndex === Enums.Alignment.Offset
+                    dateMarginSpinBox.enabled = currentIndex !== Enums.Alignment.Offset;
+                    dateMarginSpinBox.visible = currentIndex !== Enums.Alignment.Offset;
+                    dateOffsetXSpinBox.enabled = currentIndex === Enums.Alignment.Offset;
+                    dateOffsetXSpinBox.visible = currentIndex === Enums.Alignment.Offset;
+                    dateOffsetYSpinBox.enabled = currentIndex === Enums.Alignment.Offset;
+                    dateOffsetYSpinBox.visible = currentIndex === Enums.Alignment.Offset;
                 }
-
                 onAccepted: {
                     dateAppearance.cfg_dateAlignment = currentIndex;
                 }
@@ -171,8 +177,8 @@ KCM.SimpleKCM {
 
             SpinBox {
                 id: dateMarginSpinBox
-                Kirigami.FormData.label: "Date alignment margin:"
 
+                Kirigami.FormData.label: "Date alignment margin:"
                 from: 0
                 value: 5
                 stepSize: 1
@@ -181,36 +187,41 @@ KCM.SimpleKCM {
 
             RealSpinBox {
                 id: dateOffsetXSpinBox
-                Kirigami.FormData.label: "Date alignment X offset:"
 
+                Kirigami.FormData.label: "Date alignment X offset:"
                 from: -99999
                 to: 99999
                 value: 0
-                stepSize: 1.0
+                stepSize: 1
                 editable: true
             }
 
             RealSpinBox {
                 id: dateOffsetYSpinBox
-                Kirigami.FormData.label: "Date alignment Y offset:"
 
+                Kirigami.FormData.label: "Date alignment Y offset:"
                 from: -99999
                 to: 99999
                 value: 25
-                stepSize: 1.0
+                stepSize: 1
                 editable: true
             }
 
             CheckBox {
                 id: dateIsGlobalStyled
+
                 Kirigami.FormData.label: "Use global style:"
             }
+
         }
 
         StyledLabelConfig {
             id: styledLabelConfig
+
             enabled: !dateIsGlobalStyled.checked
             twinFormLayouts: [dateFormatLayout]
         }
+
     }
+
 }

@@ -1,29 +1,24 @@
-pragma ComponentBehavior: Bound
-
 import QtQuick 2.0
-import QtQuick.Layouts
 import QtQuick.Controls 2.0
 import QtQuick.Dialogs
-import org.kde.kquickcontrols as KQControls
+import QtQuick.Layouts
 import org.kde.kirigami 2.5 as Kirigami
+import org.kde.kquickcontrols as KQControls
 
 Kirigami.FormLayout {
     id: root
 
     property alias colorText: colorTextField.text
     property alias colorButton: colorButton.color
-
     property alias fontFamily: fontDialog.selectedFont.family
     property alias fontPointSize: fontDialog.selectedFont.pointSize
     property alias fontStyleName: fontDialog.selectedFont.styleName
     property alias fontStrikeout: fontDialog.selectedFont.strikeout
     property alias fontUnderline: fontDialog.selectedFont.underline
-
     property alias strokeEnabled: strokeEnabledCheckBox.checked
     property alias strokeSize: strokeSizeTextField.text
     property alias strokeColorText: strokeColorTextField.text
     property alias strokeColorButton: strokeColorButton.color
-
     property alias dropShadowEnabled: dropShadowEnabledCheckBox.checked
     property alias dropShadowColorText: dropShadowColorTextField.text
     property alias dropShadowColorButton: dropShadowColorButton.color
@@ -35,8 +30,8 @@ Kirigami.FormLayout {
 
     TextField {
         id: colorTextField
-        Kirigami.FormData.label: "Text color:"
 
+        Kirigami.FormData.label: "Text color:"
         onTextEdited: {
             colorButton.color = colorTextField.text;
         }
@@ -44,6 +39,7 @@ Kirigami.FormLayout {
 
     KQControls.ColorButton {
         id: colorButton
+
         Layout.fillWidth: true
         showAlphaChannel: true
         onAccepted: {
@@ -55,7 +51,6 @@ Kirigami.FormLayout {
         Kirigami.FormData.label: "Text display:"
         text: "Choose Style..."
         Layout.fillWidth: true
-
         onClicked: fontDialog.open()
     }
 
@@ -65,16 +60,19 @@ Kirigami.FormLayout {
 
     CheckBox {
         id: strokeEnabledCheckBox
+
         Kirigami.FormData.label: "Stroke:"
     }
 
     TextField {
         id: strokeSizeTextField
+
         Kirigami.FormData.label: "Stroke size:"
     }
 
     TextField {
         id: strokeColorTextField
+
         Kirigami.FormData.label: "Stroke color:"
         Layout.fillWidth: true
         onTextEdited: {
@@ -84,6 +82,7 @@ Kirigami.FormLayout {
 
     KQControls.ColorButton {
         id: strokeColorButton
+
         Layout.fillWidth: true
         showAlphaChannel: true
         onAccepted: {
@@ -94,17 +93,18 @@ Kirigami.FormLayout {
     // Drop shadow
     CheckBox {
         id: dropShadowEnabledCheckBox
+
         Kirigami.FormData.label: "Drop shadow:"
     }
 
     Slider {
         id: dropShadowOpacitySlider
+
         Kirigami.FormData.label: "Drop shadow opacity"
         Layout.fillWidth: true
-
-        from: 0.0
-        to: 1.0
-        value: 1.0
+        from: 0
+        to: 1
+        value: 1
         stepSize: 0.05
     }
 
@@ -113,48 +113,48 @@ Kirigami.FormLayout {
 
         Kirigami.FormData.label: "Drop shadow blur"
         Layout.fillWidth: true
-
-        from: 0.0
-        to: 1.0
+        from: 0
+        to: 1
         value: 0.6
         stepSize: 0.05
     }
 
     Slider {
-        id: dropShadowScaleSlider    
+        id: dropShadowScaleSlider
+
         Kirigami.FormData.label: "Drop shadow scale:"
         Layout.fillWidth: true
-        
         from: 0
-        value: 1.0
-        to: 2.0
+        value: 1
+        to: 2
         stepSize: 0.1
     }
 
     RealSpinBox {
         id: dropShadowHorizontalOffsetSpinBox
-        Kirigami.FormData.label: "Drop shadow horizontal offset:"
 
+        Kirigami.FormData.label: "Drop shadow horizontal offset:"
         from: -99999
-        value: 5.0
+        value: 5
         to: 99999
-        stepSize: 1.0
+        stepSize: 1
         editable: true
     }
 
     RealSpinBox {
         id: dropShadowVerticalOffsetSpinBox
+
         Kirigami.FormData.label: "Drop shadow vertical offset:"
-        
         from: -99999
-        value: 5.0
+        value: 5
         to: 99999
-        stepSize: 1.0
+        stepSize: 1
         editable: true
     }
 
     TextField {
         id: dropShadowColorTextField
+
         Kirigami.FormData.label: "Drop shadow color:"
         Layout.fillWidth: true
         onTextEdited: {
@@ -164,10 +164,12 @@ Kirigami.FormLayout {
 
     KQControls.ColorButton {
         id: dropShadowColorButton
+
         Layout.fillWidth: true
         showAlphaChannel: true
         onAccepted: {
             dropShadowColorTextField.text = dropShadowColorButton.color;
         }
     }
+
 }

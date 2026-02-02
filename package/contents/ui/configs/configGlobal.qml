@@ -1,8 +1,7 @@
+import "../components"
 import QtQuick 2.0
 import QtQuick.Layouts
 import org.kde.kcmutils as KCM
-
-import "../components"
 
 KCM.SimpleKCM {
     id: globalAppearance
@@ -31,5 +30,7 @@ KCM.SimpleKCM {
         StyledLabelConfig {
             id: styledLabelConfig
         }
+
     }
+
 }

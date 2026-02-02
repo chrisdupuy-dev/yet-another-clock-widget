@@ -11,10 +11,8 @@ A KDE Plasma clock widget tailored towards style and effects.
 
 # TODO 1.0
 - Styling
-  - Make strokes less jank
-    - Either scale the number of label redraws with the font or find another way
+
   - Blur
-  - Previewable
 
 - Polish
   - Sensible defaults
@@ -24,7 +22,10 @@ A KDE Plasma clock widget tailored towards style and effects.
     - autoPaddingEnabled?
   - Fix stroke color
   - Fix drop shadow color
+  - Make strokes less jank
+    - Either scale the number of label redraws with the font or find another way
 
 # TODO 1.1
 - Styling
   - Masking
+- Previewable

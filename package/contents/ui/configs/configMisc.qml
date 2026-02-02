@@ -3,8 +3,6 @@ import QtQuick.Controls 2.0
 import org.kde.kcmutils as KCM
 import org.kde.kirigami 2.5 as Kirigami
 
-import "../components"
-
 KCM.SimpleKCM {
     id: misc
 
@@ -13,13 +11,15 @@ KCM.SimpleKCM {
     Kirigami.FormLayout {
         SpinBox {
             id: intervalRateSpinBox
-            Kirigami.FormData.label: "Label refresh interval (ms):"
 
+            Kirigami.FormData.label: "Label refresh interval (ms):"
             from: 1000
             value: 1000
             to: 30000
             stepSize: 1000
             editable: true
         }
+
     }
+
 }

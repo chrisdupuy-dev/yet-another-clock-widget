@@ -1,5 +1,3 @@
-pragma ComponentBehavior: Bound
-
 import QtQuick 2.0
 import QtQuick.Controls 2.0
 
@@ -8,6 +6,13 @@ SpinBox {
 
     property int decimals: 2
 
+    textFromValue: function(value, locale) {
+        return Number(value).toLocaleString(locale, 'f', spinBox.decimals);
+    }
+    valueFromText: function(text, locale) {
+        return Math.round(Number.fromLocaleString(locale, text));
+    }
+
     validator: DoubleValidator {
         bottom: Math.min(spinBox.from, spinBox.to)
         top: Math.max(spinBox.from, spinBox.to)
@@ -15,11 +20,4 @@ SpinBox {
         notation: DoubleValidator.StandardNotation
     }
 
-    textFromValue: function (value, locale) {
-        return Number(value).toLocaleString(locale, 'f', spinBox.decimals);
-    }
-
-    valueFromText: function (text, locale) {
-        return Math.round(Number.fromLocaleString(locale, text));
-    }
 }

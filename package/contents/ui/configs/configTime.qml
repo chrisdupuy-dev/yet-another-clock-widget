@@ -1,11 +1,10 @@
-import QtQuick 2.0
-import QtQuick.Layouts
-import QtQuick.Controls 2.0
-import org.kde.kirigami 2.5 as Kirigami
-import org.kde.kcmutils as KCM
-
 import "../components"
 import "../utilities"
+import QtQuick 2.0
+import QtQuick.Controls 2.0
+import QtQuick.Layouts
+import org.kde.kcmutils as KCM
+import org.kde.kirigami 2.5 as Kirigami
 
 KCM.SimpleKCM {
     id: timeAppearance
@@ -14,7 +13,6 @@ KCM.SimpleKCM {
     property alias cfg_timeFormat: timeFormatComboBox.currentIndex
     property alias cfg_showSeconds: showSecondsComboBox.currentIndex
     property alias cfg_timeIsGlobalStyled: timeIsGlobalStyled.checked
-
     property alias cfg_timeTextColor: styledLabelConfig.colorText
     property alias cfg_timeTextColorButton: styledLabelConfig.colorButton
     property alias cfg_timeFontFamily: styledLabelConfig.fontFamily
@@ -42,14 +40,17 @@ KCM.SimpleKCM {
             text: "System default"
             value: Enums.TimeFormat.SystemDefault
         }
+
         ListElement {
             text: "12-hour"
             value: Enums.TimeFormat.TwelveHour
         }
+
         ListElement {
             text: "24-hour"
             value: Enums.TimeFormat.TwentyFourHour
         }
+
     }
 
     ListModel {
@@ -59,37 +60,41 @@ KCM.SimpleKCM {
             text: "Tooltip only"
             value: Enums.ShowSeconds.TooltipOnly
         }
+
         ListElement {
             text: "Always"
             value: Enums.ShowSeconds.Always
         }
+
         ListElement {
             text: "Never"
             value: Enums.ShowSeconds.Never
         }
+
     }
 
     ColumnLayout {
         Kirigami.FormLayout {
             id: timeFormatLayout
+
             twinFormLayouts: [styledLabelConfig]
 
             CheckBox {
                 id: showTimeCheckBox
+
                 Kirigami.FormData.label: "Show time:"
             }
 
             ComboBox {
                 id: timeFormatComboBox
+
                 Kirigami.FormData.label: "Time format:"
                 model: timeFormatModel
                 textRole: "text"
                 valueRole: "value"
-
                 onActivated: {
                     currentIndex = timeAppearance.cfg_timeFormat;
                 }
-
                 onAccepted: {
                     timeAppearance.cfg_timeFormat = currentIndex;
                 }
@@ -97,15 +102,14 @@ KCM.SimpleKCM {
 
             ComboBox {
                 id: showSecondsComboBox
+
                 Kirigami.FormData.label: "Show seconds:"
                 model: showSecondsModel
                 textRole: "text"
                 valueRole: "value"
-
                 onActivated: {
                     currentIndex = timeAppearance.cfg_showSeconds;
                 }
-
                 onAccepted: {
                     timeAppearance.cfg_showSeconds = currentIndex;
                 }
@@ -113,14 +117,19 @@ KCM.SimpleKCM {
 
             CheckBox {
                 id: timeIsGlobalStyled
+
                 Kirigami.FormData.label: "Use global style:"
             }
+
         }
 
         StyledLabelConfig {
             id: styledLabelConfig
+
             enabled: !timeIsGlobalStyled.checked
             twinFormLayouts: [timeFormatLayout]
         }
+
     }
+
 }
