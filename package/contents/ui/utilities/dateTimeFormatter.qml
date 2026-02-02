@@ -46,4 +46,21 @@ QtObject {
                 return Qt.formatDate(date);
         }
     }
+
+    function formatUtcOffset(minutes: int): string {
+        const sign = minutes >= 0 ? "+" : "-";
+        const abs = Math.abs(minutes);
+
+        const hours = Math.floor(abs / 60);
+        const mins = abs % 60;
+
+        if (mins === 0) {
+            return `UTC${sign}${hours}:00`;
+        }
+
+        // pad minutes with leading zero if needed
+        const mm = mins < 10 ? "0" + mins : mins;
+
+        return `UTC${sign}${hours}:${mm}`;
+    }
 }

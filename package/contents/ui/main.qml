@@ -10,7 +10,7 @@ import org.kde.kirigami as Kirigami
 import org.kde.plasma.workspace.calendar 2.0 as PlasmaCalendar
 
 import "components"
-import "shared"
+import "utilities"
 
 PlasmoidItem {
     id: root
@@ -28,11 +28,9 @@ PlasmoidItem {
             root.timeFormat, 
             root.showSeconds === Enums.ShowSeconds.Always || root.showSeconds === Enums.ShowSeconds.TooltipOnly
         )
-        }\n${currentDate}`
+        }\n${currentDate}\n${timeZoneFull}`
 
     readonly property string currentDate: DateTimeFormatter.formatDate(dataSource.data["Local"]["DateTime"], root.dateFormat, root.dateCustomFormat)
-
-    property int tzOffset
 
     property int timeFormat: Plasmoid.configuration.timeFormat
     property int showSeconds: Plasmoid.configuration.showSeconds
@@ -44,8 +42,23 @@ PlasmoidItem {
     property int dateOffsetX: Plasmoid.configuration.dateOffsetX
     property int dateOffsetY: Plasmoid.configuration.dateOffsetY
 
+    property int timeZoneFormat: Plasmoid.configuration.timeZoneFormat
+    property int timeZoneAlignment: Plasmoid.configuration.timeZoneAlignment
+    property int timeZoneMargin: Plasmoid.configuration.timeZoneMargin
+    property int timeZoneOffsetX: Plasmoid.configuration.timeZoneOffsetX
+    property int timeZoneOffsetY: Plasmoid.configuration.timeZoneOffsetY
+    
+    property int timeZoneUtcOffset
+    property string timeZoneName
+    property string timeZoneAbbreviation
+    property string timeZoneCity
+    property string timeZoneContinent
+
+    readonly property string timeZoneFull: `${timeZoneName} ${timeZoneAbbreviation} ${DateTimeFormatter.formatUtcOffset(timeZoneUtcOffset)}`
+
     readonly property string timeStyleKey: Plasmoid.configuration.timeIsGlobalStyled ? "global" : "time"
     readonly property string dateStyleKey: Plasmoid.configuration.dateIsGlobalStyled ? "global" : "date"
+    readonly property string timeZoneStyleKey: Plasmoid.configuration.timeZoneIsGlobalStyled ? "global" : "timeZone"
 
     readonly property var textStyles: ({
             global: {
@@ -101,6 +114,24 @@ PlasmoidItem {
                 dropShadowScale: Plasmoid.configuration.dateDropShadowScale,
                 dropShadowHorizontalOffset: Plasmoid.configuration.dateDropShadowHorizontalOffset,
                 dropShadowVerticalOffset: Plasmoid.configuration.dateDropShadowVerticalOffset
+            },
+            timeZone: {
+                textColor: Plasmoid.configuration.timeZoneTextColor,
+                fontFamily: Plasmoid.configuration.timeZoneFontFamily,
+                fontPointSize: Plasmoid.configuration.timeZoneFontPointSize,
+                fontStyleName: Plasmoid.configuration.timeZoneFontStyleName,
+                fontStrikeout: Plasmoid.configuration.timeZoneFontStrikeout,
+                fontUnderline: Plasmoid.configuration.timeZoneFontUnderline,
+                strokeEnabled: Plasmoid.configuration.timeZoneStrokeEnabled,
+                strokeColor: Plasmoid.configuration.timeZoneStrokeColorText,
+                strokeSize: Plasmoid.configuration.timeZoneStrokeSize,
+                dropShadowEnabled: Plasmoid.configuration.timeZoneDropShadowEnabled,
+                dropShadowColor: Plasmoid.configuration.timeZoneDropShadowColorText,
+                dropShadowOpacity: Plasmoid.configuration.timeZoneDropShadowOpacity,
+                dropShadowBlur: Plasmoid.configuration.timeZoneDropShadowBlur,
+                dropShadowScale: Plasmoid.configuration.timeZoneDropShadowScale,
+                dropShadowHorizontalOffset: Plasmoid.configuration.timeZoneDropShadowHorizontalOffset,
+                dropShadowVerticalOffset: Plasmoid.configuration.timeZoneDropShadowVerticalOffset
             }
         })
 
@@ -109,13 +140,27 @@ PlasmoidItem {
         engine: "time"
         connectedSources: ["Local"]
         interval: Plasmoid.configuration.intervalRate
-        function onDataChanged() {
-            var currentTZOffset = dataSource.data["Local"]["Offset"] / 60;
-            if (currentTZOffset !== root.tzOffset) {
-                root.tzOffset = currentTZOffset;
-                Date.timeZoneUpdated(); // inform the QML JS engine about TZ change
+
+        onDataChanged: {
+            const local = dataSource.data["Local"];
+
+            const currentTZOffset = local["Offset"] / 60;
+            const currentTZName = local["Timezone"];
+            const currentTZAbbrev = local["Timezone Abbreviation"];
+            const currentTZCity = local["Timezone City"];
+            const currentTZContinent = local["Timezone Continent"];
+
+            if (root.timeZoneUtcOffset !== currentTZOffset) {
+                root.timeZoneUtcOffset = currentTZOffset;
+                root.timeZoneName = currentTZName;
+                root.timeZoneAbbreviation= currentTZAbbrev;
+                root.timeZoneCity = currentTZCity;
+                root.timeZoneContinent = currentTZContinent;
+
+                Date.timeZoneUpdated();
             }
         }
+
         Component.onCompleted: {
             dataChanged();
         }
@@ -193,134 +238,58 @@ PlasmoidItem {
             dropShadowHorizontalOffset: style.dropShadowHorizontalOffset
             dropShadowVerticalOffset: style.dropShadowVerticalOffset
 
-            states: [
-                State {
-                    name: "anchoredTop"
-                    AnchorChanges {
-                        target: dateLabel
-                        anchors {
-                            horizontalCenter: timeLabel.horizontalCenter
-                            verticalCenter: undefined
-                            top: undefined
-                            bottom: timeLabel.top
-                            left: undefined
-                            right: undefined
-                        }
-                    }
-                    PropertyChanges {
-                        dateLabel.anchors.topMargin: 0
-                        dateLabel.anchors.rightMargin: 0
-                        dateLabel.anchors.bottomMargin: root.dateMargin
-                        dateLabel.anchors.leftMargin: 0
+            anchorAlignment: root.dateAlignment
+            anchorTarget: timeLabel
+            anchorMargin: root.dateMargin
+            offsetX: root.dateOffsetX
+            offsetY: root.dateOffsetY
+        }
 
-                        dateLabel.anchors.horizontalCenterOffset: 0
-                        dateLabel.anchors.verticalCenterOffset: 0
-                    }
-                },
-                State {
-                    name: "anchoredRight"
-                    AnchorChanges {
-                        target: dateLabel
-                        anchors {
-                            horizontalCenter: undefined
-                            verticalCenter: timeLabel.verticalCenter
-                            top: undefined
-                            bottom: undefined
-                            left: timeLabel.right
-                            right: undefined
-                        }
-                    }
-                    PropertyChanges {
-                        dateLabel.anchors.topMargin: 0
-                        dateLabel.anchors.rightMargin: 0
-                        dateLabel.anchors.bottomMargin: 0
-                        dateLabel.anchors.leftMargin: root.dateMargin
+        StyledLabel {
+            id: timeZoneLabel
+            visible: Plasmoid.configuration.showTimeZone
 
-                        dateLabel.anchors.horizontalCenterOffset: 0
-                        dateLabel.anchors.verticalCenterOffset: 0
-                    }
-                },
-                State {
-                    name: "anchoredBottom"
-                    AnchorChanges {
-                        target: dateLabel
-                        anchors {
-                            horizontalCenter: timeLabel.horizontalCenter
-                            verticalCenter: undefined
-                            top: timeLabel.bottom
-                            bottom: undefined
-                            left: undefined
-                            right: undefined
-                        }
-                    }
-                    PropertyChanges {
-                        dateLabel.anchors.topMargin: root.dateMargin
-                        dateLabel.anchors.rightMargin: 0
-                        dateLabel.anchors.bottomMargin: 0
-                        dateLabel.anchors.leftMargin: 0
+            readonly property var style: root.textStyles[root.timeZoneStyleKey] || root.textStyles.global
 
-                        dateLabel.anchors.horizontalCenterOffset: 0
-                        dateLabel.anchors.verticalCenterOffset: 0
-                    }
-                },
-                State {
-                    name: "anchoredLeft"
-                    AnchorChanges {
-                        target: dateLabel
-                        anchors {
-                            horizontalCenter: undefined
-                            verticalCenter: timeLabel.verticalCenter
-                            top: undefined
-                            bottom: undefined
-                            left: undefined
-                            right: timeLabel.left
-                        }
-                    }
-                    PropertyChanges {
-                        dateLabel.anchors.topMargin: 0
-                        dateLabel.anchors.rightMargin: root.dateMargin
-                        dateLabel.anchors.bottomMargin: 0
-                        dateLabel.anchors.leftMargin: 0
-
-                        dateLabel.anchors.horizontalCenterOffset: 0
-                        dateLabel.anchors.verticalCenterOffset: 0
-                    }
-                },
-                State {
-                    name: "offset"
-                    AnchorChanges {
-                        target: dateLabel
-                        anchors {
-                            horizontalCenter: timeLabel.horizontalCenter
-                            verticalCenter: timeLabel.verticalCenter
-                            top: undefined
-                            bottom: undefined
-                            left: undefined
-                            right: undefined
-                        }
-                    }
-                    PropertyChanges {
-                        dateLabel.anchors.horizontalCenterOffset: dateOffsetX
-                        dateLabel.anchors.verticalCenterOffset: dateOffsetY
-                    }
-                }
-            ]
-
-            state: { 
-                switch(root.dateAlignment) {
-                    case Enums.DateAlignment.Top:
-                        return "anchoredTop"
-                    case Enums.DateAlignment.Right:
-                        return "anchoredRight"
-                    case Enums.DateAlignment.Bottom:
-                        return "anchoredBottom"
-                    case Enums.DateAlignment.Left:
-                        return "anchoredLeft"
-                    case Enums.DateAlignment.Offset:
+            text: {
+                switch (root.timeZoneFormat) {
+                    case Enums.TimeZoneFormat.City:
+                        return root.timeZoneCity
+                    case Enums.TimeZoneFormat.Continent:
+                        return root.timeZoneContinent
+                    case Enums.TimeZoneFormat.Abbreviation:
+                        return root.timeZoneAbbreviation
+                    case Enums.TimeZoneFormat.UtcOffset:
+                        return DateTimeFormatter.formatUtcOffset(root.timeZoneUtcOffset)
+                    case Enums.TimeZoneFormat.Full:
+                        return root.timeZoneFull
+                    case Enums.TimeZoneFormat.Name:
                     default:
-                        return "offset"
+                        return root.timeZoneName
                 }
             }
+            color: style.textColor ?? '#FFFFFF'
+            fontFamily: style.fontFamily
+            fontPointSize: style.fontPointSize
+            fontStyleName: style.fontStyleName
+            fontStrikeout: style.fontStrikeout
+            fontUnderline: style.fontUnderline
+            strokeEnabled: style.strokeEnabled
+            strokeColor: style.strokeColorText ?? '#000000'
+            strokeSize: style.strokeSize
+            dropShadowEnabled: style.dropShadowEnabled
+            dropShadowColor: style.dropShadowColorText  ?? '#000000'
+            dropShadowOpacity: style.dropShadowOpacity
+            dropShadowBlur: style.dropShadowBlur
+            dropShadowScale: style.dropShadowScale
+            dropShadowHorizontalOffset: style.dropShadowHorizontalOffset
+            dropShadowVerticalOffset: style.dropShadowVerticalOffset
+
+            anchorAlignment: root.timeZoneAlignment
+            anchorTarget: timeLabel
+            anchorMargin: root.timeZoneMargin
+            offsetX: root.timeZoneOffsetX
+            offsetY: root.timeZoneOffsetY
         }
     }
 
@@ -336,7 +305,6 @@ PlasmoidItem {
     }
 
     Component.onCompleted: {
-        tzOffset = new Date().getTimezoneOffset();
         dataSource.dataChanged();
     }
 }

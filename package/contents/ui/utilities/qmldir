@@ -1,4 +1,4 @@
-module com.chrisdupuy.yetanotherclockwidget.shared
+module com.chrisdupuy.yetanotherclockwidget.utilities
 
 singleton Enums 1.0 enums.qml
 singleton DateTimeFormatter 1.0 dateTimeFormatter.qml

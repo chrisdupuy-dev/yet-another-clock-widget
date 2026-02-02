@@ -4,7 +4,7 @@ import QtQuick.Controls 2.0
 import org.kde.kirigami 2.5 as Kirigami
 import org.kde.kcmutils as KCM
 
-import "../shared"
+import "../utilities"
 import "../components"
 
 KCM.SimpleKCM {
@@ -46,23 +46,23 @@ KCM.SimpleKCM {
 
         ListElement {
             text: "Top"
-            value: Enums.DateAlignment.Top
+            value: Enums.Alignment.Top
         }
         ListElement {
             text: "Right"
-            value: Enums.DateAlignment.Right
+            value: Enums.Alignment.Right
         }
         ListElement {
             text: "Bottom"
-            value: Enums.DateAlignment.Bottom
+            value: Enums.Alignment.Bottom
         }
         ListElement {
             text: "Left"
-            value: Enums.DateAlignment.Left
+            value: Enums.Alignment.Left
         }
         ListElement {
             text: "Offset"
-            value: Enums.DateAlignment.Offset
+            value: Enums.Alignment.Offset
         }
     }
 
@@ -154,14 +154,14 @@ KCM.SimpleKCM {
                 }
 
                 onCurrentIndexChanged: {
-                    dateMarginSpinBox.enabled = currentIndex !== Enums.DateAlignment.Offset
-                    dateMarginSpinBox.visible = currentIndex !== Enums.DateAlignment.Offset
+                    dateMarginSpinBox.enabled = currentIndex !== Enums.Alignment.Offset
+                    dateMarginSpinBox.visible = currentIndex !== Enums.Alignment.Offset
 
-                    dateOffsetXSpinBox.enabled = currentIndex === Enums.DateAlignment.Offset
-                    dateOffsetXSpinBox.visible = currentIndex === Enums.DateAlignment.Offset
+                    dateOffsetXSpinBox.enabled = currentIndex === Enums.Alignment.Offset
+                    dateOffsetXSpinBox.visible = currentIndex === Enums.Alignment.Offset
                     
-                    dateOffsetYSpinBox.enabled = currentIndex === Enums.DateAlignment.Offset
-                    dateOffsetYSpinBox.visible = currentIndex === Enums.DateAlignment.Offset
+                    dateOffsetYSpinBox.enabled = currentIndex === Enums.Alignment.Offset
+                    dateOffsetYSpinBox.visible = currentIndex === Enums.Alignment.Offset
                 }
 
                 onAccepted: {

@@ -22,6 +22,12 @@ ConfigModel {
     }
 
     ConfigCategory {
+        name: i18n("Time Zone Appearance")
+        icon: "globe"
+        source: "./configs/configTimeZone.qml"
+    }
+
+    ConfigCategory {
         name: i18n("Miscellaneous")
         icon: "applications-system"
         source: "./configs/configMisc.qml"

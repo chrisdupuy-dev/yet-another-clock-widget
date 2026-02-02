@@ -5,6 +5,8 @@ import QtQuick.Effects
 
 import org.kde.plasma.components as PlasmaComponents
 
+import "../utilities"
+
 Item {
   id: root
 
@@ -34,6 +36,12 @@ Item {
   property real dropShadowBlur: 1 // 0.0 - 1.0
   property real dropShadowVerticalOffset: 6 // -inf - inf
   property real dropShadowHorizontalOffset: 6 // -inf - inf
+
+  property Item anchorTarget
+  property int anchorAlignment: 3
+  property int anchorMargin: 5
+  property int offsetX: 0
+  property int offsetY: 0
 
   Repeater {
     id: repeater
@@ -76,5 +84,134 @@ Item {
           shadowVerticalOffset: root.dropShadowVerticalOffset
           shadowHorizontalOffset: root.dropShadowHorizontalOffset
       }
+  }
+
+  states: [
+    State {
+        name: "anchoredTop"
+        AnchorChanges {
+            target: root
+            anchors {
+                horizontalCenter: anchorTarget?.horizontalCenter
+                verticalCenter: undefined
+                top: undefined
+                bottom: anchorTarget?.top
+                left: undefined
+                right: undefined
+            }
+        }
+        PropertyChanges {
+            root.anchors.topMargin: 0
+            root.anchors.rightMargin: 0
+            root.anchors.bottomMargin: root.anchorMargin
+            root.anchors.leftMargin: 0
+
+            root.anchors.horizontalCenterOffset: 0
+            root.anchors.verticalCenterOffset: 0
+        }
+    },
+    State {
+        name: "anchoredRight"
+        AnchorChanges {
+            target: root
+            anchors {
+                horizontalCenter: undefined
+                verticalCenter: anchorTarget?.verticalCenter
+                top: undefined
+                bottom: undefined
+                left: anchorTarget?.right
+                right: undefined
+            }
+        }
+        PropertyChanges {
+            root.anchors.topMargin: 0
+            root.anchors.rightMargin: 0
+            root.anchors.bottomMargin: 0
+            root.anchors.leftMargin: root.anchorMargin
+
+            root.anchors.horizontalCenterOffset: 0
+            root.anchors.verticalCenterOffset: 0
+        }
+    },
+    State {
+        name: "anchoredBottom"
+        AnchorChanges {
+            target: root
+            anchors {
+                horizontalCenter: anchorTarget?.horizontalCenter
+                verticalCenter: undefined
+                top: timeLabel.bottom
+                bottom: undefined
+                left: undefined
+                right: undefined
+            }
+        }
+        PropertyChanges {
+            root.anchors.topMargin: root.anchorMargin
+            root.anchors.rightMargin: 0
+            root.anchors.bottomMargin: 0
+            root.anchors.leftMargin: 0
+
+            root.anchors.horizontalCenterOffset: 0
+            root.anchors.verticalCenterOffset: 0
+        }
+    },
+    State {
+        name: "anchoredLeft"
+        AnchorChanges {
+            target: root
+            anchors {
+                horizontalCenter: undefined
+                verticalCenter: anchorTarget?.verticalCenter
+                top: undefined
+                bottom: undefined
+                left: undefined
+                right: anchorTarget?.left
+            }
+        }
+        PropertyChanges {
+            root.anchors.topMargin: 0
+            root.anchors.rightMargin: root.anchorMargin
+            root.anchors.bottomMargin: 0
+            root.anchors.leftMargin: 0
+
+            root.anchors.horizontalCenterOffset: 0
+            root.anchors.verticalCenterOffset: 0
+        }
+    },
+    State {
+        name: "offset"
+        AnchorChanges {
+            target: root
+            anchors {
+                horizontalCenter: anchorTarget?.horizontalCenter
+                verticalCenter: anchorTarget?.verticalCenter
+                top: undefined
+                bottom: undefined
+                left: undefined
+                right: undefined
+            }
+        }
+        PropertyChanges {
+            root.anchors.horizontalCenterOffset: root.offsetX
+            root.anchors.verticalCenterOffset: root.offsetY
+        }
+    }
+]
+
+state: { 
+    switch(root.anchorAlignment) {
+        case Enums.Alignment.Top:
+            return "anchoredTop"
+        case Enums.Alignment.Right:
+            return "anchoredRight"
+        case Enums.Alignment.Bottom:
+            return "anchoredBottom"
+        case Enums.Alignment.Left:
+            return "anchoredLeft"
+        case Enums.Alignment.Offset:
+        default:
+            return "offset"
+    }
   }
 }        

@@ -5,7 +5,7 @@ import org.kde.kirigami 2.5 as Kirigami
 import org.kde.kcmutils as KCM
 
 import "../components"
-import "../shared"
+import "../utilities"
 
 KCM.SimpleKCM {
     id: timeAppearance

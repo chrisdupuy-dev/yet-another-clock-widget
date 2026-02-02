@@ -216,6 +216,85 @@
     <entry name="dateDropShadowColorText" type="String">
       <default>#000000</default>
     </entry>
+    <!-- Time Zone config-->
+    <entry name="showTimeZone" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="timeZoneFormat" type="Enum">
+      <default>0</default>
+    </entry>
+    <entry name="timeZoneAlignment" type="Enum">
+      <default>2</default>
+    </entry>
+    <entry name="timeZoneMargin" type="UInt">
+      <default>40</default>
+    </entry>
+    <entry name="timeZoneOffsetX" type="Double">
+      <default>0</default>
+    </entry>
+    <entry name="timeZoneOffsetY" type="Double">
+      <default>50</default>
+    </entry>
+    <entry name="timeZoneIsGlobalStyled" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="timeZoneTextColorButton" type="Color">
+      <default>#FFFFFF</default>
+    </entry>
+    <entry name="timeZoneTextColor" type="String">
+      <default>#FFFFFF</default>
+    </entry>
+    <entry name="timeZoneFontFamily" type="String">
+      <default></default>
+    </entry>
+    <entry name="timeZoneFontPointSize" type="Double">
+      <default>12</default>
+    </entry>
+    <entry name="timeZoneFontStyleName" type="String">
+      <default>Regular</default>
+    </entry>
+    <entry name="timeZoneFontStrikeout" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="timeZoneFontUnderline" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="timeZoneStrokeEnabled" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="timeZoneStrokeColorButton" type="Color">
+      <default>#000000</default>
+    </entry>
+    <entry name="timeZoneStrokeColorText" type="String">
+      <default>#000000</default>
+    </entry>
+    <entry name="timeZoneStrokeSize" type="Double">
+      <default>1</default>
+    </entry>
+    <entry name="timeZoneDropShadowEnabled" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="timeZoneDropShadowOpacity" type="Double">
+      <default>1.0</default>
+    </entry>
+    <entry name="timeZoneDropShadowBlur" type="Double">
+      <default>0.6</default>
+    </entry>
+    <entry name="timeZoneDropShadowScale" type="Double">
+      <default>1.0</default>
+    </entry>
+    <entry name="timeZoneDropShadowHorizontalOffset" type="Double">
+      <default>5.0</default>
+    </entry>
+    <entry name="timeZoneDropShadowVerticalOffset" type="Double">
+      <default>5.0</default>
+    </entry>
+    <entry name="timeZoneDropShadowColorButton" type="Color">
+      <default>#000000</default>
+    </entry>
+    <entry name="timeZoneDropShadowColorText" type="String">
+      <default>#000000</default>
+    </entry>
     <!-- Misc config-->
     <entry name="intervalRate" type="UInt">
       <default>1000</default>
