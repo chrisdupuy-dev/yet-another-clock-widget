@@ -9,11 +9,11 @@
         ],
         "License": "GPL-3.0-or-later",
         "Category": "Date and Time",
-        "Description": "A KDE Plasma clock widget tailored towards style and effects.",
+        "Description": "A KDE Plasma clock widget featuring the ability to add styles and effects such as colors, blur, drop shadows and strokes.",
+        "ShortDescription": "A customizable Plasma clock widget tailored towards style and effects.",
         "EnabledByDefault": true,
         "FormFactors": [
             "tablet",
-            "handset",
             "desktop"
         ],
         "Icon": "preferences-system-time",
@@ -23,9 +23,13 @@
         "Website": "https://github.com/chrisdupuy-dev/yet-another-clock-widget",
         "BugReportUrl": "https://github.com/chrisdupuy-dev/yet-another-clock-widget/issues"
     },
+    "X-KDE-PluginInfo-Website": "https://github.com/chrisdupuy-dev/yet-another-clock-widget",
+    "X-KDE-PluginInfo-Category": "Utilities",
+    "X-KDE-PluginInfo-License": "GPL-3.0-or-later",
     "X-Plasma-API-Minimum-Version": "6.0",
     "X-Plasma-Provides": [
         "org.kde.plasma.time",
-        "org.kde.plasma.date"
+        "org.kde.plasma.date",
+        "org.kde.plasma.clock"
     ]
 }
