@@ -47,6 +47,10 @@ PlasmoidItem {
             "strokeEnabled": Plasmoid.configuration.globalStrokeEnabled,
             "strokeColor": Plasmoid.configuration.globalStrokeColorText,
             "strokeSize": Plasmoid.configuration.globalStrokeSize,
+            "blurEnabled": Plasmoid.configuration.globalBlurEnabled,
+            "blur": Plasmoid.configuration.globalBlur,
+            "blurMax": Plasmoid.configuration.globalBlurMax,
+            "blurMultiplier": Plasmoid.configuration.globalBlurMultiplier,
             "dropShadowEnabled": Plasmoid.configuration.globalDropShadowEnabled,
             "dropShadowColor": Plasmoid.configuration.globalDropShadowColorText,
             "dropShadowOpacity": Plasmoid.configuration.globalDropShadowOpacity,
@@ -64,7 +68,11 @@ PlasmoidItem {
             "fontUnderline": Plasmoid.configuration.timeFontUnderline,
             "strokeEnabled": Plasmoid.configuration.timeStrokeEnabled,
             "strokeColor": Plasmoid.configuration.timeStrokeColorText,
-            "strokeSize": Plasmoid.configuration.timeStrokeSize,
+            "strokeSize": Plasmoid.configuration.timeStrokeSize,            
+            "blurEnabled": Plasmoid.configuration.timeBlurEnabled,
+            "blur": Plasmoid.configuration.timeBlur,
+            "blurMax": Plasmoid.configuration.timeBlurMax,
+            "blurMultiplier": Plasmoid.configuration.timeBlurMultiplier,
             "dropShadowEnabled": Plasmoid.configuration.timeDropShadowEnabled,
             "dropShadowColor": Plasmoid.configuration.timeDropShadowColorText,
             "dropShadowOpacity": Plasmoid.configuration.timeDropShadowOpacity,
@@ -83,6 +91,10 @@ PlasmoidItem {
             "strokeEnabled": Plasmoid.configuration.dateStrokeEnabled,
             "strokeColor": Plasmoid.configuration.dateStrokeColorText,
             "strokeSize": Plasmoid.configuration.dateStrokeSize,
+            "blurEnabled": Plasmoid.configuration.dateBlurEnabled,
+            "blur": Plasmoid.configuration.dateBlur,
+            "blurMax": Plasmoid.configuration.dateBlurMax,
+            "blurMultiplier": Plasmoid.configuration.dateBlurMultiplier,
             "dropShadowEnabled": Plasmoid.configuration.dateDropShadowEnabled,
             "dropShadowColor": Plasmoid.configuration.dateDropShadowColorText,
             "dropShadowOpacity": Plasmoid.configuration.dateDropShadowOpacity,
@@ -101,6 +113,10 @@ PlasmoidItem {
             "strokeEnabled": Plasmoid.configuration.timeZoneStrokeEnabled,
             "strokeColor": Plasmoid.configuration.timeZoneStrokeColorText,
             "strokeSize": Plasmoid.configuration.timeZoneStrokeSize,
+            "blurEnabled": Plasmoid.configuration.timeZoneBlurEnabled,
+            "blur": Plasmoid.configuration.timeZoneBlur,
+            "blurMax": Plasmoid.configuration.timeZoneBlurMax,
+            "blurMultiplier": Plasmoid.configuration.timeZoneBlurMultiplier,
             "dropShadowEnabled": Plasmoid.configuration.timeZoneDropShadowEnabled,
             "dropShadowColor": Plasmoid.configuration.timeZoneDropShadowColorText,
             "dropShadowOpacity": Plasmoid.configuration.timeZoneDropShadowOpacity,
@@ -184,6 +200,10 @@ PlasmoidItem {
             strokeEnabled: style.strokeEnabled
             strokeColor: style.strokeColorText ?? '#000000'
             strokeSize: style.strokeSize
+            blurEnabled: style.blurEnabled
+            blur: style.blur
+            blurMax: style.blurMax
+            blurMultiplier: style.blurMultiplier
             dropShadowEnabled: style.dropShadowEnabled
             dropShadowColor: style.dropShadowColorText ?? '#000000'
             dropShadowOpacity: style.dropShadowOpacity
@@ -209,6 +229,10 @@ PlasmoidItem {
             strokeEnabled: style.strokeEnabled
             strokeColor: style.strokeColorText ?? '#000000'
             strokeSize: style.strokeSize
+            blurEnabled: style.blurEnabled
+            blur: style.blur
+            blurMax: style.blurMax
+            blurMultiplier: style.blurMultiplier
             dropShadowEnabled: style.dropShadowEnabled
             dropShadowColor: style.dropShadowColorText ?? '#000000'
             dropShadowOpacity: style.dropShadowOpacity
@@ -255,6 +279,10 @@ PlasmoidItem {
             strokeEnabled: style.strokeEnabled
             strokeColor: style.strokeColorText ?? '#000000'
             strokeSize: style.strokeSize
+            blurEnabled: style.blurEnabled
+            blur: style.blur
+            blurMax: style.blurMax
+            blurMultiplier: style.blurMultiplier
             dropShadowEnabled: style.dropShadowEnabled
             dropShadowColor: style.dropShadowColorText ?? '#000000'
             dropShadowOpacity: style.dropShadowOpacity

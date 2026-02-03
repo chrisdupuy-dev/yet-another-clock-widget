@@ -28,6 +28,10 @@ KCM.SimpleKCM {
     property alias cfg_dateStrokeSize: styledLabelConfig.strokeSize
     property alias cfg_dateStrokeColorText: styledLabelConfig.strokeColorText
     property alias cfg_dateStrokeColorButton: styledLabelConfig.strokeColorButton
+    property alias cfg_dateBlurEnabled: styledLabelConfig.blurEnabled
+    property alias cfg_dateBlur: styledLabelConfig.blur
+    property alias cfg_dateBlurMax: styledLabelConfig.blurMax
+    property alias cfg_dateBlurMultiplier: styledLabelConfig.blurMultiplier
     property alias cfg_dateDropShadowEnabled: styledLabelConfig.dropShadowEnabled
     property alias cfg_dateDropShadowColorText: styledLabelConfig.dropShadowColorText
     property alias cfg_dateDropShadowColorButton: styledLabelConfig.dropShadowColorButton

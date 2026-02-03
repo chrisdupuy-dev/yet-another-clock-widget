@@ -19,6 +19,10 @@ Kirigami.FormLayout {
     property alias strokeSize: strokeSizeTextField.text
     property alias strokeColorText: strokeColorTextField.text
     property alias strokeColorButton: strokeColorButton.color
+    property alias blurEnabled: blurEnabledCheckBox.checked
+    property alias blur: blurSlider.value
+    property alias blurMax: blurMaxSlider.value
+    property alias blurMultiplier: blurMultiplierSpinBox.value
     property alias dropShadowEnabled: dropShadowEnabledCheckBox.checked
     property alias dropShadowColorText: dropShadowColorTextField.text
     property alias dropShadowColorButton: dropShadowColorButton.color
@@ -88,6 +92,46 @@ Kirigami.FormLayout {
         onAccepted: {
             strokeColorTextField.text = strokeColorButton.color;
         }
+    }
+
+    // Blur
+    CheckBox {
+        id: blurEnabledCheckBox
+
+        Kirigami.FormData.label: "Blur:"
+    }
+
+    Slider {
+        id: blurSlider
+
+        Kirigami.FormData.label: "Blur amount:"
+        Layout.fillWidth: true
+        from: 0
+        to: 1
+        value: 1
+        stepSize: 0.05
+    }
+
+    Slider {
+        id: blurMaxSlider
+
+        Kirigami.FormData.label: "Blur max:"
+        Layout.fillWidth: true
+        from: 2
+        to: 64
+        value: 32
+        stepSize: 1
+    }
+
+    RealSpinBox {
+        id: blurMultiplierSpinBox
+
+        Kirigami.FormData.label: "Blur multiplier:"
+        from: 0.0
+        value: 0
+        to: 99999
+        stepSize: 1
+        editable: true
     }
 
     // Drop shadow

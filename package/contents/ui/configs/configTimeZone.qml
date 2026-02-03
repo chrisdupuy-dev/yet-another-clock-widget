@@ -27,6 +27,10 @@ KCM.SimpleKCM {
     property alias cfg_timeZoneStrokeSize: styledLabelConfig.strokeSize
     property alias cfg_timeZoneStrokeColorText: styledLabelConfig.strokeColorText
     property alias cfg_timeZoneStrokeColorButton: styledLabelConfig.strokeColorButton
+    property alias cfg_timeZoneBlurEnabled: styledLabelConfig.blurEnabled
+    property alias cfg_timeZoneBlur: styledLabelConfig.blur
+    property alias cfg_timeZoneBlurMax: styledLabelConfig.blurMax
+    property alias cfg_timeZoneBlurMultiplier: styledLabelConfig.blurMultiplier
     property alias cfg_timeZoneDropShadowEnabled: styledLabelConfig.dropShadowEnabled
     property alias cfg_timeZoneDropShadowColorText: styledLabelConfig.dropShadowColorText
     property alias cfg_timeZoneDropShadowColorButton: styledLabelConfig.dropShadowColorButton

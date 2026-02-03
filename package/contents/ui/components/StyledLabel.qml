@@ -24,6 +24,10 @@ Item {
     property bool strokeEnabled: false
     property int strokeSize: 1
     property color strokeColor: '#000000'
+    property bool blurEnabled: false
+    property real blur: 0.0 // 0.0 - 1.0
+    property int blurMax: 32 // 2 - 64
+    property real blurMultiplier: 0.0 // 0.0 - inf 
     property bool dropShadowEnabled: false
     property color dropShadowColor: '#000000'
     property real dropShadowOpacity: 0.6 // 0.0 - 1.0
@@ -236,6 +240,11 @@ Item {
         layer.enabled: true
 
         layer.effect: MultiEffect {
+            blurEnabled: root.blurEnabled
+            blur: root.blur
+            blurMax: root.blurMax
+            blurMultiplier: root.blurMultiplier
+
             shadowEnabled: root.dropShadowEnabled
             shadowColor: root.dropShadowColor
             shadowOpacity: root.dropShadowOpacity

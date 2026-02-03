@@ -40,6 +40,18 @@
     <entry name="globalStrokeSize" type="Double">
       <default>1</default>
     </entry>
+    <entry name="globalBlurEnabled" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="globalBlur" type="Double">
+      <default>0.0</default>
+    </entry>
+    <entry name="globalBlurMax" type="UInt">
+      <default>32</default>
+    </entry>
+    <entry name="globalBlurMultiplier" type="Double">
+      <default>0.0</default>
+    </entry>
     <entry name="globalDropShadowEnabled" type="Bool">
       <default>false</default>
     </entry>
@@ -109,6 +121,18 @@
     </entry>
     <entry name="timeStrokeSize" type="Double">
       <default>1</default>
+    </entry>
+    <entry name="timeBlurEnabled" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="timeBlur" type="Double">
+      <default>0.0</default>
+    </entry>
+    <entry name="timeBlurMax" type="UInt">
+      <default>32</default>
+    </entry>
+    <entry name="timeBlurMultiplier" type="Double">
+      <default>0.0</default>
     </entry>
     <entry name="timeDropShadowEnabled" type="Bool">
       <default>false</default>
@@ -192,6 +216,18 @@
     <entry name="dateStrokeSize" type="Double">
       <default>1</default>
     </entry>
+    <entry name="dateBlurEnabled" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="dateBlur" type="Double">
+      <default>0.0</default>
+    </entry>
+    <entry name="dateBlurMax" type="UInt">
+      <default>32</default>
+    </entry>
+    <entry name="dateBlurMultiplier" type="Double">
+      <default>0.0</default>
+    </entry>
     <entry name="dateDropShadowEnabled" type="Bool">
       <default>false</default>
     </entry>
@@ -270,6 +306,18 @@
     </entry>
     <entry name="timeZoneStrokeSize" type="Double">
       <default>1</default>
+    </entry>
+    <entry name="timeZoneBlurEnabled" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="timeZoneBlur" type="Double">
+      <default>0.0</default>
+    </entry>
+    <entry name="timeZoneBlurMax" type="UInt">
+      <default>32</default>
+    </entry>
+    <entry name="timeZoneBlurMultiplier" type="Double">
+      <default>0.0</default>
     </entry>
     <entry name="timeZoneDropShadowEnabled" type="Bool">
       <default>false</default>
