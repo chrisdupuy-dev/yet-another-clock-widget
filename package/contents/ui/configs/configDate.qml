@@ -207,7 +207,7 @@ KCM.SimpleKCM {
                 from: -99999
                 to: 99999
                 value: 0
-                stepSize: 1
+                stepSize: 100
                 editable: true
             }
 
@@ -217,8 +217,8 @@ KCM.SimpleKCM {
                 Kirigami.FormData.label: i18n("Alignment Y offset:")
                 from: -99999
                 to: 99999
-                value: 25
-                stepSize: 1
+                value: 250
+                stepSize: 100
                 editable: true
             }
 

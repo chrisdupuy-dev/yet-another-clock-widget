@@ -12,7 +12,6 @@ A KDE Plasma clock widget tailored towards style and effects.
 # TODO 1.0
 - Polish
   - Sensible defaults for config
-  - Spinbox editing jank
   - Update README
 
 # TODO 1.1

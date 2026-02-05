@@ -20,13 +20,13 @@ PlasmoidItem {
     property string dateCustomFormat: Plasmoid.configuration.dateCustomFormat
     property int dateAlignment: Plasmoid.configuration.dateAlignment
     property int dateMargin: Plasmoid.configuration.dateMargin
-    property int dateOffsetX: Plasmoid.configuration.dateOffsetX
-    property int dateOffsetY: Plasmoid.configuration.dateOffsetY
+    property int dateOffsetX: Plasmoid.configuration.dateOffsetX / 100
+    property int dateOffsetY: Plasmoid.configuration.dateOffsetY / 100
     property int timeZoneFormat: Plasmoid.configuration.timeZoneFormat
     property int timeZoneAlignment: Plasmoid.configuration.timeZoneAlignment
     property int timeZoneMargin: Plasmoid.configuration.timeZoneMargin
-    property int timeZoneOffsetX: Plasmoid.configuration.timeZoneOffsetX
-    property int timeZoneOffsetY: Plasmoid.configuration.timeZoneOffsetY
+    property int timeZoneOffsetX: Plasmoid.configuration.timeZoneOffsetX / 100
+    property int timeZoneOffsetY: Plasmoid.configuration.timeZoneOffsetY / 100
     property int timeZoneUtcOffset
     property string timeZoneName
     property string timeZoneAbbreviation
@@ -55,8 +55,8 @@ PlasmoidItem {
             "dropShadowOpacity": Plasmoid.configuration.globalDropShadowOpacity,
             "dropShadowBlur": Plasmoid.configuration.globalDropShadowBlur,
             "dropShadowScale": Plasmoid.configuration.globalDropShadowScale,
-            "dropShadowHorizontalOffset": Plasmoid.configuration.globalDropShadowHorizontalOffset,
-            "dropShadowVerticalOffset": Plasmoid.configuration.globalDropShadowVerticalOffset
+            "dropShadowHorizontalOffset": Plasmoid.configuration.globalDropShadowHorizontalOffset / 100,
+            "dropShadowVerticalOffset": Plasmoid.configuration.globalDropShadowVerticalOffset / 100
         },
         "time": {
             "textColor": Plasmoid.configuration.timeTextColor,
@@ -76,8 +76,8 @@ PlasmoidItem {
             "dropShadowOpacity": Plasmoid.configuration.timeDropShadowOpacity,
             "dropShadowBlur": Plasmoid.configuration.timeDropShadowBlur,
             "dropShadowScale": Plasmoid.configuration.timeDropShadowScale,
-            "dropShadowHorizontalOffset": Plasmoid.configuration.timeDropShadowHorizontalOffset,
-            "dropShadowVerticalOffset": Plasmoid.configuration.timeDropShadowVerticalOffset
+            "dropShadowHorizontalOffset": Plasmoid.configuration.timeDropShadowHorizontalOffset / 100,
+            "dropShadowVerticalOffset": Plasmoid.configuration.timeDropShadowVerticalOffset / 100
         },
         "date": {
             "textColor": Plasmoid.configuration.dateTextColor,
@@ -97,8 +97,8 @@ PlasmoidItem {
             "dropShadowOpacity": Plasmoid.configuration.dateDropShadowOpacity,
             "dropShadowBlur": Plasmoid.configuration.dateDropShadowBlur,
             "dropShadowScale": Plasmoid.configuration.dateDropShadowScale,
-            "dropShadowHorizontalOffset": Plasmoid.configuration.dateDropShadowHorizontalOffset,
-            "dropShadowVerticalOffset": Plasmoid.configuration.dateDropShadowVerticalOffset
+            "dropShadowHorizontalOffset": Plasmoid.configuration.dateDropShadowHorizontalOffset / 100,
+            "dropShadowVerticalOffset": Plasmoid.configuration.dateDropShadowVerticalOffset / 100
         },
         "timeZone": {
             "textColor": Plasmoid.configuration.timeZoneTextColor,
@@ -118,8 +118,8 @@ PlasmoidItem {
             "dropShadowOpacity": Plasmoid.configuration.timeZoneDropShadowOpacity,
             "dropShadowBlur": Plasmoid.configuration.timeZoneDropShadowBlur,
             "dropShadowScale": Plasmoid.configuration.timeZoneDropShadowScale,
-            "dropShadowHorizontalOffset": Plasmoid.configuration.timeZoneDropShadowHorizontalOffset,
-            "dropShadowVerticalOffset": Plasmoid.configuration.timeZoneDropShadowVerticalOffset
+            "dropShadowHorizontalOffset": Plasmoid.configuration.timeZoneDropShadowHorizontalOffset / 100,
+            "dropShadowVerticalOffset": Plasmoid.configuration.timeZoneDropShadowVerticalOffset / 100
         }
     })
 

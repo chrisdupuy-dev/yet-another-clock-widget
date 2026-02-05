@@ -183,8 +183,7 @@ KCM.SimpleKCM {
                 from: -99999
                 to: 99999
                 value: 0
-                stepSize: 1
-                editable: true
+                stepSize: 100
             }
 
             RealSpinBox {
@@ -193,8 +192,8 @@ KCM.SimpleKCM {
                 Kirigami.FormData.label: i18n("TimeZone alignment Y offset:")
                 from: -99999
                 to: 99999
-                value: 25
-                stepSize: 1
+                value: 250
+                stepSize: 100
                 editable: true
             }
 

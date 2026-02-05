@@ -219,7 +219,7 @@ Kirigami.FormLayout {
 
         Kirigami.FormData.label: i18n("Horizontal offset:")
         realFrom: -99999
-        realValue: 0.05
+        realValue: 0.00
         realTo: 99999
     }
 
@@ -229,7 +229,7 @@ Kirigami.FormLayout {
 
         Kirigami.FormData.label: i18n("Vertical offset:")
         realFrom: -99999
-        realValue: 5.0
+        realValue: 0.00
         realTo: 99999
     }
 

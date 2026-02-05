@@ -62,10 +62,10 @@
       <default>1.0</default>
     </entry>
     <entry name="globalDropShadowHorizontalOffset" type="Double">
-      <default>500</default>
+      <default>0</default>
     </entry>
     <entry name="globalDropShadowVerticalOffset" type="Double">
-      <default>500</default>
+      <default>0</default>
     </entry>
     <entry name="globalDropShadowColorButton" type="Color">
       <default>#000000</default>
@@ -152,10 +152,10 @@
       <default>1.0</default>
     </entry>
     <entry name="timeDropShadowHorizontalOffset" type="Double">
-      <default>5.0</default>
+      <default>500</default>
     </entry>
     <entry name="timeDropShadowVerticalOffset" type="Double">
-      <default>5.0</default>
+      <default>500</default>
     </entry>
     <entry name="timeDropShadowColorButton" type="Color">
       <default>#000000</default>
@@ -198,7 +198,7 @@
       <default>0</default>
     </entry>
     <entry name="dateOffsetY" type="Double">
-      <default>25</default>
+      <default>-2500</default>
     </entry>
     <entry name="dateIsGlobalStyled" type="Bool">
       <default>true</default>
@@ -258,10 +258,10 @@
       <default>1.0</default>
     </entry>
     <entry name="dateDropShadowHorizontalOffset" type="Double">
-      <default>5.0</default>
+      <default>500</default>
     </entry>
     <entry name="dateDropShadowVerticalOffset" type="Double">
-      <default>5.0</default>
+      <default>500</default>
     </entry>
     <entry name="dateDropShadowColorButton" type="Color">
       <default>#000000</default>
@@ -302,7 +302,7 @@
       <default>0</default>
     </entry>
     <entry name="timeZoneOffsetY" type="Double">
-      <default>50</default>
+      <default>5000</default>
     </entry>
     <entry name="timeZoneIsGlobalStyled" type="Bool">
       <default>true</default>
@@ -362,10 +362,10 @@
       <default>1.0</default>
     </entry>
     <entry name="timeZoneDropShadowHorizontalOffset" type="Double">
-      <default>5.0</default>
+      <default>500</default>
     </entry>
     <entry name="timeZoneDropShadowVerticalOffset" type="Double">
-      <default>5.0</default>
+      <default>500</default>
     </entry>
     <entry name="timeZoneDropShadowColorButton" type="Color">
       <default>#000000</default>
