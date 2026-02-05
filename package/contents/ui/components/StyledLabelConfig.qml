@@ -7,6 +7,7 @@ import org.kde.kquickcontrols as KQControls
 
 Kirigami.FormLayout {
     id: root
+    Layout.fillWidth: true
 
     property alias colorText: colorTextField.text
     property alias colorButton: colorButton.color
@@ -143,22 +144,21 @@ Kirigami.FormLayout {
         }
 
         Kirigami.ContextualHelpButton {
-            toolTipText: i18n("This property defines the maximum pixel radius that blur with value 1.0 will reach.")
+            toolTipText: i18n("This property defines the maximum pixel radius that blur will reach.")
         }
     }
 
     RowLayout {
         Kirigami.FormData.label: i18n("Multiplier:")
+        
         enabled: blurEnabledCheckBox.checked
 
         RealSpinBox {
-        id: blurMultiplierSpinBox
+            id: blurMultiplierSpinBox
 
-        from: 0.0
-        value: 0
-        to: 99999
-        stepSize: 1
-        editable: true
+            realFrom: 0.00
+            realValue: 0.00
+            realTo: 99999.00
         }
 
         Kirigami.ContextualHelpButton {
@@ -218,11 +218,9 @@ Kirigami.FormLayout {
         enabled: dropShadowEnabledCheckBox.checked
 
         Kirigami.FormData.label: i18n("Horizontal offset:")
-        from: -99999
-        value: 5
-        to: 99999
-        stepSize: 1
-        editable: true
+        realFrom: -99999
+        realValue: 0.05
+        realTo: 99999
     }
 
     RealSpinBox {
@@ -230,11 +228,9 @@ Kirigami.FormLayout {
         enabled: dropShadowEnabledCheckBox.checked
 
         Kirigami.FormData.label: i18n("Vertical offset:")
-        from: -99999
-        value: 5
-        to: 99999
-        stepSize: 1
-        editable: true
+        realFrom: -99999
+        realValue: 5.0
+        realTo: 99999
     }
 
     RowLayout {
