@@ -107,6 +107,11 @@ KCM.SimpleKCM {
 
             twinFormLayouts: [styledLabelConfig]
 
+            Kirigami.Heading {
+                text: "Date"
+                Kirigami.FormData.isSection: true
+            }
+
             CheckBox {
                 id: showDateCheckBox
 
@@ -116,7 +121,7 @@ KCM.SimpleKCM {
             ComboBox {
                 id: dateFormatComboBox
 
-                Kirigami.FormData.label: "Date format:"
+                Kirigami.FormData.label: "Format:"
                 model: dateFormatModel
                 textRole: "text"
                 valueRole: "value"
@@ -158,7 +163,7 @@ KCM.SimpleKCM {
             ComboBox {
                 id: dateAlignmentComboBox
 
-                Kirigami.FormData.label: "Date alignment:"
+                Kirigami.FormData.label: "Alignment:"
                 model: dateAlignmentModel
                 textRole: "text"
                 valueRole: "value"
@@ -181,7 +186,7 @@ KCM.SimpleKCM {
             SpinBox {
                 id: dateMarginSpinBox
 
-                Kirigami.FormData.label: "Date alignment margin:"
+                Kirigami.FormData.label: "Alignment margin:"
                 from: 0
                 value: 5
                 stepSize: 1
@@ -191,7 +196,7 @@ KCM.SimpleKCM {
             RealSpinBox {
                 id: dateOffsetXSpinBox
 
-                Kirigami.FormData.label: "Date alignment X offset:"
+                Kirigami.FormData.label: "Alignment X offset:"
                 from: -99999
                 to: 99999
                 value: 0
@@ -202,7 +207,7 @@ KCM.SimpleKCM {
             RealSpinBox {
                 id: dateOffsetYSpinBox
 
-                Kirigami.FormData.label: "Date alignment Y offset:"
+                Kirigami.FormData.label: "Alignment Y offset:"
                 from: -99999
                 to: 99999
                 value: 25

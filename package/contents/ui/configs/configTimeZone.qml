@@ -110,16 +110,21 @@ KCM.SimpleKCM {
 
             twinFormLayouts: [styledLabelConfig]
 
+            Kirigami.Heading {
+                text: "Time Zone"
+                Kirigami.FormData.isSection: true
+            }
+
             CheckBox {
                 id: showTimeZoneCheckBox
 
-                Kirigami.FormData.label: "Show timeZone:"
+                Kirigami.FormData.label: "Show time zone:"
             }
 
             ComboBox {
                 id: timeZoneFormatComboBox
 
-                Kirigami.FormData.label: "TimeZone format:"
+                Kirigami.FormData.label: "Format:"
                 model: timeZoneFormatModel
                 textRole: "text"
                 valueRole: "value"
@@ -134,7 +139,7 @@ KCM.SimpleKCM {
             ComboBox {
                 id: timeZoneAlignmentComboBox
 
-                Kirigami.FormData.label: "TimeZone alignment:"
+                Kirigami.FormData.label: "Alignment:"
                 model: timeZoneAlignmentModel
                 textRole: "text"
                 valueRole: "value"
@@ -157,7 +162,7 @@ KCM.SimpleKCM {
             SpinBox {
                 id: timeZoneMarginSpinBox
 
-                Kirigami.FormData.label: "TimeZone alignment margin:"
+                Kirigami.FormData.label: "Alignment margin:"
                 from: 0
                 value: 5
                 stepSize: 1

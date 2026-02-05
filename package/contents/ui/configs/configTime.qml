@@ -82,6 +82,12 @@ KCM.SimpleKCM {
 
             twinFormLayouts: [styledLabelConfig]
 
+
+            Kirigami.Heading {
+                text: "Time"
+                Kirigami.FormData.isSection: true
+            }
+
             CheckBox {
                 id: showTimeCheckBox
 
@@ -91,7 +97,7 @@ KCM.SimpleKCM {
             ComboBox {
                 id: timeFormatComboBox
 
-                Kirigami.FormData.label: "Time format:"
+                Kirigami.FormData.label: "Format:"
                 model: timeFormatModel
                 textRole: "text"
                 valueRole: "value"

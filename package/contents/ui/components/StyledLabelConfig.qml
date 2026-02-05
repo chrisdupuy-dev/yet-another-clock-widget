@@ -2,7 +2,7 @@ import QtQuick 2.0
 import QtQuick.Controls 2.0
 import QtQuick.Dialogs
 import QtQuick.Layouts
-import org.kde.kirigami 2.5 as Kirigami
+import org.kde.kirigami as Kirigami
 import org.kde.kquickcontrols as KQControls
 
 Kirigami.FormLayout {
@@ -31,28 +31,36 @@ Kirigami.FormLayout {
     property alias dropShadowHorizontalOffset: dropShadowHorizontalOffsetSpinBox.value
     property alias dropShadowVerticalOffset: dropShadowVerticalOffsetSpinBox.value
 
-    TextField {
-        id: colorTextField
-
-        Kirigami.FormData.label: "Text color:"
-        onTextEdited: {
-            colorButton.color = colorTextField.text;
-        }
+    Kirigami.Heading {
+        text: "Text"
+        Kirigami.FormData.isSection: true
     }
 
-    KQControls.ColorButton {
-        id: colorButton
+    RowLayout {
+        Kirigami.FormData.label: "Color:"
 
-        Layout.fillWidth: true
-        showAlphaChannel: true
-        onAccepted: {
-            colorTextField.text = colorButton.color;
+        KQControls.ColorButton {
+            id: colorButton
+
+            Layout.fillWidth: true
+            showAlphaChannel: true
+            onAccepted: {
+                colorTextField.text = colorButton.color;
+            }
+        }
+
+        TextField {
+            id: colorTextField
+
+            onTextEdited: {
+                colorButton.color = colorTextField.text;
+            }
         }
     }
 
     Button {
-        Kirigami.FormData.label: "Text display:"
-        text: "Choose Style..."
+        Kirigami.FormData.label: "Font style:"
+        text: "Choose font style..."
         Layout.fillWidth: true
         onClicked: fontDialog.open()
     }
@@ -61,43 +69,58 @@ Kirigami.FormLayout {
         id: fontDialog
     }
 
+    Kirigami.Heading {
+        text: "Stroke"
+        Kirigami.FormData.isSection: true
+    }
+
     CheckBox {
         id: strokeEnabledCheckBox
 
-        Kirigami.FormData.label: "Stroke:"
+        Kirigami.FormData.label: "Enabled:"
     }
 
-    TextField {
-        id: strokeColorTextField
+    RowLayout{
+        Kirigami.FormData.label: "Color:"
+        enabled: strokeEnabledCheckBox.checked
 
-        Kirigami.FormData.label: "Stroke color:"
-        Layout.fillWidth: true
-        onTextEdited: {
-            strokeColorButton.color = strokeColorTextField.text;
+        KQControls.ColorButton {
+            id: strokeColorButton
+            enabled: strokeEnabledCheckBox.checked
+
+            Layout.fillWidth: true
+            showAlphaChannel: true
+            onAccepted: {
+                strokeColorTextField.text = strokeColorButton.color;
+            }
+        }
+
+        TextField {
+            id: strokeColorTextField
+
+            Layout.fillWidth: true
+            onTextEdited: {
+                strokeColorButton.color = strokeColorTextField.text;
+            }
         }
     }
 
-    KQControls.ColorButton {
-        id: strokeColorButton
-
-        Layout.fillWidth: true
-        showAlphaChannel: true
-        onAccepted: {
-            strokeColorTextField.text = strokeColorButton.color;
-        }
+    Kirigami.Heading {
+        text: "Blur"
+        Kirigami.FormData.isSection: true
     }
 
-    // Blur
     CheckBox {
         id: blurEnabledCheckBox
 
-        Kirigami.FormData.label: "Blur:"
+        Kirigami.FormData.label: "Enabled:"
     }
 
     Slider {
         id: blurSlider
+        enabled: blurEnabledCheckBox.checked
 
-        Kirigami.FormData.label: "Blur amount:"
+        Kirigami.FormData.label: "Amount:"
         Layout.fillWidth: true
         from: 0
         to: 1
@@ -105,21 +128,30 @@ Kirigami.FormLayout {
         stepSize: 0.05
     }
 
-    Slider {
-        id: blurMaxSlider
+    RowLayout {
+        enabled: blurEnabledCheckBox.checked
+        Kirigami.FormData.label: "Max:"
+        
+        Slider {
+            id: blurMaxSlider
 
-        Kirigami.FormData.label: "Blur max:"
-        Layout.fillWidth: true
-        from: 2
-        to: 64
-        value: 32
-        stepSize: 1
+            Layout.fillWidth: true
+            from: 2
+            to: 64
+            value: 32
+            stepSize: 1
+        }
+
+        Kirigami.ContextualHelpButton {
+            toolTipText: i18n("With most displays, screen tearing reduces latency at the cost of some visual fidelity at high framerates. Note that not all graphics drivers support this setting.")
+        }
     }
 
     RealSpinBox {
         id: blurMultiplierSpinBox
+        enabled: blurEnabledCheckBox.checked
 
-        Kirigami.FormData.label: "Blur multiplier:"
+        Kirigami.FormData.label: "Multiplier:"
         from: 0.0
         value: 0
         to: 99999
@@ -127,17 +159,22 @@ Kirigami.FormLayout {
         editable: true
     }
 
-    // Drop shadow
+    Kirigami.Heading {
+        text: "Drop shadow"
+        Kirigami.FormData.isSection: true
+    }
+
     CheckBox {
         id: dropShadowEnabledCheckBox
 
-        Kirigami.FormData.label: "Drop shadow:"
+        Kirigami.FormData.label: "Enabled:"
     }
 
     Slider {
         id: dropShadowOpacitySlider
+        enabled: dropShadowEnabledCheckBox.checked
 
-        Kirigami.FormData.label: "Drop shadow opacity"
+        Kirigami.FormData.label: "Opacity"
         Layout.fillWidth: true
         from: 0
         to: 1
@@ -147,8 +184,9 @@ Kirigami.FormLayout {
 
     Slider {
         id: dropShadowBlurSlider
+        enabled: dropShadowEnabledCheckBox.checked
 
-        Kirigami.FormData.label: "Drop shadow blur"
+        Kirigami.FormData.label: "Blur"
         Layout.fillWidth: true
         from: 0
         to: 1
@@ -158,8 +196,9 @@ Kirigami.FormLayout {
 
     Slider {
         id: dropShadowScaleSlider
+        enabled: dropShadowEnabledCheckBox.checked
 
-        Kirigami.FormData.label: "Drop shadow scale:"
+        Kirigami.FormData.label: "Scale:"
         Layout.fillWidth: true
         from: 0
         value: 1
@@ -169,8 +208,9 @@ Kirigami.FormLayout {
 
     RealSpinBox {
         id: dropShadowHorizontalOffsetSpinBox
+        enabled: dropShadowEnabledCheckBox.checked
 
-        Kirigami.FormData.label: "Drop shadow horizontal offset:"
+        Kirigami.FormData.label: "Horizontal offset:"
         from: -99999
         value: 5
         to: 99999
@@ -180,8 +220,9 @@ Kirigami.FormLayout {
 
     RealSpinBox {
         id: dropShadowVerticalOffsetSpinBox
+        enabled: dropShadowEnabledCheckBox.checked
 
-        Kirigami.FormData.label: "Drop shadow vertical offset:"
+        Kirigami.FormData.label: "Vertical offset:"
         from: -99999
         value: 5
         to: 99999
@@ -189,24 +230,27 @@ Kirigami.FormLayout {
         editable: true
     }
 
-    TextField {
-        id: dropShadowColorTextField
+    RowLayout {
+        Kirigami.FormData.label: "Color:"
+        enabled: dropShadowEnabledCheckBox.checked
 
-        Kirigami.FormData.label: "Drop shadow color:"
-        Layout.fillWidth: true
-        onTextEdited: {
-            dropShadowColorButton.color = dropShadowColorTextField.text;
+        KQControls.ColorButton {
+            id: dropShadowColorButton
+
+            Layout.fillWidth: true
+            showAlphaChannel: true
+            onAccepted: {
+                dropShadowColorTextField.text = dropShadowColorButton.color;
+            }
+        }
+
+        TextField {
+            id: dropShadowColorTextField
+
+            Layout.fillWidth: true
+            onTextEdited: {
+                dropShadowColorButton.color = dropShadowColorTextField.text;
+            }
         }
     }
-
-    KQControls.ColorButton {
-        id: dropShadowColorButton
-
-        Layout.fillWidth: true
-        showAlphaChannel: true
-        onAccepted: {
-            dropShadowColorTextField.text = dropShadowColorButton.color;
-        }
-    }
-
 }
