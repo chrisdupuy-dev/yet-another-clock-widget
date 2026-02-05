@@ -16,7 +16,6 @@ Kirigami.FormLayout {
     property alias fontStrikeout: fontDialog.selectedFont.strikeout
     property alias fontUnderline: fontDialog.selectedFont.underline
     property alias strokeEnabled: strokeEnabledCheckBox.checked
-    property alias strokeSize: strokeSizeTextField.text
     property alias strokeColorText: strokeColorTextField.text
     property alias strokeColorButton: strokeColorButton.color
     property alias blurEnabled: blurEnabledCheckBox.checked
@@ -66,12 +65,6 @@ Kirigami.FormLayout {
         id: strokeEnabledCheckBox
 
         Kirigami.FormData.label: "Stroke:"
-    }
-
-    TextField {
-        id: strokeSizeTextField
-
-        Kirigami.FormData.label: "Stroke size:"
     }
 
     TextField {

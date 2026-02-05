@@ -22,8 +22,7 @@ Item {
     property alias fontStrikeout: label.font.strikeout
     property alias fontUnderline: label.font.underline
     property bool strokeEnabled: false
-    property int strokeSize: 1
-    property color strokeColor: '#000000'
+    property alias strokeColor: label.styleColor
     property bool blurEnabled: false
     property real blur: 0.0 // 0.0 - 1.0
     property int blurMax: 32 // 2 - 64
@@ -192,53 +191,13 @@ Item {
         }
     ]
 
-    Repeater {
-        id: repeater
-
-        model: [{
-            "x": -root.strokeSize,
-            "y": 0
-        }, {
-            "x": root.strokeSize,
-            "y": 0
-        }, {
-            "x": 0,
-            "y": -root.strokeSize
-        }, {
-            "x": 0,
-            "y": root.strokeSize
-        }, {
-            "x": -root.strokeSize,
-            "y": -root.strokeSize
-        }, {
-            "x": root.strokeSize,
-            "y": -root.strokeSize
-        }, {
-            "x": -root.strokeSize,
-            "y": root.strokeSize
-        }, {
-            "x": root.strokeSize,
-            "y": root.strokeSize
-        }]
-
-        PlasmaComponents.Label {
-            required property var modelData
-
-            visible: root.strokeEnabled
-            text: label.text
-            font: label.font
-            color: root.strokeColor
-            x: modelData.x
-            y: modelData.y
-        }
-
-    }
-
     PlasmaComponents.Label {
         id: label
 
-        layer.enabled: true
+        style: root.strokeEnabled ? Text.Outline : Text.Normal
+        styleColor: root.strokeColor
 
+        layer.enabled: true
         layer.effect: MultiEffect {
             blurEnabled: root.blurEnabled
             blur: root.blur

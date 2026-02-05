@@ -21,7 +21,6 @@ KCM.SimpleKCM {
     property alias cfg_timeFontStrikeout: styledLabelConfig.fontStrikeout
     property alias cfg_timeFontUnderline: styledLabelConfig.fontUnderline
     property alias cfg_timeStrokeEnabled: styledLabelConfig.strokeEnabled
-    property alias cfg_timeStrokeSize: styledLabelConfig.strokeSize
     property alias cfg_timeStrokeColorText: styledLabelConfig.strokeColorText
     property alias cfg_timeStrokeColorButton: styledLabelConfig.strokeColorButton
     property alias cfg_timeBlurEnabled: styledLabelConfig.blurEnabled

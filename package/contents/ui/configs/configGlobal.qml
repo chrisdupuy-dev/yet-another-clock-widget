@@ -14,7 +14,6 @@ KCM.SimpleKCM {
     property alias cfg_globalFontStrikeout: styledLabelConfig.fontStrikeout
     property alias cfg_globalFontUnderline: styledLabelConfig.fontUnderline
     property alias cfg_globalStrokeEnabled: styledLabelConfig.strokeEnabled
-    property alias cfg_globalStrokeSize: styledLabelConfig.strokeSize
     property alias cfg_globalStrokeColorText: styledLabelConfig.strokeColorText
     property alias cfg_globalStrokeColorButton: styledLabelConfig.strokeColorButton
     property alias cfg_globalBlurEnabled: styledLabelConfig.blurEnabled

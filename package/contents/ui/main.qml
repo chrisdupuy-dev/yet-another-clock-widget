@@ -46,7 +46,6 @@ PlasmoidItem {
             "fontUnderline": Plasmoid.configuration.globalFontUnderline,
             "strokeEnabled": Plasmoid.configuration.globalStrokeEnabled,
             "strokeColor": Plasmoid.configuration.globalStrokeColorText,
-            "strokeSize": Plasmoid.configuration.globalStrokeSize,
             "blurEnabled": Plasmoid.configuration.globalBlurEnabled,
             "blur": Plasmoid.configuration.globalBlur,
             "blurMax": Plasmoid.configuration.globalBlurMax,
@@ -67,8 +66,7 @@ PlasmoidItem {
             "fontStrikeout": Plasmoid.configuration.timeFontStrikeout,
             "fontUnderline": Plasmoid.configuration.timeFontUnderline,
             "strokeEnabled": Plasmoid.configuration.timeStrokeEnabled,
-            "strokeColor": Plasmoid.configuration.timeStrokeColorText,
-            "strokeSize": Plasmoid.configuration.timeStrokeSize,            
+            "strokeColor": Plasmoid.configuration.timeStrokeColorText,        
             "blurEnabled": Plasmoid.configuration.timeBlurEnabled,
             "blur": Plasmoid.configuration.timeBlur,
             "blurMax": Plasmoid.configuration.timeBlurMax,
@@ -90,7 +88,6 @@ PlasmoidItem {
             "fontUnderline": Plasmoid.configuration.dateFontUnderline,
             "strokeEnabled": Plasmoid.configuration.dateStrokeEnabled,
             "strokeColor": Plasmoid.configuration.dateStrokeColorText,
-            "strokeSize": Plasmoid.configuration.dateStrokeSize,
             "blurEnabled": Plasmoid.configuration.dateBlurEnabled,
             "blur": Plasmoid.configuration.dateBlur,
             "blurMax": Plasmoid.configuration.dateBlurMax,
@@ -112,7 +109,6 @@ PlasmoidItem {
             "fontUnderline": Plasmoid.configuration.timeZoneFontUnderline,
             "strokeEnabled": Plasmoid.configuration.timeZoneStrokeEnabled,
             "strokeColor": Plasmoid.configuration.timeZoneStrokeColorText,
-            "strokeSize": Plasmoid.configuration.timeZoneStrokeSize,
             "blurEnabled": Plasmoid.configuration.timeZoneBlurEnabled,
             "blur": Plasmoid.configuration.timeZoneBlur,
             "blurMax": Plasmoid.configuration.timeZoneBlurMax,
@@ -198,14 +194,13 @@ PlasmoidItem {
             fontStrikeout: style.fontStrikeout
             fontUnderline: style.fontUnderline
             strokeEnabled: style.strokeEnabled
-            strokeColor: style.strokeColorText ?? '#000000'
-            strokeSize: style.strokeSize
+            strokeColor: style.strokeColor ?? '#000000'
             blurEnabled: style.blurEnabled
             blur: style.blur
             blurMax: style.blurMax
             blurMultiplier: style.blurMultiplier
             dropShadowEnabled: style.dropShadowEnabled
-            dropShadowColor: style.dropShadowColorText ?? '#000000'
+            dropShadowColor: style.dropShadowColor ?? '#000000'
             dropShadowOpacity: style.dropShadowOpacity
             dropShadowBlur: style.dropShadowBlur
             dropShadowScale: style.dropShadowScale
@@ -227,14 +222,13 @@ PlasmoidItem {
             fontStrikeout: style.fontStrikeout
             fontUnderline: style.fontUnderline
             strokeEnabled: style.strokeEnabled
-            strokeColor: style.strokeColorText ?? '#000000'
-            strokeSize: style.strokeSize
+            strokeColor: style.strokeColor ?? '#000000'
             blurEnabled: style.blurEnabled
             blur: style.blur
             blurMax: style.blurMax
             blurMultiplier: style.blurMultiplier
             dropShadowEnabled: style.dropShadowEnabled
-            dropShadowColor: style.dropShadowColorText ?? '#000000'
+            dropShadowColor: style.dropShadowColor ?? '#000000'
             dropShadowOpacity: style.dropShadowOpacity
             dropShadowBlur: style.dropShadowBlur
             dropShadowScale: style.dropShadowScale
@@ -277,14 +271,13 @@ PlasmoidItem {
             fontStrikeout: style.fontStrikeout
             fontUnderline: style.fontUnderline
             strokeEnabled: style.strokeEnabled
-            strokeColor: style.strokeColorText ?? '#000000'
-            strokeSize: style.strokeSize
+            strokeColor: style.strokeColor ?? '#000000'
             blurEnabled: style.blurEnabled
             blur: style.blur
             blurMax: style.blurMax
             blurMultiplier: style.blurMultiplier
             dropShadowEnabled: style.dropShadowEnabled
-            dropShadowColor: style.dropShadowColorText ?? '#000000'
+            dropShadowColor: style.dropShadowColor ?? '#000000'
             dropShadowOpacity: style.dropShadowOpacity
             dropShadowBlur: style.dropShadowBlur
             dropShadowScale: style.dropShadowScale

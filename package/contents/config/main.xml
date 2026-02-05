@@ -37,9 +37,6 @@
     <entry name="globalStrokeColorText" type="String">
       <default>#000000</default>
     </entry>
-    <entry name="globalStrokeSize" type="Double">
-      <default>1</default>
-    </entry>
     <entry name="globalBlurEnabled" type="Bool">
       <default>false</default>
     </entry>
@@ -118,9 +115,6 @@
     </entry>
     <entry name="timeStrokeColorText" type="String">
       <default>#000000</default>
-    </entry>
-    <entry name="timeStrokeSize" type="Double">
-      <default>1</default>
     </entry>
     <entry name="timeBlurEnabled" type="Bool">
       <default>false</default>
@@ -213,9 +207,6 @@
     <entry name="dateStrokeColorText" type="String">
       <default>#000000</default>
     </entry>
-    <entry name="dateStrokeSize" type="Double">
-      <default>1</default>
-    </entry>
     <entry name="dateBlurEnabled" type="Bool">
       <default>false</default>
     </entry>
@@ -303,9 +294,6 @@
     </entry>
     <entry name="timeZoneStrokeColorText" type="String">
       <default>#000000</default>
-    </entry>
-    <entry name="timeZoneStrokeSize" type="Double">
-      <default>1</default>
     </entry>
     <entry name="timeZoneBlurEnabled" type="Bool">
       <default>false</default>

@@ -10,9 +10,6 @@ A KDE Plasma clock widget tailored towards style and effects.
 
 
 # TODO 1.0
-- Styling
-  - Blur
-
 - Polish
   - Sensible defaults for config
   - Tooltip labels
@@ -23,13 +20,10 @@ A KDE Plasma clock widget tailored towards style and effects.
     - cutting off other labels/shadows
     - autoPaddingEnabled?
     - mousearea size
-  - Fix stroke color
-  - Fix drop shadow color
-  - Make strokes less jank
-    - Either scale the number of label redraws with the font or find another way
   - Update README
 
 # TODO 1.1
 - Styling
   - Masking
 - Previewable
+- Stroke thickness

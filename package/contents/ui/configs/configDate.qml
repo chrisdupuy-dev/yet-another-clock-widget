@@ -25,7 +25,6 @@ KCM.SimpleKCM {
     property alias cfg_dateFontStrikeout: styledLabelConfig.fontStrikeout
     property alias cfg_dateFontUnderline: styledLabelConfig.fontUnderline
     property alias cfg_dateStrokeEnabled: styledLabelConfig.strokeEnabled
-    property alias cfg_dateStrokeSize: styledLabelConfig.strokeSize
     property alias cfg_dateStrokeColorText: styledLabelConfig.strokeColorText
     property alias cfg_dateStrokeColorButton: styledLabelConfig.strokeColorButton
     property alias cfg_dateBlurEnabled: styledLabelConfig.blurEnabled
