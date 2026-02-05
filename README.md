@@ -17,6 +17,7 @@ A KDE Plasma clock widget tailored towards style and effects.
     - cutting off other labels/shadows
     - autoPaddingEnabled?
     - mousearea size
+  - Spinbox editing jank
   - Update README
 
 # TODO 1.1

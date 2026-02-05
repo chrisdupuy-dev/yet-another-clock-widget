@@ -82,24 +82,23 @@ KCM.SimpleKCM {
 
             twinFormLayouts: [styledLabelConfig]
 
-
             Kirigami.Heading {
-                text: "Time"
+                text: i18n("Time")
                 Kirigami.FormData.isSection: true
             }
 
             CheckBox {
                 id: showTimeCheckBox
 
-                Kirigami.FormData.label: "Show time:"
+                Kirigami.FormData.label: i18n("Show time:")
             }
 
             ComboBox {
                 id: timeFormatComboBox
 
-                Kirigami.FormData.label: "Format:"
+                Kirigami.FormData.label: i18n("Format:")
                 model: timeFormatModel
-                textRole: "text"
+                textRole: i18n("text")
                 valueRole: "value"
                 onActivated: {
                     currentIndex = timeAppearance.cfg_timeFormat;
@@ -112,9 +111,9 @@ KCM.SimpleKCM {
             ComboBox {
                 id: showSecondsComboBox
 
-                Kirigami.FormData.label: "Show seconds:"
+                Kirigami.FormData.label: i18n("Show seconds:")
                 model: showSecondsModel
-                textRole: "text"
+                textRole: i18n("text")
                 valueRole: "value"
                 onActivated: {
                     currentIndex = timeAppearance.cfg_showSeconds;
@@ -127,7 +126,7 @@ KCM.SimpleKCM {
             CheckBox {
                 id: timeIsGlobalStyled
 
-                Kirigami.FormData.label: "Use global style:"
+                Kirigami.FormData.label: i18n("Use global style:")
             }
 
         }

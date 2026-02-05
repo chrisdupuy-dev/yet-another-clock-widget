@@ -12,7 +12,7 @@ KCM.SimpleKCM {
         SpinBox {
             id: intervalRateSpinBox
 
-            Kirigami.FormData.label: "Label refresh interval (ms):"
+            Kirigami.FormData.label: i18n("Label refresh interval (ms):")
             from: 1000
             value: 1000
             to: 30000

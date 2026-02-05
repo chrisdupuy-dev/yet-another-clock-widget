@@ -108,22 +108,22 @@ KCM.SimpleKCM {
             twinFormLayouts: [styledLabelConfig]
 
             Kirigami.Heading {
-                text: "Date"
+                text: i18n("Date")
                 Kirigami.FormData.isSection: true
             }
 
             CheckBox {
                 id: showDateCheckBox
 
-                Kirigami.FormData.label: "Show date:"
+                Kirigami.FormData.label: i18n("Show date:")
             }
 
             ComboBox {
                 id: dateFormatComboBox
 
-                Kirigami.FormData.label: "Format:"
+                Kirigami.FormData.label: i18n("Format:")
                 model: dateFormatModel
-                textRole: "text"
+                textRole: i18n("text")
                 valueRole: "value"
                 onActivated: {
                     currentIndex = dateAppearance.cfg_dateFormat;
@@ -139,7 +139,7 @@ KCM.SimpleKCM {
             TextField {
                 id: dateFormatCustomTextField
 
-                Kirigami.FormData.label: "Custom format:"
+                Kirigami.FormData.label: i18n("Custom format:")
             }
 
             Text {
@@ -161,7 +161,7 @@ KCM.SimpleKCM {
             }
 
             RowLayout {
-                Kirigami.FormData.label: "Alignment:"
+                Kirigami.FormData.label: i18n("Alignment:")
 
                 ComboBox {
                     id: dateAlignmentComboBox
@@ -193,7 +193,7 @@ KCM.SimpleKCM {
             SpinBox {
                 id: dateMarginSpinBox
 
-                Kirigami.FormData.label: "Alignment margin:"
+                Kirigami.FormData.label: i18n("Alignment margin:")
                 from: 0
                 value: 5
                 stepSize: 1
@@ -203,7 +203,7 @@ KCM.SimpleKCM {
             RealSpinBox {
                 id: dateOffsetXSpinBox
 
-                Kirigami.FormData.label: "Alignment X offset:"
+                Kirigami.FormData.label: i18n("Alignment X offset:")
                 from: -99999
                 to: 99999
                 value: 0
@@ -214,7 +214,7 @@ KCM.SimpleKCM {
             RealSpinBox {
                 id: dateOffsetYSpinBox
 
-                Kirigami.FormData.label: "Alignment Y offset:"
+                Kirigami.FormData.label: i18n("Alignment Y offset:")
                 from: -99999
                 to: 99999
                 value: 25
@@ -225,7 +225,7 @@ KCM.SimpleKCM {
             CheckBox {
                 id: dateIsGlobalStyled
 
-                Kirigami.FormData.label: "Use global style:"
+                Kirigami.FormData.label: i18n("Use global style:")
             }
 
         }

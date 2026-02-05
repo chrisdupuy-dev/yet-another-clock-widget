@@ -186,7 +186,7 @@ PlasmoidItem {
             readonly property var style: root.textStyles[root.timeStyleKey] || root.textStyles.global
 
             visible: Plasmoid.configuration.showTime
-            text: DateTimeFormatter.formatTime(dataSource.data["Local"]["DateTime"], root.timeFormat, root.showSeconds === Enums.ShowSeconds.Always)
+            text: i18n(DateTimeFormatter.formatTime(dataSource.data["Local"]["DateTime"], root.timeFormat, root.showSeconds === Enums.ShowSeconds.Always))
             color: style.textColor ?? '#FFFFFF'
             fontFamily: style.fontFamily
             fontPointSize: style.fontPointSize

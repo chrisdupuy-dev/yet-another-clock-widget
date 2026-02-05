@@ -111,22 +111,22 @@ KCM.SimpleKCM {
             twinFormLayouts: [styledLabelConfig]
 
             Kirigami.Heading {
-                text: "Time Zone"
+                text: i18n("Time Zone")
                 Kirigami.FormData.isSection: true
             }
 
             CheckBox {
                 id: showTimeZoneCheckBox
 
-                Kirigami.FormData.label: "Show time zone:"
+                Kirigami.FormData.label: i18n("Show time zone:")
             }
 
             ComboBox {
                 id: timeZoneFormatComboBox
 
-                Kirigami.FormData.label: "Format:"
+                Kirigami.FormData.label: i18n("Format:")
                 model: timeZoneFormatModel
-                textRole: "text"
+                textRole: i18n("text")
                 valueRole: "value"
                 onActivated: {
                     currentIndex = timeZoneAppearance.cfg_timeZoneFormat;
@@ -137,13 +137,13 @@ KCM.SimpleKCM {
             }
 
             RowLayout {
-                Kirigami.FormData.label: "Alignment:"
+                Kirigami.FormData.label: i18n("Alignment:")
 
                 ComboBox {
                     id: timeZoneAlignmentComboBox
 
                     model: timeZoneAlignmentModel
-                    textRole: "text"
+                    textRole: i18n("text")
                     valueRole: "value"
                     onActivated: {
                         currentIndex = timeZoneAppearance.cfg_timeZoneAlignment;
@@ -169,7 +169,7 @@ KCM.SimpleKCM {
             SpinBox {
                 id: timeZoneMarginSpinBox
 
-                Kirigami.FormData.label: "Alignment margin:"
+                Kirigami.FormData.label: i18n("Alignment margin:")
                 from: 0
                 value: 5
                 stepSize: 1
@@ -179,7 +179,7 @@ KCM.SimpleKCM {
             RealSpinBox {
                 id: timeZoneOffsetXSpinBox
 
-                Kirigami.FormData.label: "TimeZone alignment X offset:"
+                Kirigami.FormData.label: i18n("TimeZone alignment X offset:")
                 from: -99999
                 to: 99999
                 value: 0
@@ -190,7 +190,7 @@ KCM.SimpleKCM {
             RealSpinBox {
                 id: timeZoneOffsetYSpinBox
 
-                Kirigami.FormData.label: "TimeZone alignment Y offset:"
+                Kirigami.FormData.label: i18n("TimeZone alignment Y offset:")
                 from: -99999
                 to: 99999
                 value: 25
@@ -201,7 +201,7 @@ KCM.SimpleKCM {
             CheckBox {
                 id: timeZoneIsGlobalStyled
 
-                Kirigami.FormData.label: "Use global style:"
+                Kirigami.FormData.label: i18n("Use global style:")
             }
 
         }

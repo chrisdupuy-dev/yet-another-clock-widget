@@ -32,12 +32,12 @@ Kirigami.FormLayout {
     property alias dropShadowVerticalOffset: dropShadowVerticalOffsetSpinBox.value
 
     Kirigami.Heading {
-        text: "Text"
+        text: i18n("Text")
         Kirigami.FormData.isSection: true
     }
 
     RowLayout {
-        Kirigami.FormData.label: "Color:"
+        Kirigami.FormData.label: i18n("Color:")
 
         KQControls.ColorButton {
             id: colorButton
@@ -59,8 +59,8 @@ Kirigami.FormLayout {
     }
 
     Button {
-        Kirigami.FormData.label: "Font style:"
-        text: "Choose font style..."
+        Kirigami.FormData.label: i18n("Font style:")
+        text: i18n("Choose font style...")
         Layout.fillWidth: true
         onClicked: fontDialog.open()
     }
@@ -70,18 +70,18 @@ Kirigami.FormLayout {
     }
 
     Kirigami.Heading {
-        text: "Stroke"
+        text: i18n("Stroke")
         Kirigami.FormData.isSection: true
     }
 
     CheckBox {
         id: strokeEnabledCheckBox
 
-        Kirigami.FormData.label: "Enabled:"
+        Kirigami.FormData.label: i18n("Enabled:")
     }
 
     RowLayout{
-        Kirigami.FormData.label: "Color:"
+        Kirigami.FormData.label: i18n("Color:")
         enabled: strokeEnabledCheckBox.checked
 
         KQControls.ColorButton {
@@ -106,21 +106,21 @@ Kirigami.FormLayout {
     }
 
     Kirigami.Heading {
-        text: "Blur"
+        text: i18n("Blur")
         Kirigami.FormData.isSection: true
     }
 
     CheckBox {
         id: blurEnabledCheckBox
 
-        Kirigami.FormData.label: "Enabled:"
+        Kirigami.FormData.label: i18n("Enabled:")
     }
 
     Slider {
         id: blurSlider
         enabled: blurEnabledCheckBox.checked
 
-        Kirigami.FormData.label: "Amount:"
+        Kirigami.FormData.label: i18n("Amount:")
         Layout.fillWidth: true
         from: 0
         to: 1
@@ -130,7 +130,7 @@ Kirigami.FormLayout {
 
     RowLayout {
         enabled: blurEnabledCheckBox.checked
-        Kirigami.FormData.label: "Max:"
+        Kirigami.FormData.label: i18n("Max:")
         
         Slider {
             id: blurMaxSlider
@@ -148,7 +148,7 @@ Kirigami.FormLayout {
     }
 
     RowLayout {
-        Kirigami.FormData.label: "Multiplier:"
+        Kirigami.FormData.label: i18n("Multiplier:")
         enabled: blurEnabledCheckBox.checked
 
         RealSpinBox {
@@ -167,21 +167,21 @@ Kirigami.FormLayout {
     }
 
     Kirigami.Heading {
-        text: "Drop shadow"
+        text: i18n("Drop shadow")
         Kirigami.FormData.isSection: true
     }
 
     CheckBox {
         id: dropShadowEnabledCheckBox
 
-        Kirigami.FormData.label: "Enabled:"
+        Kirigami.FormData.label: i18n("Enabled:")
     }
 
     Slider {
         id: dropShadowOpacitySlider
         enabled: dropShadowEnabledCheckBox.checked
 
-        Kirigami.FormData.label: "Opacity"
+        Kirigami.FormData.label: i18n("Opacity")
         Layout.fillWidth: true
         from: 0
         to: 1
@@ -193,7 +193,7 @@ Kirigami.FormLayout {
         id: dropShadowBlurSlider
         enabled: dropShadowEnabledCheckBox.checked
 
-        Kirigami.FormData.label: "Blur"
+        Kirigami.FormData.label: i18n("Blur")
         Layout.fillWidth: true
         from: 0
         to: 1
@@ -205,7 +205,7 @@ Kirigami.FormLayout {
         id: dropShadowScaleSlider
         enabled: dropShadowEnabledCheckBox.checked
 
-        Kirigami.FormData.label: "Scale:"
+        Kirigami.FormData.label: i18n("Scale:")
         Layout.fillWidth: true
         from: 0
         value: 1
@@ -217,7 +217,7 @@ Kirigami.FormLayout {
         id: dropShadowHorizontalOffsetSpinBox
         enabled: dropShadowEnabledCheckBox.checked
 
-        Kirigami.FormData.label: "Horizontal offset:"
+        Kirigami.FormData.label: i18n("Horizontal offset:")
         from: -99999
         value: 5
         to: 99999
@@ -229,7 +229,7 @@ Kirigami.FormLayout {
         id: dropShadowVerticalOffsetSpinBox
         enabled: dropShadowEnabledCheckBox.checked
 
-        Kirigami.FormData.label: "Vertical offset:"
+        Kirigami.FormData.label: i18n("Vertical offset:")
         from: -99999
         value: 5
         to: 99999
@@ -238,7 +238,7 @@ Kirigami.FormLayout {
     }
 
     RowLayout {
-        Kirigami.FormData.label: "Color:"
+        Kirigami.FormData.label: i18n("Color:")
         enabled: dropShadowEnabledCheckBox.checked
 
         KQControls.ColorButton {
