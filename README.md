@@ -12,11 +12,6 @@ A KDE Plasma clock widget tailored towards style and effects.
 # TODO 1.0
 - Polish
   - Sensible defaults for config
-  - Locale stuff vs i18n
-  - Fix widget width/height
-    - cutting off other labels/shadows
-    - autoPaddingEnabled?
-    - mousearea size
   - Spinbox editing jank
   - Update README
 

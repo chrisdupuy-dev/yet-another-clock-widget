@@ -193,7 +193,7 @@ Item {
 
     PlasmaComponents.Label {
         id: label
-
+   
         style: root.strokeEnabled ? Text.Outline : Text.Normal
         styleColor: root.strokeColor
 
@@ -211,8 +211,10 @@ Item {
             shadowBlur: root.dropShadowBlur
             shadowVerticalOffset: root.dropShadowVerticalOffset
             shadowHorizontalOffset: root.dropShadowHorizontalOffset
-        }
 
+            autoPaddingEnabled: false
+            paddingRect: Qt.rect(600, 600, 600, 600) 
+        }
     }
 
 }

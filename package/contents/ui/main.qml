@@ -123,8 +123,6 @@ PlasmoidItem {
         }
     })
 
-    width: Kirigami.Units.gridUnit * 15
-    height: Kirigami.Units.gridUnit * 15
     Plasmoid.backgroundHints: PlasmaCore.Types.NoBackground
     preferredRepresentation: compactRepresentation
     toolTipMainText: Qt.locale().toString(dataSource.data["Local"]["DateTime"], "dddd")
