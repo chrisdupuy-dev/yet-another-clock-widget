@@ -7,7 +7,7 @@ import org.kde.kirigami as Kirigami
 import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.plasma5support as P5Support
 import org.kde.plasma.plasmoid
-import org.kde.plasma.workspace.calendar 2.0 as PlasmaCalendar
+import org.kde.plasma.workspace.calendar as PlasmaCalendar
 import "utilities"
 
 PlasmoidItem {

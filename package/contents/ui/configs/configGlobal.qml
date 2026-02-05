@@ -1,5 +1,5 @@
 import "../components"
-import QtQuick 2.0
+import QtQuick
 import QtQuick.Layouts
 import org.kde.kcmutils as KCM
 

@@ -1,10 +1,10 @@
 import "../components"
 import "../utilities"
-import QtQuick 2.0
-import QtQuick.Controls 2.0
+import QtQuick
+import QtQuick.Controls
 import QtQuick.Layouts
 import org.kde.kcmutils as KCM
-import org.kde.kirigami 2.5 as Kirigami
+import org.kde.kirigami as Kirigami
 
 KCM.SimpleKCM {
     id: timeAppearance

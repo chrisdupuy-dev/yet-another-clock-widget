@@ -5,7 +5,7 @@
       http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
   <kcfgfile name=""/>
 
-  <group name="General">
+  <group name="Global">
     <!-- Global config-->
     <entry name="globalTextColorButton" type="Color">
       <default>#FFFFFF</default>
@@ -73,14 +73,25 @@
     <entry name="globalDropShadowColorText" type="String">
       <default>#000000</default>
     </entry>
-    <!-- Time config-->
+  </group>
+  <group name="Time">
     <entry name="showTime" type="Bool">
       <default>true</default>
     </entry>
     <entry name="showSeconds" type="Enum">
+      <choices>
+        <choice name="TooltipOnly" />
+        <choice name="Always" />
+        <choice name="Never" />
+      </choices>
       <default>0</default>
     </entry>
     <entry name="timeFormat" type="Enum">
+      <choices>
+        <choice name="SystemDefault" />
+        <choice name="TwelveHour" />
+        <choice name="TwentyFourHour" />
+      </choices>
       <default>0</default>
     </entry>
     <entry name="timeIsGlobalStyled" type="Bool">
@@ -152,17 +163,32 @@
     <entry name="timeDropShadowColorText" type="String">
       <default>#000000</default>
     </entry>
-    <!-- Date config-->
+  </group>
+  <group name="Date">
     <entry name="showDate" type="Bool">
       <default>true</default>
     </entry>
     <entry name="dateFormat" type="Enum">
+      <choices>
+        <choice name="SystemDefault" />
+        <choice name="Short" />
+        <choice name="Long" />
+        <choice name="Iso" />
+        <choice name="Custom" />
+      </choices>
       <default>0</default>
     </entry>
     <entry name="dateCustomFormat" type="String">
       <default>ddd dd MMM</default>
     </entry>
     <entry name="dateAlignment" type="Enum">
+      <choices>
+        <choice name="Top" />
+        <choice name="Right" />
+        <choice name="Bottom" />
+        <choice name="Left" />
+        <choice name="Offset" />
+      </choices>
       <default>0</default>
     </entry>
     <entry name="dateMargin" type="UInt">
@@ -243,14 +269,30 @@
     <entry name="dateDropShadowColorText" type="String">
       <default>#000000</default>
     </entry>
-    <!-- Time Zone config-->
+  </group>
+  <group name="Time Zone">
     <entry name="showTimeZone" type="Bool">
       <default>true</default>
     </entry>
     <entry name="timeZoneFormat" type="Enum">
+      <choices>
+        <choice name="Name" />
+        <choice name="Abbreviation" />
+        <choice name="City" />
+        <choice name="Continent" />
+        <choice name="UtcOffset" />
+        <choice name="Full" />
+      </choices>
       <default>0</default>
     </entry>
     <entry name="timeZoneAlignment" type="Enum">
+      <choices>
+        <choice name="Top" />
+        <choice name="Right" />
+        <choice name="Bottom" />
+        <choice name="Left" />
+        <choice name="Offset" />
+      </choices>
       <default>2</default>
     </entry>
     <entry name="timeZoneMargin" type="UInt">
@@ -331,7 +373,8 @@
     <entry name="timeZoneDropShadowColorText" type="String">
       <default>#000000</default>
     </entry>
-    <!-- Misc config-->
+  </group>
+  <group name="Misc">
     <entry name="intervalRate" type="UInt">
       <default>1000</default>
     </entry>
