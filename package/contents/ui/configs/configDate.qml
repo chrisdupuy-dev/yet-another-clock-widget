@@ -4,7 +4,7 @@ import QtQuick 2.0
 import QtQuick.Controls 2.0
 import QtQuick.Layouts
 import org.kde.kcmutils as KCM
-import org.kde.kirigami 2.5 as Kirigami
+import org.kde.kirigami as Kirigami
 
 KCM.SimpleKCM {
     id: dateAppearance
@@ -160,26 +160,33 @@ KCM.SimpleKCM {
 
             }
 
-            ComboBox {
-                id: dateAlignmentComboBox
-
+            RowLayout {
                 Kirigami.FormData.label: "Alignment:"
-                model: dateAlignmentModel
-                textRole: "text"
-                valueRole: "value"
-                onActivated: {
-                    currentIndex = dateAppearance.cfg_dateAlignment;
+
+                ComboBox {
+                    id: dateAlignmentComboBox
+
+                    model: dateAlignmentModel
+                    textRole: "text"
+                    valueRole: "value"
+                    onActivated: {
+                        currentIndex = dateAppearance.cfg_dateAlignment;
+                    }
+                    onCurrentIndexChanged: {
+                        dateMarginSpinBox.enabled = currentIndex !== Enums.Alignment.Offset;
+                        dateMarginSpinBox.visible = currentIndex !== Enums.Alignment.Offset;
+                        dateOffsetXSpinBox.enabled = currentIndex === Enums.Alignment.Offset;
+                        dateOffsetXSpinBox.visible = currentIndex === Enums.Alignment.Offset;
+                        dateOffsetYSpinBox.enabled = currentIndex === Enums.Alignment.Offset;
+                        dateOffsetYSpinBox.visible = currentIndex === Enums.Alignment.Offset;
+                    }
+                    onAccepted: {
+                        dateAppearance.cfg_dateAlignment = currentIndex;
+                    }
                 }
-                onCurrentIndexChanged: {
-                    dateMarginSpinBox.enabled = currentIndex !== Enums.Alignment.Offset;
-                    dateMarginSpinBox.visible = currentIndex !== Enums.Alignment.Offset;
-                    dateOffsetXSpinBox.enabled = currentIndex === Enums.Alignment.Offset;
-                    dateOffsetXSpinBox.visible = currentIndex === Enums.Alignment.Offset;
-                    dateOffsetYSpinBox.enabled = currentIndex === Enums.Alignment.Offset;
-                    dateOffsetYSpinBox.visible = currentIndex === Enums.Alignment.Offset;
-                }
-                onAccepted: {
-                    dateAppearance.cfg_dateAlignment = currentIndex;
+
+                Kirigami.ContextualHelpButton {
+                    toolTipText: i18n("Alignment is relational to the time text.")
                 }
             }
 

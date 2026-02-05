@@ -4,7 +4,7 @@ import QtQuick 2.0
 import QtQuick.Controls 2.0
 import QtQuick.Layouts
 import org.kde.kcmutils as KCM
-import org.kde.kirigami 2.5 as Kirigami
+import org.kde.kirigami as Kirigami
 
 KCM.SimpleKCM {
     id: timeZoneAppearance
@@ -136,26 +136,33 @@ KCM.SimpleKCM {
                 }
             }
 
-            ComboBox {
-                id: timeZoneAlignmentComboBox
-
+            RowLayout {
                 Kirigami.FormData.label: "Alignment:"
-                model: timeZoneAlignmentModel
-                textRole: "text"
-                valueRole: "value"
-                onActivated: {
-                    currentIndex = timeZoneAppearance.cfg_timeZoneAlignment;
+
+                ComboBox {
+                    id: timeZoneAlignmentComboBox
+
+                    model: timeZoneAlignmentModel
+                    textRole: "text"
+                    valueRole: "value"
+                    onActivated: {
+                        currentIndex = timeZoneAppearance.cfg_timeZoneAlignment;
+                    }
+                    onCurrentIndexChanged: {
+                        timeZoneMarginSpinBox.enabled = currentIndex !== Enums.Alignment.Offset;
+                        timeZoneMarginSpinBox.visible = currentIndex !== Enums.Alignment.Offset;
+                        timeZoneOffsetXSpinBox.enabled = currentIndex === Enums.Alignment.Offset;
+                        timeZoneOffsetXSpinBox.visible = currentIndex === Enums.Alignment.Offset;
+                        timeZoneOffsetYSpinBox.enabled = currentIndex === Enums.Alignment.Offset;
+                        timeZoneOffsetYSpinBox.visible = currentIndex === Enums.Alignment.Offset;
+                    }
+                    onAccepted: {
+                        timeZoneAppearance.cfg_timeZoneAlignment = currentIndex;
+                    }
                 }
-                onCurrentIndexChanged: {
-                    timeZoneMarginSpinBox.enabled = currentIndex !== Enums.Alignment.Offset;
-                    timeZoneMarginSpinBox.visible = currentIndex !== Enums.Alignment.Offset;
-                    timeZoneOffsetXSpinBox.enabled = currentIndex === Enums.Alignment.Offset;
-                    timeZoneOffsetXSpinBox.visible = currentIndex === Enums.Alignment.Offset;
-                    timeZoneOffsetYSpinBox.enabled = currentIndex === Enums.Alignment.Offset;
-                    timeZoneOffsetYSpinBox.visible = currentIndex === Enums.Alignment.Offset;
-                }
-                onAccepted: {
-                    timeZoneAppearance.cfg_timeZoneAlignment = currentIndex;
+
+                Kirigami.ContextualHelpButton {
+                    toolTipText: i18n("Alignment is relational to the time text.")
                 }
             }
 

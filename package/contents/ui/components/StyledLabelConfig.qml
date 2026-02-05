@@ -143,20 +143,27 @@ Kirigami.FormLayout {
         }
 
         Kirigami.ContextualHelpButton {
-            toolTipText: i18n("With most displays, screen tearing reduces latency at the cost of some visual fidelity at high framerates. Note that not all graphics drivers support this setting.")
+            toolTipText: i18n("This property defines the maximum pixel radius that blur with value 1.0 will reach.")
         }
     }
 
-    RealSpinBox {
-        id: blurMultiplierSpinBox
+    RowLayout {
+        Kirigami.FormData.label: "Multiplier:"
         enabled: blurEnabledCheckBox.checked
 
-        Kirigami.FormData.label: "Multiplier:"
+        RealSpinBox {
+        id: blurMultiplierSpinBox
+
         from: 0.0
         value: 0
         to: 99999
         stepSize: 1
         editable: true
+        }
+
+        Kirigami.ContextualHelpButton {
+            toolTipText: i18n("This property defines a multiplier for extending the blur radius.")
+        }
     }
 
     Kirigami.Heading {
