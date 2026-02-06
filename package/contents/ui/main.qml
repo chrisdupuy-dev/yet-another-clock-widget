@@ -12,7 +12,7 @@ import "utilities"
 
 PlasmoidItem {
     id: root
-
+    
     readonly property string currentDate: DateTimeFormatter.formatDate(dataSource.data["Local"]["DateTime"], root.dateFormat, root.dateCustomFormat)
     property int timeFormat: Plasmoid.configuration.timeFormat
     property int showSeconds: Plasmoid.configuration.showSeconds
@@ -166,11 +166,13 @@ PlasmoidItem {
 
     compactRepresentation: MouseArea {
         id: timeDateArea
-
+            
         property bool wasExpanded
+        Layout.minimumWidth: parent.implicitWidth
+        Layout.minimumHeight: parent.implicitHeight
+        Layout.preferredWidth: Layout.minimumWidth
+        Layout.preferredHeight: Layout.minimumHeight
 
-        Layout.minimumWidth: Plasmoid.formFactor !== PlasmaCore.Types.Vertical ? timeDateArea.height : Kirigami.Units.gridUnit
-        Layout.minimumHeight: Plasmoid.formFactor === PlasmaCore.Types.Vertical ? timeDateArea.width : Kirigami.Units.gridUnit
         activeFocusOnTab: true
         Accessible.name: Plasmoid.title
         Accessible.description: i18nc("@info:tooltip", "Current time is %1; Current date is %2", DateTimeFormatter.formatTime(dataSource.data["Local"]["DateTime"], root.timeFormat, (root.showSeconds === Enums.ShowSeconds.Always)), root.currentDate)
@@ -180,6 +182,13 @@ PlasmoidItem {
 
         StyledLabel {
             id: timeLabel
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+
+            anchorTarget: parent
+            anchorAlignment: Enums.Alignment.Offset
+            offsetX: 0
+            offsetY: 0
 
             readonly property var style: root.textStyles[root.timeStyleKey] || root.textStyles.global
 
