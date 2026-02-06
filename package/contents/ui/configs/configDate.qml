@@ -29,14 +29,19 @@ KCM.SimpleKCM {
     property alias cfg_dateStrokeColorButton: styledLabelConfig.strokeColorButton
     property alias cfg_dateBlurEnabled: styledLabelConfig.blurEnabled
     property alias cfg_dateBlur: styledLabelConfig.blur
+    property alias cfg_dateBlurDefault: styledLabelConfig.blurDefault
     property alias cfg_dateBlurMax: styledLabelConfig.blurMax
+    property alias cfg_dateBlurMaxDefault: styledLabelConfig.blurMaxDefault
     property alias cfg_dateBlurMultiplier: styledLabelConfig.blurMultiplier
     property alias cfg_dateDropShadowEnabled: styledLabelConfig.dropShadowEnabled
     property alias cfg_dateDropShadowColorText: styledLabelConfig.dropShadowColorText
     property alias cfg_dateDropShadowColorButton: styledLabelConfig.dropShadowColorButton
     property alias cfg_dateDropShadowOpacity: styledLabelConfig.dropShadowOpacity
+    property alias cfg_dateDropShadowOpacityDefault: styledLabelConfig.dropShadowOpacityDefault
     property alias cfg_dateDropShadowBlur: styledLabelConfig.dropShadowBlur
+    property alias cfg_dateDropShadowBlurDefault: styledLabelConfig.dropShadowBlurDefault
     property alias cfg_dateDropShadowScale: styledLabelConfig.dropShadowScale
+    property alias cfg_dateDropShadowScaleDefault: styledLabelConfig.dropShadowScaleDefault
     property alias cfg_dateDropShadowHorizontalOffset: styledLabelConfig.dropShadowHorizontalOffset
     property alias cfg_dateDropShadowVerticalOffset: styledLabelConfig.dropShadowVerticalOffset
     readonly property string dateFormatDocumentationUrl: "https://doc.qt.io/qt-6/qml-qtqml-qt.html#formatDateTime-method"

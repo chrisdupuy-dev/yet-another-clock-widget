@@ -11,7 +11,6 @@ A KDE Plasma clock widget tailored towards style and effects.
 
 # TODO 1.0
 - Polish
-  - Sensible defaults for config
   - Update README
 
 # TODO 1.1

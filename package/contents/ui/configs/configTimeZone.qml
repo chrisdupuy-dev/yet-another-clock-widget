@@ -28,14 +28,19 @@ KCM.SimpleKCM {
     property alias cfg_timeZoneStrokeColorButton: styledLabelConfig.strokeColorButton
     property alias cfg_timeZoneBlurEnabled: styledLabelConfig.blurEnabled
     property alias cfg_timeZoneBlur: styledLabelConfig.blur
+    property alias cfg_timeZoneBlurDefault: styledLabelConfig.blurDefault
     property alias cfg_timeZoneBlurMax: styledLabelConfig.blurMax
+    property alias cfg_timeZoneBlurMaxDefault: styledLabelConfig.blurMaxDefault
     property alias cfg_timeZoneBlurMultiplier: styledLabelConfig.blurMultiplier
     property alias cfg_timeZoneDropShadowEnabled: styledLabelConfig.dropShadowEnabled
     property alias cfg_timeZoneDropShadowColorText: styledLabelConfig.dropShadowColorText
     property alias cfg_timeZoneDropShadowColorButton: styledLabelConfig.dropShadowColorButton
     property alias cfg_timeZoneDropShadowOpacity: styledLabelConfig.dropShadowOpacity
+    property alias cfg_timeZoneDropShadowOpacityDefault: styledLabelConfig.dropShadowOpacityDefault
     property alias cfg_timeZoneDropShadowBlur: styledLabelConfig.dropShadowBlur
+    property alias cfg_timeZoneDropShadowBlurDefault: styledLabelConfig.dropShadowBlurDefault
     property alias cfg_timeZoneDropShadowScale: styledLabelConfig.dropShadowScale
+    property alias cfg_timeZoneDropShadowScaleDefault: styledLabelConfig.dropShadowScaleDefault
     property alias cfg_timeZoneDropShadowHorizontalOffset: styledLabelConfig.dropShadowHorizontalOffset
     property alias cfg_timeZoneDropShadowVerticalOffset: styledLabelConfig.dropShadowVerticalOffset
 

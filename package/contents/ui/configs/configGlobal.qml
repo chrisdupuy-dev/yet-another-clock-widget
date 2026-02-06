@@ -18,12 +18,17 @@ KCM.SimpleKCM {
     property alias cfg_globalStrokeColorButton: styledLabelConfig.strokeColorButton
     property alias cfg_globalBlurEnabled: styledLabelConfig.blurEnabled
     property alias cfg_globalBlur: styledLabelConfig.blur
+    property alias cfg_globalBlurDefault: styledLabelConfig.blurDefault
     property alias cfg_globalBlurMax: styledLabelConfig.blurMax
+    property alias cfg_globalBlurMaxDefault: styledLabelConfig.blurMaxDefault
     property alias cfg_globalBlurMultiplier: styledLabelConfig.blurMultiplier
     property alias cfg_globalDropShadowEnabled: styledLabelConfig.dropShadowEnabled
     property alias cfg_globalDropShadowOpacity: styledLabelConfig.dropShadowOpacity
+    property alias cfg_globalDropShadowOpacityDefault: styledLabelConfig.dropShadowOpacityDefault
     property alias cfg_globalDropShadowBlur: styledLabelConfig.dropShadowBlur
+    property alias cfg_globalDropShadowBlurDefault: styledLabelConfig.dropShadowBlurDefault
     property alias cfg_globalDropShadowScale: styledLabelConfig.dropShadowScale
+    property alias cfg_globalDropShadowScaleDefault: styledLabelConfig.dropShadowScaleDefault
     property alias cfg_globalDropShadowHorizontalOffset: styledLabelConfig.dropShadowHorizontalOffset
     property alias cfg_globalDropShadowVerticalOffset: styledLabelConfig.dropShadowVerticalOffset
     property alias cfg_globalDropShadowColorText: styledLabelConfig.dropShadowColorText

@@ -21,14 +21,19 @@ Kirigami.FormLayout {
     property alias strokeColorButton: strokeColorButton.color
     property alias blurEnabled: blurEnabledCheckBox.checked
     property alias blur: blurSlider.value
+    property alias blurDefault: blurSlider.defaultValue
     property alias blurMax: blurMaxSlider.value
+    property alias blurMaxDefault: blurMaxSlider.defaultValue
     property alias blurMultiplier: blurMultiplierSpinBox.value
     property alias dropShadowEnabled: dropShadowEnabledCheckBox.checked
     property alias dropShadowColorText: dropShadowColorTextField.text
     property alias dropShadowColorButton: dropShadowColorButton.color
     property alias dropShadowOpacity: dropShadowOpacitySlider.value
+    property alias dropShadowOpacityDefault: dropShadowOpacitySlider.defaultValue
     property alias dropShadowBlur: dropShadowBlurSlider.value
+    property alias dropShadowBlurDefault: dropShadowBlurSlider.defaultValue
     property alias dropShadowScale: dropShadowScaleSlider.value
+    property alias dropShadowScaleDefault: dropShadowScaleSlider.defaultValue
     property alias dropShadowHorizontalOffset: dropShadowHorizontalOffsetSpinBox.value
     property alias dropShadowVerticalOffset: dropShadowVerticalOffsetSpinBox.value
 
@@ -117,12 +122,12 @@ Kirigami.FormLayout {
         Kirigami.FormData.label: i18n("Enabled:")
     }
 
-    Slider {
+    ResettableSlider {
         id: blurSlider
         enabled: blurEnabledCheckBox.checked
 
         Kirigami.FormData.label: i18n("Amount:")
-        Layout.fillWidth: true
+
         from: 0
         to: 1
         value: 1
@@ -131,9 +136,9 @@ Kirigami.FormLayout {
 
     RowLayout {
         enabled: blurEnabledCheckBox.checked
-        Kirigami.FormData.label: i18n("Max:")
-        
-        Slider {
+        Kirigami.FormData.label: i18n("Maximum pixel radius:")
+
+        ResettableSlider {
             id: blurMaxSlider
 
             Layout.fillWidth: true
@@ -141,10 +146,6 @@ Kirigami.FormLayout {
             to: 64
             value: 32
             stepSize: 1
-        }
-
-        Kirigami.ContextualHelpButton {
-            toolTipText: i18n("This property defines the maximum pixel radius that blur will reach.")
         }
     }
 
@@ -177,7 +178,7 @@ Kirigami.FormLayout {
         Kirigami.FormData.label: i18n("Enabled:")
     }
 
-    Slider {
+    ResettableSlider {
         id: dropShadowOpacitySlider
         enabled: dropShadowEnabledCheckBox.checked
 
@@ -189,7 +190,7 @@ Kirigami.FormLayout {
         stepSize: 0.05
     }
 
-    Slider {
+    ResettableSlider {
         id: dropShadowBlurSlider
         enabled: dropShadowEnabledCheckBox.checked
 
@@ -201,7 +202,7 @@ Kirigami.FormLayout {
         stepSize: 0.05
     }
 
-    Slider {
+    ResettableSlider {
         id: dropShadowScaleSlider
         enabled: dropShadowEnabledCheckBox.checked
 
