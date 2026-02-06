@@ -7,7 +7,7 @@
       "command": "rm",
       "args": [
         "-rf",
-        "~/.local/share/plasma/plasmoids/com.chrisdupuy.yetanotherclockwidget"
+        "~/.local/share/plasma/plasmoids/com.chrisdupuy.plasma.yetanotherclockwidget"
       ]
     },
     {

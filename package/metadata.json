@@ -9,7 +9,7 @@
         ],
         "License": "GPL-3.0-or-later",
         "Category": "Date and Time",
-        "Description": "A KDE Plasma clock widget featuring the ability to add styles and effects such as colors, blur, drop shadows and strokes.",
+        "Description": "A KDE Plasma clock widget featuring the ability to add styles and effects including colors, blur, drop shadows and strokes.",
         "ShortDescription": "A customizable Plasma clock widget tailored towards style and effects.",
         "EnabledByDefault": true,
         "FormFactors": [
@@ -17,7 +17,7 @@
             "desktop"
         ],
         "Icon": "preferences-system-time",
-        "Id": "com.chrisdupuy.yetanotherclockwidget",
+        "Id": "com.chrisdupuy.plasma.yetanotherclockwidget",
         "Name": "Yet Another Clock Widget",
         "Version": "1.0.0",
         "Website": "https://github.com/chrisdupuy-dev/yet-another-clock-widget",
