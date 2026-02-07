@@ -168,24 +168,26 @@ PlasmoidItem {
         id: timeDateArea
             
         property bool wasExpanded
-        Layout.minimumWidth: parent.implicitWidth
-        Layout.minimumHeight: parent.implicitHeight
-        Layout.preferredWidth: Layout.minimumWidth
-        Layout.preferredHeight: Layout.minimumHeight
+        Layout.maximumWidth: timeLabel.implicitWidth
+        Layout.maximumHeight: timeLabel.implicitHeight
+        Layout.preferredWidth: Layout.maximumWidth
+        Layout.preferredHeight: Layout.maximumHeight
 
         activeFocusOnTab: true
+        
         Accessible.name: Plasmoid.title
         Accessible.description: i18nc("@info:tooltip", "Current time is %1; Current date is %2", DateTimeFormatter.formatTime(dataSource.data["Local"]["DateTime"], root.timeFormat, (root.showSeconds === Enums.ShowSeconds.Always)), root.currentDate)
         Accessible.role: Accessible.Button
+        
         onPressed: wasExpanded = root.expanded
-        onClicked: root.expanded = !wasExpanded
+        onDoubleClicked: root.expanded = !wasExpanded
 
         StyledLabel {
             id: timeLabel
             Layout.fillHeight: true
             Layout.fillWidth: true
 
-            anchorTarget: parent
+            anchorTarget: timeDateArea
             anchorAlignment: Enums.Alignment.Offset
             offsetX: 0
             offsetY: 0
