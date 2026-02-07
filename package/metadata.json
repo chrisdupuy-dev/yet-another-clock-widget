@@ -10,7 +10,6 @@
         "License": "GPL-3.0-or-later",
         "Category": "Date and Time",
         "Description": "A KDE Plasma clock widget featuring the ability to add styles and effects including colors, blur, drop shadows and strokes.",
-        "ShortDescription": "A customizable Plasma clock widget tailored towards style and effects.",
         "EnabledByDefault": true,
         "FormFactors": [
             "tablet",
