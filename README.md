@@ -1,6 +1,7 @@
 # Yet Another Clock Widget for KDE Plasma 6
 A KDE Plasma clock widget featuring the ability to add styles and effects including colors, blur, drop shadows and strokes.
-
+![Example screenshot](./assets/0-example-comp.png "Example screenshot")
+ \* [PaintCans Free](https://graffitifonts.com/free_fonts/paintcans_free) used for font in screenshot
 ## Features
 ### 🕒 **Can display the time, date and time zone!**
 You can also hide them if you prefer.
