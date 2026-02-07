@@ -1,5 +1,5 @@
 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin:10px">
-  <img src="./assets/logo.png" alt="logo" style="width:300px;"/>
+  <img src="./assets/logo.png" alt="logo" style="width:300px;"/> <br />
   <span style="margin-top:5px"><a href="https://store.kde.org/p/2346893">Download from KDE Store</a></span>
 </div>
 
